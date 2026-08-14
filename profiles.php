@@ -54,7 +54,7 @@
 <button class="button"  onclick="ShiftPlot(-3)">t-3</button>
 <button class="button"  onclick="ShiftPlot(+3)">t+3</button>
 <button class="button"  onclick="ShiftPlot(+24)">t+24</button>
-<button class="button"  onclick="location.href='https://meteogus.github.io/parognosis//BOLAM_GR.php'" type="button">Home</button>
+<button class="button"  onclick="location.href='https://meteogus.github.io/parognosis/BOLAM_GR.php'" type="button">Home</button>
 </div>
 
 

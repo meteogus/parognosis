@@ -83,7 +83,7 @@
 <body>
 
 <div class="sticky-top-0">
-<button class="button"  onclick="location.href='https://meteogus.github.io/parognosis//z500_m.php'" type="button">MC</button>
+<button class="button"  onclick="location.href='https://meteogus.github.io/parognosis/z500_m.php'" type="button">MC</button>
 <button class="button"  onclick="ShiftPlot(-3)">t-3</button>
 <button class="button"  onclick="ShiftPlot(+3)">t+3</button>
 <button class="button"  onclick="ShiftPlot(-24)">t-24</button>

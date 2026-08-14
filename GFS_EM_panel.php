@@ -84,7 +84,7 @@ body{
 
 <div class="sticky-top-0">
     <button class="button"
-    onclick="location.href='https://meteogus.github.io/parognosis//BOLAM_GR.php'">
+    onclick="location.href='https://meteogus.github.io/parognosis/BOLAM_GR.php'">
     Models
     <button class="button" onclick="ShiftAll(-3)">-3</button>
     <button class="button" onclick="ShiftAll(+3)">+3</button>

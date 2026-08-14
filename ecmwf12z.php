@@ -1,9 +1,9 @@
 <html><head><title>ECMWF 12z</title>
-<script src="https://meteogus.github.io/parognosis//Javascripts/jquery-2.1.1.min.js"></script>
-<script src="https://meteogus.github.io/parognosis//Javascripts/jquery.detect_swipe.js"></script>
-<script src="https://meteogus.github.io/parognosis//Javascripts/JsImageLoop.js"></script>
-<link rel="stylesheet" type="text/css" href="https://meteogus.github.io/parognosis//Javascripts/JsImageLoop.css">
-<link rel="icon" type="image/x-icon" href="https://meteogus.github.io/parognosis//meteo.png">
+<script src="https://meteogus.github.io/parognosis/Javascripts/jquery-2.1.1.min.js"></script>
+<script src="https://meteogus.github.io/parognosis/Javascripts/jquery.detect_swipe.js"></script>
+<script src="https://meteogus.github.io/parognosis/Javascripts/JsImageLoop.js"></script>
+<link rel="stylesheet" type="text/css" href="https://meteogus.github.io/parognosis/Javascripts/JsImageLoop.css">
+<link rel="icon" type="image/x-icon" href="https://meteogus.github.io/parognosis/meteo.png">
 <style type="text/css">
 *,body {
 font-weight: none;
@@ -68,9 +68,9 @@ useroptions.content = [];
 <div id='wrapper' style='text-align: center;'>
     <div style='display: inline-block; vertical-align: top;'>
     Global models:&nbsp;
-<a href="https://meteogus.github.io/parognosis//z500.php">z500</a>&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://meteogus.github.io/parognosis//t850.php">t850</a>&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://meteogus.github.io/parognosis//BOLAM_GR.php" style="color:red;">PARAMETERS</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://meteogus.github.io/parognosis/z500.php">z500</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://meteogus.github.io/parognosis/t850.php">t850</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://meteogus.github.io/parognosis/BOLAM_GR.php" style="color:red;">PARAMETERS</a>&nbsp;&nbsp;&nbsp;&nbsp;
 
 
 
@@ -79,23 +79,23 @@ useroptions.content = [];
 <div id='wrapper' style='text-align: center;'>
     <div style='display: inline-block; vertical-align: top;'>
     Precipitation:&nbsp;
-<a href="https://meteogus.github.io/parognosis//gfs0-3.php">GFS 0-3</a>&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://meteogus.github.io/parognosis//gfs3-10.php">GFS 3-10</a>&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://meteogus.github.io/parognosis//ecmwf0-5.php">ECMWF 0-5</a>&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://meteogus.github.io/parognosis//ecmwf5-10.php">ECMWF 5-10</a>&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://meteogus.github.io/parognosis//icon.php">ICON</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://meteogus.github.io/parognosis/gfs0-3.php">GFS 0-3</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://meteogus.github.io/parognosis/gfs3-10.php">GFS 3-10</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://meteogus.github.io/parognosis/ecmwf0-5.php">ECMWF 0-5</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://meteogus.github.io/parognosis/ecmwf5-10.php">ECMWF 5-10</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://meteogus.github.io/parognosis/icon.php">ICON</a>&nbsp;&nbsp;&nbsp;&nbsp;
     </div>
 </div>
 
 <div id='wrapper' style='text-align: center;'>
     <div style='display: inline-block; vertical-align: top;'>
     Spreads:&nbsp;
-<a href="https://meteogus.github.io/parognosis//ecmwf00z.php">ECMWF 00z</a>&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://meteogus.github.io/parognosis//ecmwf12z.php">ECMWF 12z</a>&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://meteogus.github.io/parognosis//gfs00z.php">GFS 00z</a>&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://meteogus.github.io/parognosis//gfs06z.php">GFS 06z</a>&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://meteogus.github.io/parognosis//gfs12z.php">GFS 12z</a>&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://meteogus.github.io/parognosis//gfs18z.php">GFS 18z</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://meteogus.github.io/parognosis/ecmwf00z.php">ECMWF 00z</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://meteogus.github.io/parognosis/ecmwf12z.php">ECMWF 12z</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://meteogus.github.io/parognosis/gfs00z.php">GFS 00z</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://meteogus.github.io/parognosis/gfs06z.php">GFS 06z</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://meteogus.github.io/parognosis/gfs12z.php">GFS 12z</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://meteogus.github.io/parognosis/gfs18z.php">GFS 18z</a>&nbsp;&nbsp;&nbsp;&nbsp;
 <p>
     </div>
 </div>
