@@ -1,0 +1,210 @@
+﻿<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GFS_control_500</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #222;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+  }
+
+  #container {
+    width: 600px;
+    max-width: 90vw;
+    user-select: none;
+  }
+
+  #mainImage {
+    width: 100%;
+    border-radius: 8px;
+    display: block;
+  }
+
+  /* ΚΕΝΤΡΙΚΑ βελάκια κάτω από την εικόνα */
+  #arrowsContainer {
+    margin-top: 12px;
+    display: flex;
+    justify-content: center;
+    gap: 50px;           /* απόσταση μεταξύ βελών */
+    width: 600px;
+    max-width: 90vw;
+  }
+
+  .arrow {
+    width: 40px;
+    height: 40px;
+    background: rgba(0,0,0,0.4);
+    color: #fff;
+    font-size: 28px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    transition: background 0.3s;
+  }
+
+  .arrow:hover {
+    background: rgba(0,0,0,0.7);
+  }
+
+  #hoursContainer {
+    margin-top: 15px;
+    width: 600px;
+    max-width: 90vw;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
+  }
+
+  .hourBtn {
+    background: rgba(0,0,0,0.6);
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    padding: 6px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .hourBtn:hover,
+  .hourBtn.active {
+    background: #1e90ff;
+  }
+</style>
+</head>
+
+<body>
+
+<div id="container">
+  <img id="mainImage" src="" alt="Forecast Image" />
+</div>
+
+<div id="arrowsContainer">
+  <div id="leftArrow" class="arrow">&#10094;</div>
+  <div id="rightArrow" class="arrow">&#10095;</div>
+</div>
+
+<div id="hoursContainer"></div>
+
+<script>
+  // URLs εικόνων με τις ώρες
+  const images = [
+    { url: "https://modeles16.meteociel.fr/modeles/gens/run/gens-0-1-6.png", label: "+6h" },
+    { url: "https://modeles16.meteociel.fr/modeles/gens/run/gens-0-1-12.png", label: "+12h" },
+    { url: "https://modeles16.meteociel.fr/modeles/gens/run/gens-0-1-18.png", label: "+18h" },
+    { url: "https://modeles16.meteociel.fr/modeles/gens/run/gens-0-1-24.png", label: "+24h" },
+    { url: "https://modeles16.meteociel.fr/modeles/gens/run/gens-0-1-30.png", label: "+30h" },
+    { url: "https://modeles16.meteociel.fr/modeles/gens/run/gens-0-1-36.png", label: "+36h" },
+    { url: "https://modeles16.meteociel.fr/modeles/gens/run/gens-0-1-42.png", label: "+42h" },
+    { url: "https://modeles16.meteociel.fr/modeles/gens/run/gens-0-1-48.png", label: "+48h" },
+    { url: "https://modeles16.meteociel.fr/modeles/gens/run/gens-0-1-54.png", label: "+54h" },
+    { url: "https://modeles16.meteociel.fr/modeles/gens/run/gens-0-1-60.png", label: "+60h" },
+    { url: "https://modeles16.meteociel.fr/modeles/gens/run/gens-0-1-66.png", label: "+66h" },
+    { url: "https://modeles16.meteociel.fr/modeles/gens/run/gens-0-1-72.png", label: "+72h" },
+    { url: "https://modeles16.meteociel.fr/modeles/gens/run/gens-0-1-78.png", label: "+78h" },
+    { url: "https://modeles16.meteociel.fr/modeles/gens/run/gens-0-1-84.png", label: "+84h" },
+    { url: "https://modeles16.meteociel.fr/modeles/gens/run/gens-0-1-90.png", label: "+90h" },
+    { url: "https://modeles16.meteociel.fr/modeles/gens/run/gens-0-1-96.png", label: "+96h" },
+    { url: "https://modeles16.meteociel.fr/modeles/gens/run/gens-0-1-102.png", label: "+102h" },
+    { url: "https://modeles16.meteociel.fr/modeles/gens/run/gens-0-1-108.png", label: "+108h" },
+    { url: "https://modeles16.meteociel.fr/modeles/gens/run/gens-0-1-114.png", label: "+114h" },
+    { url: "https://modeles16.meteociel.fr/modeles/gens/run/gens-0-1-120.png", label: "+120h" },
+    { url: "https://modeles16.meteociel.fr/modeles/gens/run/gens-0-1-126.png", label: "+126h" },
+    { url: "https://modeles16.meteociel.fr/modeles/gens/run/gens-0-1-132.png", label: "+132h" },
+    { url: "https://modeles16.meteociel.fr/modeles/gens/run/gens-0-1-138.png", label: "+138h" },
+    { url: "https://modeles16.meteociel.fr/modeles/gens/run/gens-0-1-144.png", label: "+144h" },
+    { url: "https://modeles16.meteociel.fr/modeles/gens/run/gens-0-1-150.png", label: "+150h" },
+    { url: "https://modeles16.meteociel.fr/modeles/gens/run/gens-0-1-156.png", label: "+156h" },
+    { url: "https://modeles16.meteociel.fr/modeles/gens/run/gens-0-1-162.png", label: "+162h" },
+    { url: "https://modeles16.meteociel.fr/modeles/gens/run/gens-0-1-168.png", label: "+168h" },
+    { url: "https://modeles16.meteociel.fr/modeles/gens/run/gens-0-1-174.png", label: "+174h" },
+    { url: "https://modeles16.meteociel.fr/modeles/gens/run/gens-0-1-180.png", label: "+180h" },
+    { url: "https://modeles16.meteociel.fr/modeles/gens/run/gens-0-1-186.png", label: "+186h" },
+    { url: "https://modeles16.meteociel.fr/modeles/gens/run/gens-0-1-192.png", label: "+192h" },
+    { url: "https://modeles16.meteociel.fr/modeles/gens/run/gens-0-1-204.png", label: "+204h" },
+    { url: "https://modeles16.meteociel.fr/modeles/gens/run/gens-0-1-216.png", label: "+216h" },
+    { url: "https://modeles16.meteociel.fr/modeles/gens/run/gens-0-1-228.png", label: "+228h" },
+    { url: "https://modeles16.meteociel.fr/modeles/gens/run/gens-0-1-240.png", label: "+240h" },
+    { url: "https://modeles16.meteociel.fr/modeles/gens/run/gens-0-1-264.png", label: "+264h" },
+    { url: "https://modeles16.meteociel.fr/modeles/gens/run/gens-0-1-288.png", label: "+288h" },
+    { url: "https://modeles16.meteociel.fr/modeles/gens/run/gens-0-1-312.png", label: "+312h" },
+    { url: "https://modeles16.meteociel.fr/modeles/gens/run/gens-0-1-336.png", label: "+336h" },
+    { url: "https://modeles16.meteociel.fr/modeles/gens/run/gens-0-1-360.png", label: "+360h" },
+    { url: "https://modeles16.meteociel.fr/modeles/gens/run/gens-0-1-384.png", label: "+384h" },
+  ];
+
+  const mainImage = document.getElementById("mainImage");
+  const leftArrow = document.getElementById("leftArrow");
+  const rightArrow = document.getElementById("rightArrow");
+  const hoursContainer = document.getElementById("hoursContainer");
+
+  let currentIndex = 0;
+
+  // Φόρτωση αρχικής εικόνας
+  function showImage(index) {
+    if (index < 0) index = images.length - 1;
+    if (index >= images.length) index = 0;
+    currentIndex = index;
+    mainImage.src = images[index].url;
+    updateActiveButton();
+  }
+
+  // Δημιουργία κουμπιών ωρών
+  function createHourButtons() {
+    images.forEach((img, i) => {
+      const btn = document.createElement("button");
+      btn.textContent = img.label;
+      btn.className = "hourBtn";
+      btn.addEventListener("click", () => {
+        showImage(i);
+      });
+      hoursContainer.appendChild(btn);
+    });
+  }
+
+  // Επισημαίνει το ενεργό κουμπί
+  function updateActiveButton() {
+    const buttons = hoursContainer.querySelectorAll(".hourBtn");
+    buttons.forEach((btn, i) => {
+      btn.classList.toggle("active", i === currentIndex);
+    });
+  }
+
+  // Βελάκια
+  leftArrow.addEventListener("click", () => {
+    showImage(currentIndex - 1);
+  });
+  rightArrow.addEventListener("click", () => {
+    showImage(currentIndex + 1);
+  });
+
+  // Αρχικοποίηση
+  createHourButtons();
+
+  // Προφόρτωση όλων των εικόνων
+  images.forEach(img => {
+    const preload = new Image();
+    preload.src = img.url;
+  });
+
+  showImage(0);
+
+</script>
+
+</body>
+</html>
+

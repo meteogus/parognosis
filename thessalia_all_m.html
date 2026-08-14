@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8" />
+<title>Thessalia meteograms</title>
+<link href="favicon.ico" rel="icon" type="image/x-icon" />
+
+
+
+
+
+
+<style>
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #134f5c;
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  .select-container {
+    margin: 10px auto 50px auto; /* περιθώριο κάτω για να μην ακουμπά το iframe */
+    width: fit-content;
+    max-width: 350px;
+  }
+
+  select {
+    font-size: 50px;
+    height: 70px;
+    padding: 5px 10px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  iframe {
+    flex-grow: 1;
+    width: 100vw;
+    border: none;
+    overflow: auto;
+  }
+</style>
+
+
+
+
+
+
+
+</head>
+<body>
+
+<div class="select-container">
+  <select id="meteogramSelect" name="dest" onchange="window.open(this.options[this.selectedIndex].value,'mymeteogram')">
+<option value="https://grhost.info/parognosis/larisa.html" />Larisa
+<option value="https://grhost.info/parognosis/trikala.html" />Trikala 
+</select></div>
+
+<iframe src="https://grhost.info/parognosis/larisa.html" name="mymeteogram" scrolling="yes">
+  You can't see this because your browser does not support iframes.
+</iframe>
+
+<script>
+function resizeSelectToContent(select) {
+  const tmpSpan = document.createElement('span');
+  document.body.appendChild(tmpSpan);
+  tmpSpan.style.visibility = 'hidden';
+  tmpSpan.style.whiteSpace = 'nowrap';
+
+  const style = window.getComputedStyle(select);
+  tmpSpan.style.fontSize = style.fontSize;
+  tmpSpan.style.fontFamily = style.fontFamily;
+  tmpSpan.style.fontWeight = style.fontWeight;
+  tmpSpan.style.letterSpacing = style.letterSpacing;
+
+  let maxWidth = 0;
+  for (const option of select.options) {
+    tmpSpan.textContent = option.text;
+    const width = tmpSpan.offsetWidth;
+    if (width > maxWidth) maxWidth = width;
+  }
+
+  document.body.removeChild(tmpSpan);
+
+  // Προσαρμόζουμε το πλάτος του container με βάση το περιεχόμενο + padding
+  const container = select.parentElement;
+  container.style.width = (maxWidth + 3) + 'px';
+}
+
+window.onload = function() {
+  const select = document.getElementById('meteogramSelect');
+  resizeSelectToContent(select);
+};
+</script>
+
+</body>
+</html>

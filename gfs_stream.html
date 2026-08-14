@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Stream</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #222;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+  }
+
+  #container {
+    width: 600px;
+    max-width: 90vw;
+    user-select: none;
+  }
+
+  #mainImage {
+    width: 100%;
+    border-radius: 8px;
+    display: block;
+  }
+
+  /* ΚΕΝΤΡΙΚΑ βελάκια κάτω από την εικόνα */
+  #arrowsContainer {
+    margin-top: 12px;
+    display: flex;
+    justify-content: center;
+    gap: 50px;           /* απόσταση μεταξύ βελών */
+    width: 600px;
+    max-width: 90vw;
+  }
+
+  .arrow {
+    width: 40px;
+    height: 40px;
+    background: rgba(0,0,0,0.4);
+    color: #fff;
+    font-size: 28px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    transition: background 0.3s;
+  }
+
+  .arrow:hover {
+    background: rgba(0,0,0,0.7);
+  }
+
+  #hoursContainer {
+    margin-top: 15px;
+    width: 600px;
+    max-width: 90vw;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
+  }
+
+  .hourBtn {
+    background: rgba(0,0,0,0.6);
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    padding: 6px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .hourBtn:hover,
+  .hourBtn.active {
+    background: #1e90ff;
+  }
+</style>
+</head>
+
+<body>
+
+<div id="container">
+  <img id="mainImage" src="" alt="Forecast Image" />
+</div>
+
+<div id="arrowsContainer">
+  <div id="leftArrow" class="arrow">&#10094;</div>
+  <div id="rightArrow" class="arrow">&#10095;</div>
+</div>
+
+<div id="hoursContainer"></div>
+
+<script>
+  // URLs εικόνων με τις ώρες
+  const images = [
+    { url: "https://modeles2.meteociel.fr/modeles_gfs/run/3-314GR.GIF", label: "+03h" },
+    { url: "https://modeles2.meteociel.fr/modeles_gfs/run/6-314GR.GIF", label: "+06h" },
+    { url: "https://modeles2.meteociel.fr/modeles_gfs/run/9-314GR.GIF", label: "+09h" },
+    { url: "https://modeles2.meteociel.fr/modeles_gfs/run/12-314GR.GIF", label: "+12h" },
+    { url: "https://modeles2.meteociel.fr/modeles_gfs/run/15-314GR.GIF", label: "+15h" },
+    { url: "https://modeles2.meteociel.fr/modeles_gfs/run/18-314GR.GIF", label: "+18h" },
+    { url: "https://modeles2.meteociel.fr/modeles_gfs/run/21-314GR.GIF", label: "+21h" },
+    { url: "https://modeles2.meteociel.fr/modeles_gfs/run/24-314GR.GIF", label: "+24h" },
+    { url: "https://modeles2.meteociel.fr/modeles_gfs/run/27-314GR.GIF", label: "+27h" },
+    { url: "https://modeles2.meteociel.fr/modeles_gfs/run/30-314GR.GIF", label: "+30h" },
+    { url: "https://modeles2.meteociel.fr/modeles_gfs/run/33-314GR.GIF", label: "+33h" },
+    { url: "https://modeles2.meteociel.fr/modeles_gfs/run/36-314GR.GIF", label: "+36h" },
+    { url: "https://modeles2.meteociel.fr/modeles_gfs/run/39-314GR.GIF", label: "+39h" },
+    { url: "https://modeles2.meteociel.fr/modeles_gfs/run/42-314GR.GIF", label: "+42h" },
+    { url: "https://modeles2.meteociel.fr/modeles_gfs/run/45-314GR.GIF", label: "+45h" },
+    { url: "https://modeles2.meteociel.fr/modeles_gfs/run/48-314GR.GIF", label: "+48h" },
+    { url: "https://modeles2.meteociel.fr/modeles_gfs/run/51-314GR.GIF", label: "+51h" },
+    { url: "https://modeles2.meteociel.fr/modeles_gfs/run/54-314GR.GIF", label: "+54h" },
+    { url: "https://modeles2.meteociel.fr/modeles_gfs/run/57-314GR.GIF", label: "+57h" },
+    { url: "https://modeles2.meteociel.fr/modeles_gfs/run/60-314GR.GIF", label: "+60h" },
+    { url: "https://modeles2.meteociel.fr/modeles_gfs/run/63-314GR.GIF", label: "+63h" },
+    { url: "https://modeles2.meteociel.fr/modeles_gfs/run/66-314GR.GIF", label: "+66h" },
+    { url: "https://modeles2.meteociel.fr/modeles_gfs/run/69-314GR.GIF", label: "+69h" },
+    { url: "https://modeles2.meteociel.fr/modeles_gfs/run/72-314GR.GIF", label: "+72h" },
+    { url: "https://modeles2.meteociel.fr/modeles_gfs/run/75-314GR.GIF", label: "+75h" },
+    { url: "https://modeles2.meteociel.fr/modeles_gfs/run/78-314GR.GIF", label: "+78h" },
+    { url: "https://modeles2.meteociel.fr/modeles_gfs/run/81-314GR.GIF", label: "+81h" },
+    { url: "https://modeles2.meteociel.fr/modeles_gfs/run/84-314GR.GIF", label: "+84h" },
+    { url: "https://modeles2.meteociel.fr/modeles_gfs/run/90-314GR.GIF", label: "+90h" },
+    { url: "https://modeles2.meteociel.fr/modeles_gfs/run/96-314GR.GIF", label: "+96h" }
+  ];
+
+  const mainImage = document.getElementById("mainImage");
+  const leftArrow = document.getElementById("leftArrow");
+  const rightArrow = document.getElementById("rightArrow");
+  const hoursContainer = document.getElementById("hoursContainer");
+
+  let currentIndex = 0;
+
+  // Φόρτωση αρχικής εικόνας
+  function showImage(index) {
+    if (index < 0) index = images.length - 1;
+    if (index >= images.length) index = 0;
+    currentIndex = index;
+    mainImage.src = images[index].url;
+    updateActiveButton();
+  }
+
+  // Δημιουργία κουμπιών ωρών
+  function createHourButtons() {
+    images.forEach((img, i) => {
+      const btn = document.createElement("button");
+      btn.textContent = img.label;
+      btn.className = "hourBtn";
+      btn.addEventListener("click", () => {
+        showImage(i);
+      });
+      hoursContainer.appendChild(btn);
+    });
+  }
+
+  // Επισημαίνει το ενεργό κουμπί
+  function updateActiveButton() {
+    const buttons = hoursContainer.querySelectorAll(".hourBtn");
+    buttons.forEach((btn, i) => {
+      btn.classList.toggle("active", i === currentIndex);
+    });
+  }
+
+  // Βελάκια
+  leftArrow.addEventListener("click", () => {
+    showImage(currentIndex - 1);
+  });
+  rightArrow.addEventListener("click", () => {
+    showImage(currentIndex + 1);
+  });
+
+  // Αρχικοποίηση
+  createHourButtons();
+  showImage(0);
+
+</script>
+
+</body>
+</html>

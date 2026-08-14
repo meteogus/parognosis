@@ -1,0 +1,1084 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="refresh" content="60">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+  <meta http-equiv="Pragma" content="no-cache"/>
+  <meta http-equiv="Expires" content="0"/>
+  <meta charset="UTF-8">
+  <link href="favicon.ico" rel="icon" type="image/x-icon"/>
+  <title>Parognosis</title>
+  <script type="text/javascript" src="highslide/highslide.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .wrapper {
+      width: auto;
+      margin: auto;
+    }
+
+    .menu-area {
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #333;
+      z-index: 1000;
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+      white-space: nowrap;
+    }
+
+    .menu-scroll {
+      display: flex;
+      overflow-x: auto;
+      max-width: 100vw;
+    }
+
+    .menu-area ul {
+      list-style: none;
+      display: flex;
+    }
+
+    .menu-area ul li {
+      position: relative;
+      flex: 0 0 auto;
+    }
+
+    .menu-area ul li a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      padding: 11px 16px;
+    }
+
+    .menu-area ul li:hover {
+      background-color: #444;
+    }
+
+    .menu-area ul li:hover > ul {
+      display: block;
+    }
+
+.menu-area ul ul {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #52595D;
+  min-width: 160px;
+  z-index: 9999;          /* ensures it stays above other items */
+}
+
+
+    .menu-area ul ul li {
+      display: block;
+      border-bottom: 1px solid #ffffff;
+    }
+
+.menu-area ul ul ul {
+  position: absolute;
+  top: 0;
+  left: 100%;             /* default: open to the right of parent */
+  right: auto;
+  background-color: #52595D;
+  min-width: 160px;
+  z-index: 10000;
+}
+
+
+
+
+    .wrapper a:hover,
+    .menu-area:hover .dropbtn {
+      background-color: red;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="menu-area">
+            <ul>
+                <li><a href="#">Nowcast</a>
+                    <ul>
+      <li><a href="#">Strikes</a>
+                                 <ul>
+      <li><a href="https://meteologix.com/gr/lightning/greece"target="_blank">Meteologix</a></li>
+      <li><a href="https://www.blitzortung.org/en/historical_maps.php?map=14?map=14"target="_blank">Blitzortung</a></li>
+      <li><a href="https://www.lightningmaps.org/?lang=en#m=oss;t=3;s=201;o=0;b=0.00;ts=0;z=7;y=37.9788;x=24.4391;d=2;dl=2;dc=0;"target="_blank">Lightningsmaps</a></li>
+      <li><a href="https://www.lightningmaps.org/blitzortung/europe/index.php?bo_page=archive&bo_map=sat_europe_mpe"target="_blank">Archive</a></li>
+	
+	</ul>
+      <li><a href="https://www.meteo.gr/Gmap.cfm"target="_blank">Meteomap</a></li>
+      <li><a href="http://oldportal.emy.gr/emy/el/forecast/deltia_kairou/geniki_prognosi"target="_blank">EMY</a></li>
+      
+
+      <li><a href="#">Networks</a>
+ 				<ul>
+      <li><a href="https://www.emy.gr/hnms-stations"target="_blank">EMY stations</a></li>
+      <li><a href="https://www.weatherlink.com/map/"target="_blank">Weatherlink</a></li>
+      <li><a href="https://temperature.gr/"target="_blank">AGENSO</a></li>
+      <li><a href="https://ionianweather.gr/stations/"target="_blank">Ionian sea</a></li>
+      <li><a href="https://www.stravon.gr/map/"target="_blank">Stravon</a></li>
+      <li><a href="https://www.naxosweather.gr/stations.php"target="_blank">Naxos</a></li>
+      <li><a href="https://ambientweather.net/"target="_blank">Ambient Weather</a></li>
+      <li><a href="https://e-kairos.gr/now/index.php"target="_blank">E-kairos</a></li>
+
+      </ul>
+
+
+      <li><a href="#">PWS</a>
+ 				<ul>
+      <li><a href="https://penteli.meteo.gr/stations/alimos/"target="_blank">Alimos</a></li>
+      <li><a href="https://penteli.meteo.gr/stations/kiato/"target="_blank">Kiato</a></li>
+      <li><a href="http://www.meteokaisari-zireia.gr/"target="_blank">Kaisari</a></li>
+      <li><a href="https://grhost.info/kastelokampos/"target="_blank">Rio</a></li>
+      <li><a href="https://penteli.meteo.gr/stations/parnitha/"target="_blank">Parnitha</a></li>
+      <li><a href="https://www.daoukliotis.gr/meteostation/"target="_blank">Daoukliotis</a></li>
+      <li><a href="https://users.sch.gr/stkontos/weather/"target="_blank">Galaneika</a></li>
+      </ul>
+
+
+      <li><a href="#">SST</a>
+ 				<ul>
+      <li><a href="https://www.meteo.gr/sst.cfm"target="_blank">Meteo</a></li>
+      <li><a href="https://poseidon.hcmr.gr/el/map?model=satellite&param=sst"target="_blank">Poseidon</a></li>
+      <li><a href="https://seatemperature.info/greece-water-temperature.html"target="_blank">Sea Temps</a></li>
+      <li><a href="https://www.ceam.es/ceamet/SST/SST-latest.html"target="_blank">CEAM</a></li>
+      <li><a href="http://www.oc.phys.uoa.gr/ecoop/olval/page92.html"target="_blank">ALERMO</a></li>
+       </ul>
+
+
+      <li><a href="#">Europe</a>
+ 				<ul>
+      <li><a href="https://www.ogimet.com/resynops.phtml.en"target="_blank">Ogimet</a></li>
+      <li><a href="https://www.meteonetwork.it/rete/livemap/"target="_blank">Meteonetwork</a></li>
+      <li><a href="https://www.infoclimat.fr/"target="_blank">Infoclimat</a></li>
+      </ul>
+
+      <li><a href="https://grhost.info/parognosis/observations.php"target="_blank">Observations</a></li>
+      <li><a href="https://www.wunderground.com/dashboard/pws/IPALAI17"target="_blank">Wundermap</a></li>
+      <li><a href="https://en.allmetsat.com/metar-taf/greece.php?icao=LGAV"target="_blank">Metars</a></li>
+
+
+
+
+
+
+
+                        </li>
+</ul>
+
+
+
+                </li>
+                <li><a href="#">Radars</a>
+                    <ul>
+      <li><a href="https://www.wetteronline.de/wetterradar?wrx=38.91,23.91&wrm=7"target="_blank">WetterRadar</a></li>
+      <li><a href="https://www.windy.com/-Weather-radar-radar?radar,38.068,23.867,7"target="_blank">Windy</a></li>
+      <li><a href="https://nowcast.meteo.noa.gr/el/radar/"target="_blank">Doppler</a></li>
+      <li><a href="https://wxradar.3dsa.net/login.php"target="_blank">3Dsa</a></li>
+      <li><a href="https://meteologix.com/gr/precipitation/greece/gsmap-satellite-precipitation-1h.html"target="_blank">GSMaP</a></li>
+      <li><a href="https://meteo.geo.auth.gr/meteo-radar/"target="_blank">Salonica</a></li>
+      <li><a href="https://meteogus.github.io/izmir-radar/"target="_blank">Overlay</a></li>
+      <li><a href="https://mgm.gov.tr/eng/radar.aspx?rG=img&rR=35&rU=ppi#sfB"target="_blank">Turkey</a></li>
+      <li><a href="https://realearth.ssec.wisc.edu/?products=NESDIS-GHE-HourlyRainfall"target="_blank">RealEarth</a></li>
+      <li><a href="https://sharaku.eorc.jaxa.jp/GSMaP/"target="_blank">JAXA</a></li>
+      <li><a href="https://www.metoc.navy.mil/fwcn/fwcn.html#!/swr.html"target="_blank">Souda</a></li>
+                        </li>
+</ul>
+
+
+
+
+
+
+
+
+                </li>
+                <li><a href="#">Forecast</a>
+                    <ul>
+      <li><a href="https://grhost.info/parognosis/meteodata.html"target="_blank">Meteodata</a></li>
+ 				
+      <li><a href="#">Global models</a>
+ 				<ul>
+      <li><a href="https://www.meteociel.fr/modeles/ecmwf.php"target="_blank">Meteociel</a></li>
+      <li><a href="https://www.wetterzentrale.de/en/topkarten.php?map=1&model=gfs&var=22&time=6&lid=OP&h=0&mv=0&tr=6"target="_blank">Wetterzentrale</a></li>
+
+
+      <li><a href="#">ECMWF</a>
+ 				<ul>
+
+      <li><a href="https://charts.ecmwf.int/products/opencharts_meteogram?&epsgram=classical_10d&lat=37.9833&lon=23.7333&station_name=Athens"target="_blank">Charts</a></li>
+      <li><a href="https://sites.ecmwf.int/charts/cdb/"target="_blank">Extra Tropical CDB</a></li>
+      </ul>
+
+
+
+      <li><a href="https://www.wetter3.de/animation_dt.html"target="_blank">Wetter3</a></li>
+      <li><a href="https://www.tropicaltidbits.com/analysis/models/?model=gfs&region=eu&pkg=z500_vort"target="_blank">Tidbits</a></li>
+      <li><a href="https://meteocentre.com/?lang=en"target="_blank">Meteocentre</a></li>
+      <li><a href="https://www.weatheronline.gr/cgi-bin/expertcharts?LANG=gr&MENU=0000000000&CONT=grgr&MODELL=gfs&MODELLTYP=1&BASE=-&VAR=z500pr06t850&HH=0&ARCHIV=0&ZOOM=0&PERIOD=&PANEL=0&WMO="target="_blank">Weatheronline</a></li>
+      <li><a href="https://www.ventusky.com/?p=38.8;23.6;5&l=rain-3h&m=gfs"target="_blank">Ventusky</a></li>
+
+
+      <li><a href="#">by Amateurs</a>
+ 				<ul>
+
+      <li><a href="https://www.atmos.albany.edu/student/abentley/realtime/standard.php?domain=europe&variable=rel_vort"target="_blank">Realtime GFS</a></li>
+      <li><a href="https://www.skystef.be/current-forecast.html"target="_blank">SkyStef</a></li>
+      <li><a href="https://wx.erau.edu/teaching/milsyn/"target="_blank">Embry-Riddle</a></li>
+      </ul>
+      
+      <li><a href="#">More...</a>
+ 				<ul>
+
+      <li><a href="https://polarwx.com/models/?model=gfs&base=ptype&background=plain_ocean&state=states_brown&country=countries_brown&proj=eur"target="_blank">PolarWx</a></li>
+      <li><a href="https://www.netweather.tv/charts-and-data"target="_blank">Netweather</a></li>
+      <li><a href="https://www.ready.noaa.gov/ready2-bin/jmovie.pl?id=GFS&mdl=grads/gfs/europe&file=panel1&nplts=41"target="_blank">Vorticity</a></li>
+      <li><a href="https://earth.nullschool.net/#current/wind/surface/level/orthographic"target="_blank">3D maps</a></li>
+      <li><a href="https://www.ready.noaa.gov/HYSPLIT.php"target="_blank">HYSPLIT model</a></li>
+      </ul>
+         </ul>
+
+
+
+
+      <li><a href="https://grhost.info/parognosis/GFS_EM_panel.php"target="_blank">Synoptic maps</a></li>
+      <li><a href="https://www.wxcharts.com/?panel=large&model=ecmwf,ecmwf,ecmwf,ecmwf&region=greece&chart=overview"target="_blank">Wxcharts</a></li>
+      <li><a href="https://meteologix.com/gr/model-charts/euro/greece/precipitation-total.html"target="_blank">Meteologix</a></li>
+
+                        
+
+
+
+      <li><a href="#">LAM</a>
+ 				<ul>
+      <li><a href="https://www.okairos.gr/%CF%85%CE%B5%CF%84%CF%8C%CF%82/"target="_blank">Okairos</a></li>
+      <li><a href="https://www.meteo.gr/meteomaps/athens_bolam_3h_accum.cfm"target="_blank">Bolam</a></li>
+      <li><a href="http://www.simeteo.gr/wrf-model"target="_blank">SiWRF (ECMWF)</a></li>
+      <li><a href="https://www.xalazi.gr/tools/maps/thiseas"target="_blank">Thiseas</a></li>
+      <li><a href="https://forecast.uoa.gr/el/forecast-maps/high-resolution"target="_blank">Skiron</a></li>
+      <li><a href="https://poseidon.hcmr.gr/el/map?model=meteo&param=custom"target="_blank">Poseidon</a></li>
+      <li><a href="https://visualweather.eu/viewer/"target="_blank">Visualweather</a></li>
+      <li><a href="https://meteo.hcmr.gr/?page_id=2"target="_blank">HCMR</a></li>
+         </ul>
+      
+       <li><a href="#">Fronts</a>
+ 				<ul>
+      <li><a href="https://www.metoffice.gov.uk/weather/maps-and-charts/surface-pressure"target="_blank">Metoffice</a></li>
+      <li><a href="https://weer.zeilcentrumgrou.nl/weerkaarten.html"target="_blank">Weerkaarten</a></li>
+      <li><a href="https://www.knmi.nl/nederland-nu/weer/waarschuwingen-en-verwachtingen/weerkaarten"target="_blank">Hirlam</a></li>
+      <li><a href="https://www.meteowesterlo.be/weer/weerkaarten/Hirlam.htm"target="_blank">ICON</a></li>
+      <li><a href="https://www.aemet.es/en/eltiempo/prediccion/mapa_frentes"target="_blank">Aemet</a></li>
+      <li><a href="https://www.meteoam.it/it/suolo"target="_blank">Meteoam</a></li>
+      <li><a href="https://wind.met.fu-berlin.de/wind/main.php?lId=400"target="_blank">WInD</a></li>
+      <li><a href="https://www.dwd.de/DE/leistungen/hobbymet_wk_europa/hobbyeuropakarten.html"target="_blank">DWD</a></li>
+      <li><a href="https://ocean.weather.gov/"target="_blank">NOAA OPC</a></li>
+
+         </ul>
+       <li><a href="#">Storms</a>
+ 				<ul>
+      <li><a href="https://www.estofex.org/"target="_blank">Estofex</a></li>
+      <li><a href="https://www.stormforecast.eu/"target="_blank">ESSL</a></li>
+      <li><a href="https://www.lightningwizard.com/maps/"target="_blank">Lightningwizard</a></li>
+         </ul>
+       <li><a href="#">Snow</a>
+ 				<ul>
+      <li><a href="https://www.snow-forecast.com/maps/static/greece/full"target="_blank">Snow forecast</a></li>
+      <li><a href="https://giannisdravilas.github.io/weatherathens_snow_model_maps.html"target="_blank">Snow HD</a></li>
+      <li><a href="https://snowly.eu/"target="_blank">Snowly</a></li>
+      <li><a href="https://imweather.com/?model=gfs&member=&element=wetbulbtemperature&level=2m&lat=38.8336&lng=23.8001&z=6.12"target="_blank">WBT</a></li>
+         </ul>
+      <li><a href="#">Dust</a>
+ 				<ul>
+      <li><a href="https://portal.atmohub.gr/"target="_blank">AtmoHub</a></li>
+      <li><a href="https://atmosphere.copernicus.eu/charts/packages/cams_air_quality/products/europe-air-quality-forecast-aerosol-tracers?&layer_name=composition_europe_dust_forecast_surface&level=key_0&originating_centre=85_2&projection=cams_aq_se_europe"target="_blank">Aerosols</a></li>
+      <li><a href="https://atmosphere.copernicus.eu/charts/packages/cams/products/aerosol-forecasts?&layer_name=composition_duaod550&projection=classical_south_east_europe"target="_blank">AOD 550nm</a></li>
+      <li><a href="https://forecast.uoa.gr/el/forecast-maps/dust/europe"target="_blank">Skiron dust</a></li>
+      <li><a href="https://dust.aemet.es/products/daily-dust-products"target="_blank">Dust Center (BC)</a></li>
+</ul>
+       <li><a href="#">Verification</a>
+ 				<ul>
+      <li><a href="https://wmolcdnv.ecmwf.int/scores/mean/500_z"target="_blank">ECMWF</a></li>
+      <li><a href="https://www.emc.ncep.noaa.gov/users/verification/global/gfs/prod/atmos/grid2grid/hgt/"target="_blank">All models</a></li>
+         </ul>
+                        </li>
+
+	</ul>
+
+
+
+               </li>
+                <li><a href="#">Satellites</a>
+                    <ul>
+      <li><a href="#">Nowcasting</a>
+ 				<ul>
+      <li><a href="https://meteologix.com/gr/satellite/greece/satellite-cloud-tops-alert-10m-superhd--li.html"target="_blank">Super HD</a></li>
+      <li><a href="https://www.sat24.com/en-gb/country/gr#lightning=on"target="_blank">Sat24</a></li>
+      <li><a href="https://meteo.gr/dust/"target="_blank">Sentinel-5P</a></li>
+      <li><a href="https://view.eumetsat.int/productviewer?v=112928"target="_blank">EUMETSAT</a></li>
+      <li><a href="http://resources.eumetrain.org/ePort_MapViewer/index.html"target="_blank">Eumetrain</a></li>
+      <li><a href="https://www.meteored.com/"target="_blank">Meteored</a></li>
+      <li><a href="https://www.nwcsaf.org/"target="_blank">NWCSAF</a></li>
+      <li><a href="https://grhost.info/parognosis/europesats.html"target="_blank">Europe</a></li>
+      <li><a href="https://www.star.nesdis.noaa.gov/GOES/"target="_blank">GOES</a></li>
+      <li><a href="https://en.allmetsat.com/images/europe.php"target="_blank">AllmetSat</a></li>
+
+	</ul>
+
+
+      <li><a href="#">Archive</a>
+ 				<ul>
+      <li><a href="https://worldview.earthdata.nasa.gov/?v=-15.424412983524801%2C23.80283723104993%2C45.965856877337814%2C51.707505349623844&l=Coastlines_15m%28hidden%29%2CReference_Labels_15m%28hidden%29%2CReference_Features_15m%28hidden%29%2CMODIS_Aqua_Thermal_Anomalies_All%28hidden%29%2CMODIS_Combined_Thermal_Anomalies_Night%28hidden%29%2CMODIS_Combined_Thermal_Anomalies_Day%28hidden%29%2CMODIS_Combined_Thermal_Anomalies_All%28hidden%29%2CMODIS_Terra_Thermal_Anomalies_Day%28hidden%29%2CMODIS_Aqua_CorrectedReflectance_Bands721%28hidden%29%2CVIIRS_SNPP_CorrectedReflectance_TrueColor%28hidden%29%2CMODIS_Aqua_CorrectedReflectance_TrueColor%28hidden%29%2CMODIS_Terra_CorrectedReflectance_TrueColor%28hidden%29%2CMODIS_Terra_CorrectedReflectance_Bands721&lg=false"target="_blank">World view</a></li>
+      <li><a href="https://browser.dataspace.copernicus.eu/"target="_blank">Copernicus</a></li>
+      <li><a href="https://www.star.nesdis.noaa.gov/smcd/emb/ff/HE_World_Eur24Hr.php"target="_blank">NESDIS STAR</a></li>
+      <li><a href="https://rammb-slider.cira.colostate.edu/"target="_blank">RAMMB</a></li>
+      <li><a href="https://www.ssec.wisc.edu/data/"target="_blank">SSEC</a></li>
+      <li><a href="https://tropic.ssec.wisc.edu/real-time/mtpw2/product.php?color_type=tpw_nrl_colors&prod=europe&timespan=24hrs&anim=html5"target="_blank">MIMIC-TPW</a></li>
+      <li><a href="https://user.eumetsat.int/resources/user-guides/eumetview-image-download-by-using-fixed-urls-guide"target="_blank">Eumetsat URLs</a></li>
+        </ul>
+
+
+      <li><a href="#">EAA Domains</a>
+                    <ul>
+      <li><a href="https://www.meteo.gr/meteonow/"target="_blank">Meteonow</a></li>
+      <li><a href="http://stratus.meteo.noa.gr/index.php"target="_blank">Meteoscope</a></li>
+      <li><a href="https://meteo.gr/fire/index.cfm"target="_blank">Fires</a></li>
+      <li><a href="https://www.iersd.noa.gr/WeatherOnLine"target="_blank">IERSD</a></li>
+      <li><a href="https://stratus.meteo.noa.gr/forecast/safnwc/"target="_blank">SAFNWC (MTG)</a></li>
+      <li><a href="https://stratus.meteo.noa.gr/data/gfs/"target="_blank">GFS</a></li>
+      <li><a href="https://stratus.meteo.noa.gr/data/metarmaps/"target="_blank">Metarmaps</a></li>
+      <li><a href="https://stratus.meteo.noa.gr/forecast/BOLAM2020/"target="_blank">BOLAM 2020</a></li>
+      <li><a href="https://stratus.meteo.noa.gr/forecast/DUST/"target="_blank">DUST</a></li>
+      <li><a href="https://stratus.meteo.noa.gr/front"target="_blank">Meteo View</a></li>
+      <li><a href="https://meteovolos.gr/GFS_GR.php"target="_blank">Meteovolos</a></li>
+         </ul>
+
+
+     <li><a href="#">Loop</a>
+ 				<ul>
+      <li><a href="https://tropic.ssec.wisc.edu/real-time/sal/msg_rgbdust/movies/msg_rgbdust.html"target="_blank">RGB Dust</a></li>
+      <li><a href="https://rammb-slider.cira.colostate.edu/?sat=meteosat-0deg&sec=full_disk"target="_blank">RAMMB</a></li>
+      <li><a href="https://www.zamg.ac.at/fix/sat_anim/Hsat_anim.php"target="_blank">Zamg</a></li>
+
+       </ul>
+
+                      </li>
+      <li><a href="#">Hurricanes</a>
+ 				<ul>
+      <li><a href="https://www.eldoradocountyweather.com/current/us-ir-satellite.html"target="_blank">USA</a></li>
+      <li><a href="https://rammb.cira.colostate.edu/ramsdis/online/tropical.asp"target="_blank">Pacific-Atlantic</a></li>
+      <li><a href="https://www.ssd.noaa.gov/goes/"target="_blank">NOAA (GOES)</a></li>
+      <li><a href="https://tropic.ssec.wisc.edu/"target="_blank">CIMSS</a></li>
+      <li><a href="https://tropic.ssec.wisc.edu/real-time/amsu/"target="_blank">AMSU</a></li>
+       </ul>
+                      </li>
+                  </ul>
+
+
+
+
+
+                </li>
+                <li><a href="#">Webcams</a>
+                    <ul>
+
+
+      <li><a href="#">Greece</a>
+ 				<ul>
+      <li><a href="https://www.meteo.gr/webcameras.cfm?ProvinceID=12"target="_blank">Meteo</a></li>
+      <li><a href="https://evrytaniaweather.com/"target="_blank">Evrytania</a></li>
+      <li><a href="https://metar.gr/"target="_blank">Metar GR</a></li>
+      <li><a href="https://www.forecastweather.gr/%CE%BA%CE%B1%CE%BC%CE%B5%CF%81%CE%B5%CF%83/%CE%B1%CF%84%CF%84%CE%B9%CE%BA%CE%B7%CF%83.html"target="_blank">Forecastweather</a></li>
+      <li><a href="https://www.meteoclub.gr/webcams"target="_blank">Meteoclub</a></li>
+      <li><a href="https://www.meteology.gr/live-cameras/"target="_blank">Meteology</a></li>
+      <li><a href="https://meteohellas-weathercams.gr/kameres/"target="_blank">MeteoHellas</a></li>
+      <li><a href="https://www.stravon.gr/weathercams/"target="_blank">Stravon</a></li>
+      <li><a href="https://www.meteolive.gr/p/staticam.html"target="_blank">Trikala</a></li>
+      <li><a href="https://cretaweather.gr/cameras/"target="_blank">Crete</a></li>
+      <li><a href="https://www.ileiakairos.gr/cameras/"target="_blank">Ileiacams</a></li>
+        </ul>
+
+
+      <li><a href="#">Live streaming</a>
+ 				<ul>
+      <li><a href="https://www.meteocam.gr/MikrolimanoYachtClubOfGreece"target="_blank">Meteocam</a></li>
+      <li><a href="https://www.livecameras.gr/up/kithaironas.php"target="_blank">Livecameras</a></li>
+      <li><a href="https://www.webcamgreece.com/webcam-athena-edem-beach.html"target="_blank">WebcamGreece</a></li>
+      <li><a href="https://www.meteolive.gr/"target="_blank">Meteolive</a></li>
+      <li><a href="https://www.in-karystos.gr/timetables-marmari.html"target="_blank">Evia</a></li>
+      <li><a href="#">Attica</a>
+ 				<ul>
+      <li><a href="https://www.aodos.gr/live-streaming/"target="_blank">Attiki odos</a></li>
+      <li><a href="https://tavros.meteoclub.gr/"target="_blank">Tavros</a></li>
+      <li><a href="https://meteovyronas.gr/live1.html#live"target="_blank">Vyronas</a></li>
+      <li><a href="https://www.saronicmagazine.gr/saronic-live-camera-limani-aiginas"target="_blank">Aigina</a></li>
+      <li><a href="https://portogermeno.gr/"target="_blank">Porto Germeno</a></li>
+      </ul>
+      <li><a href="#">Peloponissos</a>
+ 				<ul>
+      <li><a href="https://gefyralitourgia.gr/maps.html"target="_blank">Rio-Antirio</a></li>
+      <li><a href="https://live.crowdapps.cloud/xylokastro/"target="_blank">Xylokastro</a></li>
+      <li><a href="https://www.korfos.gr/"target="_blank">Korfos</a></li>
+      <li><a href="https://alepochori-paralia.meteoclub.gr/"target="_blank">Alepochori</a></li>
+      </ul>
+      <li><a href="#">Sterea</a>
+ 				<ul>
+      <li><a href="https://olne.gr/en/evripos-bridge/live-stream"target="_blank">Evripos</a></li>
+      <li><a href="https://dimosistiaiasaidipsou.gr/live-streaming/"target="_blank">Istiea-Edipsos</a></li>
+      <li><a href="https://kapougiati-studios.gr/livecam/live-cam.htm"target="_blank">Edipsos</a></li>
+      <li><a href="https://arachovameteo.gr/weather-cams/"target="_blank">Arachova</a></li>
+      </ul>
+
+        </ul>
+
+      <li><a href="#">Mountains</a>
+ 				<ul>
+      <li><a href="https://www.xionia.com/stathmoi_voreias_attikis/northern_athens_weather_webcams.htm"target="_blank">Parnitha</a></li>
+      <li><a href="https://www.myvilia.gr/live-camera-kithairon"target="_blank">Kitheronas</a></li>
+      <li><a href="https://www.snowreport.gr/snowcam/ziria/live.html"target="_blank">Ziria</a></li>
+      <li><a href="https://www.astratv.gr/xania-live/"target="_blank">Pilio</a></li>
+        </ul>
+
+      <li><a href="#">Global</a>
+ 				<ul>
+      <li><a href="https://www.skylinewebcams.com/el/webcam/ellada/atiki.html"target="_blank">Skyline</a></li>
+      <li><a href="https://www.webcamtaxi.com/en/greece/"target="_blank">Webcamtaxi</a></li>
+      <li><a href="https://grhost.info/parognosis/europe.html"target="_blank">Europe</a></li>
+      <li><a href="https://grhost.info/parognosis/alps.html"target="_blank">Alps</a></li>
+      <li><a href="http://www.kocbey.com/istanbul1.html"target="_blank">Instanbul</a></li>
+      <li><a href="https://gr.webcams.travel/"target="_blank">Travel</a></li>
+      <li><a href="https://www.earthtv.com/en"target="_blank">Earthtv</a></li>
+      <li><a href="https://www.panomax.at/"target="_blank">Panomax</a></li>
+      <li><a href="https://www.earthcam.com/"target="_blank">Earthcam</a></li>
+      <li><a href="https://www.camvista.com/"target="_blank">Camvista</a></li>
+        </ul>
+      <li><a href="https://www.meteoblue.com/en/weather/webcams/athens_greece_264371"target="_blank">Meteoblue</a></li>
+      <li><a href="https://www.snowreport.gr/snowcam/ziria/live.html"target="_blank">Snowreport</a></li>
+      <li><a href="https://grhost.info/parognosis/lekanopedio.html"target="_blank">All in one</a></li>
+
+
+                        </li>
+</ul>
+
+
+
+
+
+
+                </li>
+                <li><a href="#">Soundings</a>
+                    <ul>
+           <li><a href="https://weather.uwyo.edu/upperair/"target="_blank">Wyoming</a></li>
+           <li><a href="https://www.weathernerds.org/models/gfs.html?&inittype=zoom&initfield=Temperature_Surface&initcycle=determine&initfhour=000&initimdimx=1050&initimdimy=750&initrange=42.551789077240:18.133333333270:34.039548022600:29.623809523805&initcx1=537&initcy1=303&initcx2=654&initcy2=406&initcross=False&initsound=False&initsoundx=532&initsoundy=298&initloop=False&initoverlay=False&initlstart=000&initlend=384&initlint=6&initol1=Temperature_Surface&initol2=null&initol3=null&initol4=null&initol5=null&initcities=On&inithgwys=On&initunits=On&initlatlon=Off"target="_blank">Weathernerds</a></li>
+	   <li><a href="https://www.pivotalweather.com/model.php?fh=6&dpdt=&mc=&r=eu&p=prateptype_cat-imp&m=gfs"target="_blank">Pivotal</a></li>
+	   <li><a href="http://rawinsonde.com/thunder_app/"target="_blank">thundeR</a></li>
+           <li><a href="http://www.ready.noaa.gov/READYcmet.php"target="_blank">ARL</a></li>
+           <li><a href="http://www.hidmet.gov.rs/eng/prognoza/emagram.php"target="_blank">Hidmet</a></li>
+           <li><a href="http://contourmap.internet-box.ch/hpbo/"target="_blank">Contourmap</a></li>
+           <li><a href="http://185.254.223.166/ow-maps/"target="_blank">Online maps</a></li>
+           <li><a href="https://sondehub.org/"target="_blank">Sondehub</a></li>
+                        </li>
+</ul>
+
+
+
+
+
+
+
+
+                </li>
+                <li><a href="#">Climate</a>
+                    <ul>
+      <li><a href="#">Models</a>
+ 				<ul>
+      <li><a href="https://climate.copernicus.eu/charts/packages/c3s_seasonal/"target="_blank">C3S</a></li>
+      <li><a href="https://effis.jrc.ec.europa.eu/apps/effis.longterm.forecasts/"target="_blank">EFFIS</a></li>
+      <li><a href="https://climate.copernicus.eu/"target="_blank">Copernicus</a></li>
+      <li><a href="https://www.metoffice.gov.uk/research/climate/seasonal-to-decadal/gpc-outlooks/glob-seas-prob"target="_blank">Metoffice</a></li>
+      <li><a href="https://www.cpc.ncep.noaa.gov/products/precip/CWlink/MJO/CLIVAR/ecmf.shtml"target="_blank">MJO</a></li>
+      <li><a href="https://www.lameteo.org/index.php/previsions-meteo/tendances-saisonnieres"target="_blank">Lameteo</a></li>
+      <li><a href="https://iri.columbia.edu/our-expertise/climate/forecasts/seasonal-climate-forecasts/"target="_blank">IRI</a></li>
+      <li><a href="https://www.cpc.ncep.noaa.gov/products/CFSv2/CFSv2seasonal.shtml"target="_blank">CFS</a></li>
+      <li><a href="https://www.met.hu/en/idojaras/elorejelzes/europai_elorejelzes/"target="_blank">3 weeks</a></li>
+        </ul>
+
+      <li><a href="#">Greece</a>
+ 				<ul>
+      <li><a href="https://www.meteo.gr/climate-observatory.cfm"target="_blank">Observatory</a></li>
+      <li><a href="https://www.meteo.gr/mornos/"target="_blank">Mornos</a></li>
+      <li><a href="https://en.tutiempo.net/climate/greece.html"target="_blank">Tutiempo</a></li>
+      <li><a href="https://climatebook.gr/"target="_blank">Climate book</a></li>
+       </ul>
+      <li><a href="#">Analysis</a>
+ 				<ul>
+      <li><a href="https://climatereanalyzer.org/wx/fcst_outlook/?dm_id=euro-lc&ndays=d1-3"target="_blank">Reanalyzer</a></li>
+      <li><a href="https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/regional_monitoring/europe.shtml"target="_blank">CPC</a></li>
+      <li><a href="https://www.karstenhaustein.com/climate.php"target="_blank">NCEP</a></li>
+      <li><a href="https://data.giss.nasa.gov/gistemp/maps/"_blank">GISS</a></li>
+      <li><a href="https://www.esrl.noaa.gov/psd/data/composites/day/"target="_blank">PSD</a></li>
+      <li><a href="https://www.climameter.org/"target="_blank">ClimaMeter</a></li>
+      <li><a href="https://www.ncdc.noaa.gov/cag/mapping/global"target="_blank">NCDC</a></li>
+      <li><a href="https://globalwindatlas.info/en/area/Greece"target="_blank">Global Wind</a></li>
+      <li><a href="https://www.climate-charts.com/World-Climate-Maps.html"target="_blank">World maps</a></li>
+      <li><a href="https://berkeleyearth.org/"target="_blank">BerkeleyEarth</a></li>
+       </ul>
+      <li><a href="#">Stratoshpere</a>
+ 				<ul>
+      <li><a href="http://weatheriscool.com/"target="_blank">Polar Vortex</a></li>
+      <li><a href="https://charts.ecmwf.int/products/extended-zonal-mean-zonal-wind"target="_blank">Zonal wind</a></li>
+      <li><a href="https://www.cpc.ncep.noaa.gov/products/stratosphere/strat-trop/"target="_blank">STM</a></li>
+        </ul>
+                      </li>
+      <li><a href="#">Snow cover</a>
+ 				<ul>
+      <li><a href="https://zoz.cbk.waw.pl/snieg/en/"target="_blank">Europe</a></li>
+      <li><a href="https://www.star.nesdis.noaa.gov/smcd/emb/snow/HTML/snow.htm"target="_blank">GMASI</a></li>
+      <li><a href="https://weather.rap.ucar.edu/surface/"target="_blank">NCAR</a></li>
+        </ul>
+                      </li>
+      <li><a href="#">Ice</a>
+ 				<ul>
+      <li><a href="https://nsidc.org/data/visualize-data"target="_blank">NSIDC</a></li>
+      <li><a href="https://iceobs.nersc.no/"target="_blank">NERSC</a></li>
+      <li><a href="https://ocean.dmi.dk/arctic/index.uk.php"target="_blank">DMI</a></li>
+      <li><a href="https://wattsupwiththat.com/reference-pages/sea-ice-page/"target="_blank">Sea Ice</a></li>
+        </ul>
+                      </li>
+
+                      </li>
+                  </li>
+      <li><a href="#">Knowledge</a>
+ 				<ul>
+      <li><a href="https://www.noaa.gov/jetstream"target="_blank">Jetstream</a></li>
+      <li><a href="https://www.meted.ucar.edu/sign_in.php"target="_blank">MetEd</a></li>
+      <li><a href="https://www.theweatherprediction.com/habyhints/"target="_blank">Habyhints</a></li>
+      <li><a href="https://eumetrain.org/resources"target="_blank">EUMeTrain</a></li>
+      <li><a href="https://learningweather.psu.edu/"target="_blank">Learningweather</a></li>
+      <li><a href="https://profhorn.aos.wisc.edu/wxwise/satmet/"target="_blank">SatMet</a></li>
+      <li><a href="https://cloudatlas.wmo.int/en/home.html"target="_blank">Cloud Atlas</a></li>
+      <li><a href="https://forecast.weather.gov/glossary.php"target="_blank">NWS Glossary</a></li>
+      <li><a href="https://en.mimi.hu/index.html"target="_blank">Mimi</a></li>
+        </ul>
+                      </li>
+                  </ul>
+                </li>
+                <li><a href="#">Severe Weather</a>
+                    <ul>
+      <li><a href="#">Europe</a>
+ 				<ul>
+      <li><a href="https://www.eswd.eu/"target="_blank">ESWD</a></li>
+      <li><a href="https://www.severe-weather.eu/"target="_blank">SWE</a></li>
+      <li><a href="https://meteocentre.com/cyclone-tracking/europe/index_e.html"target="_blank">Cyclone tracking</a></li>
+        </ul>
+      <li><a href="#">World</a>
+ 				<ul>
+      <li><a href="https://www.nhc.noaa.gov/"target="_blank">NHC</a></li>
+      <li><a href="https://www.spc.noaa.gov/"target="_blank">SPC</a></li>
+      <li><a href="https://www.tropicaltidbits.com/"target="_blank">Tropical Tidbits</a></li>
+      <li><a href="https://mrms.nssl.noaa.gov/qvs/product_viewer/"target="_blank">MRMS USA</a></li>
+      <li><a href="https://www.jma.go.jp/en/typh/"target="_blank">Japan</a></li>
+        </ul>
+      <li><a href="#">Forecast</a>
+ 				<ul>
+      <li><a href="https://www.emc.ncep.noaa.gov/gmb/tpm/emchurr/tcgen/"target="_blank">Models</a></li>
+      <li><a href="https://www.nssl.noaa.gov/"target="_blank">NSSL</a></li>
+      <li><a href="https://tidesandcurrents.noaa.gov/"target="_blank">Tides</a></li>
+      <li><a href="https://severe.worldweather.wmo.int/"target="_blank">WMO</a></li>
+      <li><a href="https://medcyclones.eu/"target="_blank">Medicanes</a></li>
+        </ul>
+
+                  </ul>
+
+
+
+
+                </li>
+                <li><a href="#">Warnings</a>
+                    <ul>
+      <li><a href="#">Greece</a>
+ 				<ul>
+      <li><a href="https://civilprotection.gov.gr/"target="_blank">Civil Protection</a></li>
+      <li><a href="https://stratus.meteo.noa.gr/meteoscope/thessaly"target="_blank">Thessaly</a></li>
+      <li><a href="https://mysafetyplan.gov.gr/"target="_blank">Safety plan</a></li>
+      <li><a href="https://theheatalarm.wordpress.com/links/"target="_blank">Heat Alarm</a></li>
+      <li><a href="https://app.lifeasti.eu/thessalonikidashboard/"target="_blank">LifeASTI</a></li>
+      <li><a href="https://www.eydap.gr/TheCompany/Water/Savings/"target="_blank">EYDAP</a></li>
+      <li><a href="http://beyond-eocenter.eu/"target="_blank">Beyond-EAA</a></li>
+      <li><a href="https://bathingwaterprofiles.gr/"target="_blank">Bathingwater</a></li>
+      </ul>
+      <li><a href="#">Europe</a>
+ 				<ul>
+      <li><a href="https://www.meteoalarm.org/en/live/"target="_blank">Meteoalarm</a></li>
+      <li><a href="http://www.riskmed.net/"target="_blank">RiskMed</a></li>
+      <li><a href="https://erccportal.jrc.ec.europa.eu/Maps"/target="_blank">ERCC</a></li>
+      <li><a href="https://www.info-tsunami.fr/"/target="_blank">CENALT</a></li>
+      <li><a href="http://vaac.meteo.fr/volcanoes/etna/"/target="_blank">Etna</a></li>
+      </ul>
+               </li>
+
+      <li><a href="#">Air quality</a>
+ 				<ul>
+      <li><a href="https://airindex.eea.europa.eu"target="_blank">European AQI</a></li>
+      <li><a href="http://84.205.254.113/airqualmap/leafletmap.html"target="_blank">Greece AQM</a></li>
+      <li><a href="https://air-quality.gr/"target="_blank">PANACEA</a></li>
+      <li><a href="https://env.ypeka.gr/deltia/"target="_blank">Ypeka</a></li>
+      <li><a href="https://map.purpleair.com/air-quality-standards-us-epa-aqi?opt=%2F1%2Flp%2Fa10%2Fp604800%2FcC0#9.53/37.9641/23.5967"target="_blank">PurpleAir</a></li>
+      <li><a href="https://www.iqair.com/air-quality-map?lat=37.9612617&lng=23.7014021&zoomLevel=12"target="_blank">IQ Air</a></li>
+      <li><a href="https://www.patrasair.gr/"target="_blank">Patra</a></li>
+      <li><a href="https://airlab.eng.uowm.gr/"target="_blank">Kozani</a></li>
+      <li><a href="https://atmosphere.copernicus.eu/charts/packages/cams_air_quality/"target="_blank">CAMS</a></li>
+      <li><a href="https://aqicn.org/map/world/"target="_blank">Global AQI</a></li>
+      <li><a href="https://waqi.info/el/#/c/4.18/8.145/2.2z"target="_blank">Global realtime</a></li>
+
+      </ul>
+
+                        </li>
+      <li><a href="#">Floods</a>
+ 				<ul>
+      <li><a href="https://hydro-stations.hcmr.gr/"target="_blank">HMCR</a></li>
+      <li><a href="https://www.mar.aegean.gr/index.php?pg=2.5.6&lang=gr"target="_blank">UoA</a></li>
+      <li><a href="https://www.ioc-sealevelmonitoring.org/map.php"target="_blank">Sea level </a></li>
+      <li><a href="https://sealevel.nasa.gov/ipcc-ar6-sea-level-projection-tool"target="_blank">Sea level Change</a></li>
+      <li><a href="https://www.fm.com/resources/nathaz-toolkit/flood-map"target="_blank">Flood map</a></li>
+      </ul>
+      <li><a href="#">Radiation</a>
+ 				<ul>
+      <li><a href="https://paratiritirioemf.eeae.gr/index.php/el/measurements/map"target="_blank">Greek EMF</a></li>
+      <li><a href="https://www.eeae.gr"target="_blank">EEAE</a></li>
+      <li><a href="https://remap.jrc.ec.europa.eu/"target="_blank">JRC</a></li>
+      </ul>
+      <li><a href="#">Tsunami</a>
+ 				<ul>
+      <li><a href="https://wcatwc.arh.noaa.gov/"target="_blank">TWC-USA</a></li>
+      <li><a href="https://www.jma.go.jp/bosai/map.html#contents=tsunami&lang=en"target="_blank">Japan</a></li>
+      </ul>
+      <li><a href="#">Volcanoes</a>
+ 				<ul>
+      <li><a href="http://volcanolive.com/"target="_blank">Volcano Live</a></li>
+      <li><a href="https://eumetview.eumetsat.int/static-images/MSG/RGB/ASH/"target="_blank">Satellite Ash</a></li>
+      <li><a href="https://so2.gsfc.nasa.gov/"target="_blank">SO2</a></li>
+      </ul>
+</ul>
+
+
+
+                </li>
+                <li><a href="#">Navigation</a>
+                    <ul>
+      <li><a href="#">Aeroplanes</a>
+ 				<ul>
+      <li><a href="https://planefinder.net/"target="_blank">Plane finder</a></li>
+      <li><a href="https://www.flightradar24.com/data/aircraft/sx-avf"target="_blank">Flightradar24</a></li>
+      <li><a href="https://rdrinfo.net/"target="_blank">RDRinfo</a></li>
+      <li><a href="https://www.aia.gr/el/traveler/flight-info/rtfi"target="_blank">AIA</a></li>
+      <li><a href="https://map.contrails.org/"target="_blank">Contrails Map</a></li>
+      </ul>
+      <li><a href="https://www.marinetraffic.com/gr/"target="_blank">MarineTraffic</a></li>
+      <li><a href="#">Bathymetry</a>
+ 				<ul>
+      <li><a href="https://emodnet.ec.europa.eu/en/bathymetry"target="_blank">EMODnet</a></li>
+      <li><a href="https://www.gebco.net/"target="_blank">GEBCO</a></li>
+      <li><a href="https://www.marineregions.org/"target="_blank">Marine Regions</a></li>
+      <li><a href="https://opentopography.org/"target="_blank">OpenTopography</a></li>
+      <li><a href="https://www.ncei.noaa.gov/products/bathymetry"target="_blank">NOAA Bathymetry</a></li>
+      <li><a href="https://www.nauticalcharts.noaa.gov/"target="_blank">NOAA Coast Survey</a></li>
+        </ul>
+      <li><a href="#">Converters</a>
+ 				<ul>
+      <li><a href="https://www.windfinder.com/wind/windspeed.htm"target="_blank">Wind</a></li>
+      <li><a href="http://www.sciencebits.com/SnowProbCalc"target="_blank">Snow</a></li>
+      <li><a href="http://www.calculator.net/dew-point-calculator.html"target="_blank">Dew Point</a></li>
+      <li><a href="http://www.omnicalculator.com/physics/wet-bulb"target="_blank">Wet Bulb</a></li>
+      <li><a href="http://www.shodor.org/metweb/session3/ptcalc.html"target="_blank">ThetaE</a></li>
+      <li><a href="http://www.csgnetwork.com/estcloudbasecalc.html"target="_blank">Cloud base</a></li>
+      <li><a href="http://planetcalc.com/2167/"target="_blank">Humidity</a></li>
+
+        </ul>
+      <li><a href="#">GPS</a>
+ 				<ul>
+      <li><a href="https://www.nhc.noaa.gov/gccalc.shtml"target="_blank">Distance calculator</a></li>
+      <li><a href="https://www.maps.ie/coordinates.html"target="_blank">Coordinates</a></li>
+      <li><a href="https://epsg.io/transform#s_srs=4326&t_srs=3857&x=NaN&y=NaN"target="_blank">EPSG</a></li>
+      <li><a href="https://www.freemaptools.com/elevation-finder.htm"target="_blank">Elevation Finder</a></li>
+      <li><a href="https://www.gpsvisualizer.com/"target="_blank">GPS Visualizer</a></li>
+      <li><a href="https://www.timeanddate.com/sun/greece/athens"target="_blank">Time & Date</a></li>
+      <li><a href="https://www.scottmurray.me/kml/circle/index.php"target="_blank">Circle generator</a></li>
+        </ul>
+      <li><a href="#">Ktimatologio</a>
+ 				<ul>
+      <li><a href="https://www.calcfun.eu/calc-75-metatropi-syntetagmenon-apo-wgs84-se-egsa-87.html"target="_blank">EGSA87-WGS84</a></li>
+      <li><a href="https://ktimatologio.gov.gr/Professionals/Inquiry/Main/Home"target="_blank">KAEK</a></li>
+      <li><a href="https://www.ktimanet.gr/CitizenWebApp/Home_Page.aspx"target="_blank">Ktimanet</a></li>
+      <li><a href="https://www.gys.gr/hmgs-geoindex.html"target="_blank">GYS</a></li>
+      </ul>
+      <li><a href="https://webapp.navionics.com/"target="_blank">Navionics</a></li>
+      <li><a href="https://geo.rae.gr/"target="_blank">RAE GeoPortal</a></li>
+      <li><a href="https://mapsportal.ypen.gr/"target="_blank">YPEN</a></li>
+
+                        </li>
+</ul>
+                </li>
+                <li><a href="#">Forums</a>
+                    <ul>
+      <li><a href="https://ziakopoulos.blogspot.gr/"target="_blank">Ziakopoulos</a></li>
+      <li><a href="https://kolydas.eu/"target="_blank">Kolydas</a></li>
+      <li><a href="https://meteoclub.gr/"target="_blank">Meteoclub</a></li>
+      <li><a href="https://www.meteology.gr/"target="_blank">Meteology</a></li>
+      <li><a href="https://www.northmeteo.gr/"target="_blank">NorthMeteo</a></li>
+      <li><a href="https://weathergroup.gr/"target="_blank">Weathergroup</a></li>
+      <li><a href="https://meteohellas-weathercams.gr/"target="_blank">Meteohellas</a></li>
+      <li><a href="https://cycloneofrhodes.com/"target="_blank">Rodos</a></li>
+      <li><a href="https://weathercompass.gr/"target="_blank">Weather Compass</a></li>
+      <li><a href="https://weather-secrets.blogspot.com/"target="_blank">Weather secrets</a></li>
+      <li><a href="https://www.xalazi.gr/"target="_blank">Xalazi</a></li>
+                        </li>
+</ul>
+
+
+                </li>
+                <li><a href="#">Earthquakes</a>
+                    <ul>
+      <li><a href="#">GNSS</a>
+        <ul>
+          <li><a href="http://geodesy.gein.noa.gr:8000/nginfo/netmap/"target="_blank">Network Map</a></li>
+          <li><a href="https://www.epncb.oma.be/_networkdata/stationmaps.php"target="_blank">EUREF</a></li>
+          <li><a href="https://www.sonel.org/"target="_blank">SONEL</a></li>
+          <li><a href="https://activefaults.eagme.gr/el/"target="_blank">HeDBAF</a></li>
+        </ul>
+      <li><a href="#">Ionosphere</a>
+ 				<ul>
+      <li><a href="http://www.iono.noa.gr/"target="_blank">IAASARS/NOA</a></li>
+      <li><a href="https://giro.uml.edu/didbase/scaled.php"target="_blank">DIDBase</a></li>
+      <li><a href="http://gnss.be/Atmospheric_Maps/dynamic_ionospheric_maps.php"target="_blank">VTEC</a></li>
+      <li><a href="https://t-ict4d.ictp.it/nequick2/gps-tec-calibration-online"target="_blank">VTEC (ICTP)</a></li>
+      <li><a href="https://impc.dlr.de/"target="_blank">NmF2</a></li>
+      <li><a href="https://cosmicrays.oulu.fi/"target="_blank">C-RAYS</a></li>
+      <li><a href="http://cosray.phys.uoa.gr/"target="_blank">Cosmic Rays</a></li>
+      </ul>
+      <li><a href="#">Research</a>
+ 				<ul>
+      <li><a href="https://grhost.info/parognosis/gsm.html"target="_blank">GSM</a></li>
+      <li><a href="https://www.gein.noa.gr/ypiresies-proionta/vasi-anazitisis/"target="_blank">EQ Database</a></li>
+          <li><a href="https://gml.noaa.gov/grad/antuv/Calendar.jsp"target="_blank">DOY Calendar</a></li>
+      <li><a href="https://www.arcgis.com/apps/mapviewer/index.html?layers=356cd3306c994007bd25687dbd44c4d5"target="_blank">NOA Faults</a></li>
+      <li><a href="https://experience.arcgis.com/experience/a6c85b1edf9d4d17a3f01a70cef6d2b2"target="_blank">AFG viewer</a></li>
+      <li><a href="https://hpiers.obspm.fr/eop-pc/index.php?index=realtime&lang=en"target="_blank">EOC</a></li>
+      <li><a href="https://www.richterx.com/"target="_blank">RichterX</a></li>
+      <li><a href="https://www.earthquakeprediction.gr/index.htm"target="_blank">SES</a></li>
+      </ul>
+      <li><a href="#">World</a>
+ 				<ul>
+      <li><a href="https://www.emsc-csem.org/"target="_blank">EMSC</a></li>
+      <li><a href="https://earthquake.usgs.gov/earthquakes/map/?currentFeatureId=us6000itqz&extent=33.10066,13.66699&extent=44.55909,40.385742"target="_blank">USGS</a></li>
+      <li><a href="https://geofon.gfz-potsdam.de/eqinfo/"target="_blank">GFZ</a></li>
+      <li><a href="https://ds.iris.edu/ieb/"target="_blank">IRIS</a></li>
+      <li><a href="http://geobservatory.beyond-eocenter.eu/"target="_blank">geObservatory</a></li>
+      </ul>
+      <li><a href="https://www.gein.noa.gr/"target="_blank">GEIN</a></li>
+      <li><a href="http://www.geophysics.geol.uoa.gr/stations/maps/recent_gr.html"target="_blank">UOA</a></li>
+      <li><a href="https://seismo.auth.gr/"target="_blank">ΑΠΘ</a></li>
+      <li><a href="http://seismo.geology.upatras.gr/"target="_blank">UPSL</a></li>
+      <li><a href="https://seismolab.gein.noa.gr/"target="_blank">SeismoLab</a></li>
+      <li><a href="https://orfeus.gein.noa.gr/realtime/"target="_blank">Real time</a></li>
+      </li>
+      </li>
+</ul>
+
+
+
+
+                </li>
+                <li><a href="#">Fires</a>
+                    <ul>
+      <li><a href="#">Forecast</a>
+ 				<ul>
+      <li><a href="https://meteo.gr/fire/index.cfm"target="_blank">NOA Fires</a></li>
+      <li><a href="https://fireweather.eu/"target="_blank">FLAME</a></li>
+      <li><a href="https://orion-watch.space.noa.gr/FireWatchGreece/ui/pages/map"target="_blank">OrionLab</a></li>
+      <li><a href="http://ocean.space.noa.gr/diachronic_bsm/index.php"target="_blank">Diachronic BSM</a></li>
+      </ul>
+      <li><a href="https://firms.modaps.eosdis.nasa.gov/map/#d:today;@26.1,38.2,7z"target="_blank">FIRMS</a></li>
+      <li><a href="https://forest-fire.emergency.copernicus.eu/apps/effis.csv/"target="_blank">EFFIS</a></li>
+      <li><a href="https://firehub.beyond-eocenter.eu/"target="_blank">FireHub</a></li>
+                        </li>
+</ul>
+
+
+
+                </li>
+                <li><a href="#">Space</a>
+                    <ul>
+      <li><a href="#">Astronomy</a>
+ 				<ul>
+      <li><a href="https://www.astrothraki.gr/"target="_blank">Astrothraki</a></li>
+      <li><a href="https://www.astrovox.gr/"target="_blank">Astrovox</a></li>
+      <li><a href="https://www.astronomos.gr/"target="_blank">Astronomos</a></li>
+      <li><a href="https://www.astronomia.gr/"target="_blank">Astronomia</a></li>
+      <li><a href="https://greekastronomy.blogspot.com/"target="_blank">Greek blog</a></li>
+      <li><a href="https://www.e-telescope.gr/"target="_blank">E-telescope</a></li>
+      <li><a href="https://www.ofa.gr/"target="_blank">ΟΦΑ</a></li>
+      <li><a href="https://aegeanastronomy.com/"target="_blank">Aegean</a></li>
+      <li><a href="https://www.astrosynedrio2007.gr/amateur.php"target="_blank">more links</a></li>
+      </ul>
+      <li><a href="#">Space Weather</a>
+ 				<ul>
+      <li><a href="http://eng.sepc.ac.cn/Kp3HPred.php"target="_blank">SEPC</a></li>
+      <li><a href="https://www.swpc.noaa.gov/"target="_blank">NOAA SWPC</a></li>
+      <li><a href="https://www.spaceweatherlive.com/"target="_blank">SpaceWeatherLive</a></li>
+      <li><a href="https://soho.nascom.nasa.gov/spaceweather/"target="_blank">Soho</a></li>
+      <li><a href="https://www.solarham.net/"target="_blank">SolarHam</a></li>
+      <li><a href="https://wdc.kugi.kyoto-u.ac.jp/dst_realtime/presentmonth/index.html"target="_blank">Dst</a></li>
+      <li><a href="https://omniweb.gsfc.nasa.gov/form/dx1.html"target="_blank">OMNIWeb</a></li>
+                        </li>
+	</ul>
+      <li><a href="https://www.sen.com/live"target="_blank">ISS live</a></li>
+      <li><a href="https://satellitemap.space/"target="_blank">Satellite map</a></li>
+      <li><a href="https://allsky7.net/index.html"target="_blank">Allsky7</a></li>
+      <li><a href="https://spacetelescopelive.org/"target="_blank">Telescopes</a></li>
+      <li><a href="https://eyes.nasa.gov/apps/asteroids/"target="_blank">Asteroids</a></li>
+      <li><a href="https://www.lightpollutionmap.info/"target="_blank">Light pollution</a></li>
+      <li><a href="https://apod.nasa.gov/apod/archivepix.html"target="_blank">APOD Nasa</a></li>
+
+                        </li>
+</ul>
+
+
+        </div>
+    </div>
+
+
+
+
+
+</body>
+<script type="text/javascript" src="highslide/highslide.js"></script>
+	<link rel="stylesheet" type="text/css" href="highslide/highslide.css" />
+
+
+
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+}
+-->
+</style>
+
+
+
+<div align="center"><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+  <table width="200" border="1">
+
+
+
+
+
+
+    <tr>
+      <td><div align="center"><a href="https://stratus.meteo.noa.gr/forecast/safnwc/MTG/Latest_MTG-I1_FCI_Greece_merc_nearest_true_color_with_night_ir105.png"class="highslide" onclick="return hs.expand(this)"><img src="https://stratus.meteo.noa.gr/forecast/safnwc/MTG/Latest_MTG-I1_FCI_Greece_merc_nearest_true_color_with_night_ir105.png" width="700" height="600" border="0"></a></div></td>
+      <td><div align="center"><a href="https://www.sat24.com/en-gb/country/gr#lightning=on"target="_blank"><img src="https://stratus.meteo.noa.gr/forecast/safnwc/MTG/NWCSAF_IR_CMA_EM_animation.gif" width="700" height="600" border="0"></a></div></td>
+    </tr
+
+
+
+
+
+    <tr>
+      <td><a href="https://www.weathercharts.net/ukmo_mslp_analysis/ppva.gif"class="highslide" onclick="return hs.expand(this)"><img src="https://www.weathercharts.net/ukmo_mslp_analysis/ppva.gif" width="700" height="514" border="0"></a></td>
+      <td><a href="https://meteocentre.com/analysis/map-surface.php?lang=en&map=greece&area=eur&size=standard"target="_blank"><img src="https://meteocentre.com/analysis/local/greece.gif" width="700" height="514" border="0"></a></td>
+    </tr>
+
+
+
+
+
+
+
+
+
+<tr>
+  <td>
+    <img id="wetter3img1" src="" alt="Wetter3 Animation 06_27" width="700" height="510">
+  </td>
+  <td>
+    <img id="wetter3img2" src="" alt="Wetter3 Animation 06_5" width="700" height="510">
+  </td>
+</tr>
+
+<script>
+function getAnimationCode() {
+  const h = new Date().getUTCHours();
+
+  if (h < 4)  return "18"; // πριν βγει το 00z
+  if (h < 10) return "00"; // 00z διαθέσιμο
+  if (h < 16) return "06"; // 06z διαθέσιμο
+  if (h < 22) return "12"; // 12z διαθέσιμο
+  return "18";             // 18z διαθέσιμο
+}
+
+const code = getAnimationCode();
+
+// Construct URLs for the two GIFs
+document.getElementById("wetter3img1").src =
+  `https://www.wetter3.de/Animation_${code}_UTC/06_27.gif`;
+
+document.getElementById("wetter3img2").src =
+  `https://www.wetter3.de/Animation_${code}_UTC/06_5.gif`;
+</script>
+
+
+
+
+
+
+
+
+    <tr>
+      <td><div align="center"><a href="https://www.meteo.gr/israiningnow.cfm"target="_blank"><img src="https://stratus.meteo.noa.gr/data/metarmaps/noa_SN_RR_now.png" width="700" height="611" border="0" /></a></div></td>
+      <td><div align="center"><a href="https://www.meteo.gr/israiningnow.cfm"target="_blank"><img src="https://stratus.meteo.noa.gr/data/metarmaps/noa_Attica_SN_RR.png" width="700" height="700" border="0"></a></div></td>
+    </tr>
+
+
+
+
+
+
+
+    <tr>
+      <td><div align="center"><a href="https://stratus.meteo.noa.gr/data/metarmaps/noa_Attica_rain.png" class="highslide" onclick="return hs.expand(this)"><img src="https://stratus.meteo.noa.gr/data/metarmaps/noa_Attica_rain.png" width="700" height="700" /></div></td>
+      <td><div align="center"><a href="https://stratus.meteo.noa.gr/data/metarmaps/athens_temp/noa_meteogr_attica_temp_domain1.jpg" class="highslide" onclick="return hs.expand(this)"><img src="https://stratus.meteo.noa.gr/data/metarmaps/athens_temp/noa_meteogr_attica_temp_domain1.jpg" width="700" height="500" /></div></td>
+    </tr>
+
+
+
+
+
+
+    <tr>
+      <td><div align="center"><a href="https://penteli.meteo.gr/stations/penteli/webcam/meteocam2.jpg"class="highslide" onclick="return hs.expand(this)"><img src="https://penteli.meteo.gr/stations/penteli/webcam/meteocam2.jpg" width="700" height="450" border="0"></a></div></td>
+      <td><div align="center"><a href="https://meteohellas-weathercams.gr/cam/peiraias/index.php"class="highslide" onclick="return hs.expand(this)"><img src="https://meteohellas-weathercams.gr/cam/peiraias/index.php" width="700" height="450" border="0"></a></div></td>
+    </tr>
+
+
+
+
+    <tr>
+      <td><div align="center"><a href="https://meteohellas-weathercams.gr/cam/salamina/index.php"class="highslide" onclick="return hs.expand(this)"><img src="https://meteohellas-weathercams.gr/cam/salamina/index.php" width="700" height="450" border="0"></a></div></td>
+      <td><div align="center"><a href="https://www.meteology.gr/cam/loutraki/loutraki.png"class="highslide" onclick="return hs.expand(this)"><img src="https://www.meteology.gr/cam/loutraki/loutraki.png" width="700" height="450" border="0"></a></div></td>
+    </tr>
+
+
+
+
+
+    <tr>
+      <td><div align="center"><a href="https://www.meteociel.fr/modeles/gfs/grece/precipitations-hd/3h.htm" target="_blank"><img src="https://neigenew.meteociel.fr/modeles_gfs/run/6-779GR.GIF" width="700" height="700" /></div></td>
+      <td><div align="center"><a href="https://www.meteociel.fr/modeles/gfs/grece/vent-moyen/3h.htm" target="_blank"><img src="https://neigenew.meteociel.fr/modeles_gfs/run/6-602GR.GIF" width="700" height="700" /></div></td>
+    </tr>
+
+
+
+
+
+
+
+    <tr>
+      <td><div align="center"><a href="https://stratus.meteo.noa.gr/data/metarmaps/noa_rainfall_daily_dem.jpg" class="highslide" onclick="return hs.expand(this)"><img src="https://stratus.meteo.noa.gr/data/metarmaps/noa_rainfall_daily_dem.jpg" width="700" height="460" /></div></td>
+      <td><div align="center"><a href="https://stratus.meteo.noa.gr/data/metarmaps/noa_temp_tmax_daily_max_dem_n.jpg" class="highslide" onclick="return hs.expand(this)"><img src="https://stratus.meteo.noa.gr/data/metarmaps/noa_temp_tmax_daily_max_dem_n.jpg" width="700" height="460" /></div></td>
+    </tr>
+
+
+
+
+
+
+
+    <tr>
+      <td><a href="https://www.meteociel.fr/observations-meteo/temperatures.php?region=gr"target="_blank"><img src="https://www.meteociel.fr/cartes_obs/temp_gr.png" width="700" height="700" border="0"></a></td>
+      <td><a href="https://www.meteociel.fr/observations-meteo/temperature-de-la-mer.php?region=gr"target="_blank"><img src="https://www.meteociel.fr/cartes_obs/sstgr.gif" width="700" height="700" border="0"></a></td>
+    </tr>
+
+
+
+
+
+
+  </table>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+</div>
+
+
+
+
+
+<script>
+function adjustSubmenuDirection() {
+  document.querySelectorAll('.menu-area ul li').forEach(function(li) {
+    li.addEventListener('mouseenter', function() {
+      const submenu = li.querySelector(':scope > ul');
+      if (!submenu) return;
+
+      // Check if this is a second-level submenu or deeper
+      const parentUl = li.parentElement;
+      const isNested = parentUl.closest('ul ul') !== null;
+
+      // Reset positioning
+      submenu.style.left = '';
+      submenu.style.right = '';
+
+      // Only apply left/right logic to nested submenus
+      if (isNested) {
+        const rect = submenu.getBoundingClientRect();
+        const screenWidth = window.innerWidth;
+
+        if (rect.right > screenWidth) {
+          submenu.style.left = 'auto';
+          submenu.style.right = '100%';
+        } else {
+          submenu.style.left = '100%';
+          submenu.style.right = 'auto';
+        }
+      } else {
+        // first-level dropdowns always open downward
+        submenu.style.left = '0';
+        submenu.style.top = '100%';
+      }
+    });
+  });
+}
+
+window.addEventListener('DOMContentLoaded', adjustSubmenuDirection);
+</script>
+
+</body>
+</html>
+
+
+

@@ -1,0 +1,572 @@
+
+
+<!doctype html>
+<html>
+<head>
+   <title>SAF IR ZEUS GR</title>
+<body onload='launch()'>
+   	 	 <div id="side-banner" class='corners'> 
+ 	<div onclick="showhide()" align=CENTER><font>Controls</font> <p></p></div>
+		<table id='tabOpts' class="show">  <!--Side bar with controls-->
+			<tr><td align=CENTER>
+		
+			
+			 </td></tr>
+			<tr><td align=CENTER>
+						<font size="2"> <b>L</b>oop<input id='cbL' type="checkbox" name="loopCheck" checked=true onClick='chooseLoop()'/></font> 
+						 <font size="2">Re<b>V</b>erse<input id='cbRev' type="checkbox" name="RevCheck" attr='unchecked' onClick='chooseRev()'/></font>					
+			</td></tr>
+
+			
+			<tr><td><hr></td></tr>
+			
+				
+			<tr><td align=CENTER>
+					
+				<button onclick='decreaseRow()'> < </button>
+				<input type='button' id='bPlay'  onclick='play()' value="play"/>
+				<button onclick='increaseRow()' >></button>
+			</td></tr>
+								
+			<tr><td><hr></td></tr>
+
+				
+			<tr><td align=CENTER >
+						<button onclick='decreaseSpeed()' >-</button>
+						<font size="2">Speed</font>
+						<button onclick='increaseSpeed()' >+</button>
+			</td></tr>
+		
+			<tr><td align=CENTER>
+				<form name="Speedbarform"  >
+
+					<input class="speedslider" type="range" name="speedbar" min="0" max="14" value="5" step="1" onchange="changeSpeed(this.value * 1)" onkeypress="return disableEnterKey(event)" />
+				</form>
+				<hr>
+			</td></tr>
+			
+			<tr><td align=CENTER>
+				<FORM NAME="myform" ACTION="" METHOD="GET"><font align='center' size='2'>Frame:</font><INPUT TYPE="text" NAME="inputbox" VALUE="" size='4' onkeypress="return submitenter(myform.inputbox.value * 1,event)"/>
+				</FORM>
+				<hr>
+
+			</td></tr>
+				
+			
+			<!--			<tr></tr>
+				<tr><td onclick='showhide()' align='center'> <font size="2">
+					hit '<b>H</b>' to <br />hide/unhide options</font>
+				</td></tr>
+				<tr><td><hr></td></tr>-->
+		<tr><td align=CENTER><button onclick="zoom(-0.1)">-</button><font size="2">Zoom</font><button onclick="zoom(+0.1)">+</button><hr></td></tr>
+			<tr><td  align=CENTER>
+				<font size="2"> See <button onclick='showHelp()'>?? Help ??</button> for Keyboard Shortcuts</font>
+
+				<hr>
+			</td></tr>
+								<tr><td align=CENTER id="tdMultiVar">
+				<font size="2">Multiple Variables</font><br />					
+				<button id='b1'  onclick='changeplotup()'>Up Var</button><br />
+				<button id='b2'  onclick='changeplotdown()'>Down Var</button>
+				<hr>
+			</td></tr>
+
+										</td></tr>
+			</table> <!--End of Options Table	-->
+					</td></tr></table>
+					</div>
+
+    <!-- end .sidebar1 -->
+  </div>
+
+<!-- CODE FOR SHOWING LINK TO HOMEPAGE -->
+
+<p style="text-align:center; margin-bottom:0px"><a style="font-weight:bold; font-size:14px; font-family:Arial, sans-serif;" href="https://grhost.info/parognosis/SAF_anim.php">Return to SAF animation page</a></p>
+<!-- p style="text-align:center; margin-bottom:0px; font-size:13px; font-family:Arial, sans-serif">Use the UP/DOWN arrows on your keyboard to navigate between:</p -->
+<!-- p style="text-align:center; margin-bottom:0px; font-size:13px; font-family:Arial, sans-serif">(1) Dynamic Tropopause, (2) Irrotational wind/PW, (3) MSLP/Thickness/Jet, (4) 500-hPa vorticity, and (5) 700-hPa wind/PW</p-->
+<!-- <p style="text-align:center; margin-bottom:0px">Text underneath link.</p> -->
+
+ <script type='text/javascript'>
+ //==========================================================
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+//					JavaViewer  2011
+//				  Written By A Brammer 
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+//==========================================================
+//
+//				Based upon jsImagePlayer 1.0
+//					(c)BASTaRT 1996
+//			
+//			Completely rewritten with improved functionality
+//				keyboard commands and multiple variables
+//
+//			
+//==========================================================
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+//  * * * * * * * * * * * * * * * * * * * * * * * * * * * *  
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+//==========================================================
+ 
+// LOOK AT THIS LINE
+// THIS IS WHERE YOU CHANGE THE VARIABLE NAMES
+ 
+root = "http://stratus.meteo.noa.gr/forecast/safnwc/animations/Europe_Colorized_IR/"
+
+  
+image_name = new Array();
+no_of_vars = 1;
+
+image_name[1]  = "_Europe_Colorized_IR";
+
+image_type  = ".jpg";
+first_image = 1;
+last_image  = 60;
+
+//  Optional Extras to Play With.  
+
+	lag_mulitplier= 5     /// Will Pause on Last image of Loop, by this muliple, 1= no pause 10 = long pause etc.
+	increment=1		// For non-consecutive but linearly increassing image files eg. 0,5,10,etc increment = 5
+
+
+	initial_image = 0;  // image that will show on load and reset to.
+
+ 
+ //    Mutli Variable Section
+ 
+ // Select no of variables you want available, will be stacked to allow switching between plots
+ //  Decomment or comment ( // at the start of the line) out the urls for plots desired. 
+ // More than 4 sets of images will cause problems, and be really slow to load. 
+ 	
+ 	
+ 
+ 
+ 
+ 	
+ 
+// 		Scripts are contained at the bottom of the page, to make it cleaner for editing. 
+ //=====================================================================================================
+ // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ //  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ //=====================================================================================================
+ 
+ </script>
+ <!--This style section is required don't remove. -->
+<style type="text/css"> 
+<!--.hide{display:none}-->
+<!--.show{display:block}-->
+input[type=range]:first-of-type {
+  width: 70px;
+}
+#side-banner {
+display: table;
+position: fixed;
+margin-top: 3.5em;
+width: 150px;
+top: 100px;
+left:50px;
+margin-left: 15px;
+height: 3em;
+z-index: 10;
+opacity: 0.85; /* also need the following 2 lines for the various versions of IE */
+-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=65)";
+filter: alpha(opacity=65);
+/* voice-family: "\"}\"";
+voice-family: inherit; */
+border: 1px solid #333;
+}
+#MainImage{
+	position: relative;
+	left: 15em;
+	top: 20px;
+	
+}
+.corners{
+	-moz-border-radius-topright: 16px;
+	-moz-border-radius-topleft: 16px;
+	-webkit-border-top-left-radius: 16px;
+	-webkit-border-top-right-radius: 16px;
+	-moz-border-radius-bottomright: 16px;
+	-moz-border-radius-bottomleft: 16px;
+	-webkit-border-bottom-left-radius: 16px;
+	-webkit-border-bottom-right-radius: 16px;}
+	
+	
+	.cornersTop{
+	-moz-border-radius-topright: 16px;
+	-moz-border-radius-topleft: 16px;
+	-webkit-border-top-left-radius: 16px;
+	-webkit-border-top-right-radius: 16px;
+	}
+
+ </style>
+ </head>
+ 			
+																					      
+		<div id="MainImage">
+			<img src="http://stratus.meteo.noa.gr/forecast/safnwc/animations/Europe_Colorized_IR/60_Europe_Colorized_IR.jpg" id="anim" width="1224" height="768" border='0'/>
+			
+		
+	</div>
+		
+
+<style>
+	.speedslider {
+	margin:	0px;
+	width:	70px;
+	
+}
+</style>
+
+<script type="text/javascript">
+//==================================
+// * * * * * * * * * * * * * * * * 
+//  * * * * * * * * * * * * * * * * 
+// * * * * * * * * * * * * * * * * 
+//==================================
+//
+//			Script Section 
+//
+//
+//
+//
+//==================================
+// * * * * * * * * * * * * * * * * 
+//  * * * * * * * * * * * * * * * * 
+// * * * * * * * * * * * * * * * * 
+//==================================
+
+// define some variables  -- No Need to alter these!!!
+
+  var row = initial_image;
+  
+  	theImages = new Array();
+  			for (var i = 1 ;  i<no_of_vars+1; i++){
+  		theImages[i] = new Array();
+  	}
+  	
+  	
+  		
+	var loop = true
+	var animate = 'False'
+	var reverse = false
+	var delay_time=200;
+	plots = theImages[1];
+	plots.value = 1;
+	
+ 
+//  lots and lots of functions
+
+function increaseRow(){
+ 	id1=document.getElementById('anim')
+ 	if((row==last_image)&&(loop==true)){
+ 		row=first_image;
+ 		id1.src = plots[row].src;  
+ 		document.myform.inputbox.value = row;
+ 	}
+  	else if(row < last_image){
+			row = row+increment;
+			id1.src = plots[row].src;  
+			document.myform.inputbox.value = row;
+	}
+}
+											
+function decreaseRow(){
+ 	id1=document.getElementById('anim')
+ 	if((row==first_image)&&(loop==true)){
+ 		row=last_image;
+ 		id1.src = plots[row].src;  
+ 		document.myform.inputbox.value = row;
+ 	}
+ 	else if(row-1 >= first_image){
+		row = row-increment;
+		id1.src = plots[row].src
+		document.myform.inputbox.value = row;
+	}
+}
+
+function changeplotdown(){
+	if(no_of_vars >1){
+ 	id1=document.getElementById('anim')
+ 		if(plots.value + 1 <= no_of_vars){
+ 			i = plots.value+1
+			plots = theImages[i]
+			plots.value = i;
+		}	
+	id1.src = plots[row].src;  
+	}
+}
+
+function changeplotup(){
+	if(no_of_vars >1){
+ 	id1=document.getElementById('anim')
+ 		if(plots.value - 1 >= 1){
+ 			i = plots.value-1
+			plots = theImages[i]
+			plots.value = i;
+		}	
+	id1.src = plots[row].src;  
+	}
+}
+
+function go2image(num){	
+	id1=document.getElementById('anim')
+	if(num < last_image && num > first_image){
+	id1.src = plots[num].src;
+	row = num;
+	}
+}
+ie=(document.all)?true:false;
+
+function resetFrame(){
+	id1.src = plots[initial_image].src;
+	row = initial_image;
+	document.myform.inputbox.value = row;
+	}
+		
+function keyDown(e) {
+	var evt=(e)?e:(window.event)?window.event:null;
+	if(evt){
+		var key=(evt.charCode)?evt.charCode: ((evt.keyCode)?evt.keyCode:((evt.which)?evt.which:0));
+		if(key==37){
+			decreaseRow();
+			return false;
+		}
+		
+		else if(key==39){
+			increaseRow();
+			return false;
+		}
+		
+		else if(key==38){
+			 changeplotup()	;
+			 return false;
+		}
+		
+		else if(key==40){
+			changeplotdown();
+			return false;
+			
+		}	
+		else if(key==76){
+			chooseLoop();
+			return false;
+		}
+		else if(key==32){
+			play();
+			return false;
+		}
+		else if(key==86){
+			chooseRev();
+			return false;
+		}
+		else if(key==72){
+			showhide();
+			return false;
+		}
+		else if(event.shiftKey && event.keyCode == 82) {
+			forceRefresh();
+		}
+
+	}	
+}
+document.onkeydown=keyDown;
+
+
+
+function showhide(){
+	if(document.getElementById('tabOpts').className=='hide'){
+		document.getElementById('tabOpts').className='show'
+	}
+	else if(document.getElementById('tabOpts').className=='show'){
+		document.getElementById('tabOpts').className='hide'
+	}
+}
+
+function launch(){
+	if(no_of_vars == 1){
+	document.getElementById('tdMultiVar').className = 'hide'
+	}
+	for (var j = 1; j<=no_of_vars;j++ ){
+			
+		for (var i = first_image; i <= last_image; i++)  {
+			theImages[j][i] = new Image();
+			theImages[j][i].src =   root +i.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false}) + image_name[j] + image_type;		
+		
+			
+				}
+	}
+
+   		document.getElementById('anim').src = plots[initial_image].src	
+     	document.myform.inputbox.value = initial_image;
+	row = initial_image;	
+     	
+}
+
+
+function play(){
+	if(animate=='False'){
+		animate='True';
+		document.getElementById('bPlay').value='stop';
+		if(reverse==true){
+			animateRev();
+		}
+		else if(reverse==false){
+			animateFwd();
+		}
+	}
+	else if(animate=='True'){
+		animate='False';
+		clearTimeout(timeID);
+		document.getElementById('bPlay').value='play';
+		
+	}
+}		
+
+
+function showvar(){
+alert('Boo!!' )
+}
+
+
+function submitenter(num,e){
+	var keycode;
+	if (window.event) keycode = window.event.keyCode;
+	else if (e) keycode = e.which;
+	else return true;
+	
+	if (keycode == 13)
+	   {
+	   go2image(num);
+	   return false;
+	   }
+	else
+	   return true;
+}
+	
+
+function chooseLoop(){
+	if(loop==true){
+		document.getElementById('cbL').checked =false;
+		loop=false;
+		}
+	else if(loop==false){
+		document.getElementById('cbL').checked =true;
+		loop=true;
+		}
+}
+
+function animateFwd(){
+	animate='True'
+	increaseRow();
+	delay = delay_time;
+		if(row==last_image){delay = delay_time*lag_mulitplier};
+	timeID = setTimeout("animateFwd()", delay);	//Repeats function over and over after delay
+}
+
+function animateRev(){
+	animate='True'
+	decreaseRow();
+	delay = delay_time;
+		if(row==first_image){delay = delay_time*lag_mulitplier};
+	timeID = setTimeout("animateRev()", delay);	//Repeats function over and over after delay
+}
+
+
+function chooseRev(){
+	if(reverse==true){
+		document.getElementById('cbRev').checked =false;
+		reverse=false;
+		if(animate=='True'){play();play()}
+		}
+	else if(reverse==false){
+		document.getElementById('cbRev').checked =true;
+		reverse=true;
+		if(animate=='True'){play();play()}
+		}
+}
+
+function showHelp(){
+	alert("\
+Key				Command\r\
+\r\
+SpaceBar			Play/Stop\r\
+Left Arrow			Backwards\r\
+Right Arrow		Forwards\r\
+Up Arrow			Change Variable\r\
+Down Arrow		Change Variable\r\
+\r\
+L				Toggle Loop\r\
+V				Toggle reVerse\r\
+H				Show/Hide Options\r\
+")
+	}
+	
+	
+zNum = 1.0
+function zoom(num){
+	zNum = zNum+num
+	document.getElementById('MainImage').style.MozTransform = "scale("+zNum+")";
+	document.getElementById('MainImage').style.WebkitTransform = "scale("+zNum+")";
+	document.getElementById('MainImage').style.OTransform = "scale("+zNum+")";
+	document.getElementById('MainImage').style.zoom = zNum;
+	}
+
+
+function increaseSpeed(){
+	if(document.Speedbarform.speedbar.value ==14){
+		return false}
+	else	
+	delay_time=(1000/((1000/delay_time)+1));
+	document.Speedbarform.speedbar.value = 1000/delay_time;
+	document.getElementById("speed").innerHTML=1000/delay_time;
+}
+function decreaseSpeed(){
+	if(document.Speedbarform.speedbar.value ==1){
+		return false}
+	else
+	delay_time=(1000/((1000/delay_time)-1));
+	document.Speedbarform.speedbar.value = 1000/delay_time;
+	document.getElementById("speed").innerHTML=1000/delay_time;
+}
+
+function changeSpeed(num){
+	   delay_time=1000/num;
+	   document.getElementById("speed").innerHTML=1000/delay_time
+	   document.Speedbarform.speedbar.value = 1000/delay_time;
+	   }
+
+
+function disableEnterKey(e){
+     var key
+     if(window.event){
+          key = window.event.keyCode;  }   //IE
+     else{
+          key = e.which;}     //firefox
+
+     if(key == 13){
+     		eval("document.myform.inputbox.focus()");
+     		return false;}
+          
+     else{
+          return true;}
+}
+
+
+function forceRefresh(){
+	randomx = Math.floor((Math.random()*100)+1);
+	document.getElementById('anim').src = "http://www.meteovolos.gr/Javascripts/loading.gif";
+	image_type = image_type+"?v="+randomx;
+	launch()
+	}
+
+
+
+</script>
+
+
+<script src="http://www.meteovolos.gr/Javascripts/ffSlider.Js"> //required for firefox slider bar to work. Script from this guy, --> just removed the key elements. Thanks!!. Copyright (c) 2010-2011 Frank Yan 
+</script>
+
+</body>
+</html>

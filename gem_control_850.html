@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GEM_control_850</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #222;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+  }
+
+  #container {
+    width: 600px;
+    max-width: 90vw;
+    user-select: none;
+  }
+
+  #mainImage {
+    width: 100%;
+    border-radius: 8px;
+    display: block;
+  }
+
+  /* ΚΕΝΤΡΙΚΑ βελάκια κάτω από την εικόνα */
+  #arrowsContainer {
+    margin-top: 12px;
+    display: flex;
+    justify-content: center;
+    gap: 50px;           /* απόσταση μεταξύ βελών */
+    width: 600px;
+    max-width: 90vw;
+  }
+
+  .arrow {
+    width: 40px;
+    height: 40px;
+    background: rgba(0,0,0,0.4);
+    color: #fff;
+    font-size: 28px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    transition: background 0.3s;
+  }
+
+  .arrow:hover {
+    background: rgba(0,0,0,0.7);
+  }
+
+  #hoursContainer {
+    margin-top: 15px;
+    width: 600px;
+    max-width: 90vw;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
+  }
+
+  .hourBtn {
+    background: rgba(0,0,0,0.6);
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    padding: 6px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .hourBtn:hover,
+  .hourBtn.active {
+    background: #1e90ff;
+  }
+</style>
+</head>
+
+<body>
+
+<div id="container">
+  <img id="mainImage" src="" alt="Forecast Image" />
+</div>
+
+<div id="arrowsContainer">
+  <div id="leftArrow" class="arrow">&#10094;</div>
+  <div id="rightArrow" class="arrow">&#10095;</div>
+</div>
+
+<div id="hoursContainer"></div>
+
+<script>
+  // URLs εικόνων με τις ώρες
+  const images = [
+  { url: "https://modeles3.meteociel.fr/modeles/gens/gem/run/gens-0-0-12.png", label: "+12h" },
+  { url: "https://modeles3.meteociel.fr/modeles/gens/gem/run/gens-0-0-24.png", label: "+24h" },
+  { url: "https://modeles3.meteociel.fr/modeles/gens/gem/run/gens-0-0-36.png", label: "+36h" },
+  { url: "https://modeles3.meteociel.fr/modeles/gens/gem/run/gens-0-0-48.png", label: "+48h" },
+  { url: "https://modeles3.meteociel.fr/modeles/gens/gem/run/gens-0-0-60.png", label: "+60h" },
+  { url: "https://modeles3.meteociel.fr/modeles/gens/gem/run/gens-0-0-72.png", label: "+72h" },
+  { url: "https://modeles3.meteociel.fr/modeles/gens/gem/run/gens-0-0-84.png", label: "+84h" },
+  { url: "https://modeles3.meteociel.fr/modeles/gens/gem/run/gens-0-0-96.png", label: "+96h" },
+  { url: "https://modeles3.meteociel.fr/modeles/gens/gem/run/gens-0-0-108.png", label: "+108h" },
+  { url: "https://modeles3.meteociel.fr/modeles/gens/gem/run/gens-0-0-120.png", label: "+120h" },
+  { url: "https://modeles3.meteociel.fr/modeles/gens/gem/run/gens-0-0-132.png", label: "+132h" },
+  { url: "https://modeles3.meteociel.fr/modeles/gens/gem/run/gens-0-0-144.png", label: "+144h" },
+  { url: "https://modeles3.meteociel.fr/modeles/gens/gem/run/gens-0-0-156.png", label: "+156h" },
+  { url: "https://modeles3.meteociel.fr/modeles/gens/gem/run/gens-0-0-168.png", label: "+168h" },
+  { url: "https://modeles3.meteociel.fr/modeles/gens/gem/run/gens-0-0-180.png", label: "+180h" },
+  { url: "https://modeles3.meteociel.fr/modeles/gens/gem/run/gens-0-0-192.png", label: "+192h" },
+  { url: "https://modeles3.meteociel.fr/modeles/gens/gem/run/gens-0-0-204.png", label: "+204h" },
+  { url: "https://modeles3.meteociel.fr/modeles/gens/gem/run/gens-0-0-216.png", label: "+216h" },
+  { url: "https://modeles3.meteociel.fr/modeles/gens/gem/run/gens-0-0-228.png", label: "+228h" },
+  { url: "https://modeles3.meteociel.fr/modeles/gens/gem/run/gens-0-0-240.png", label: "+240h" },
+  { url: "https://modeles3.meteociel.fr/modeles/gens/gem/run/gens-0-0-252.png", label: "+252h" },
+  { url: "https://modeles3.meteociel.fr/modeles/gens/gem/run/gens-0-0-264.png", label: "+264h" },
+  { url: "https://modeles3.meteociel.fr/modeles/gens/gem/run/gens-0-0-276.png", label: "+276h" },
+  { url: "https://modeles3.meteociel.fr/modeles/gens/gem/run/gens-0-0-288.png", label: "+288h" },
+  { url: "https://modeles3.meteociel.fr/modeles/gens/gem/run/gens-0-0-300.png", label: "+300h" },
+  { url: "https://modeles3.meteociel.fr/modeles/gens/gem/run/gens-0-0-312.png", label: "+312h" },
+  { url: "https://modeles3.meteociel.fr/modeles/gens/gem/run/gens-0-0-324.png", label: "+324h" },
+  { url: "https://modeles3.meteociel.fr/modeles/gens/gem/run/gens-0-0-336.png", label: "+336h" },
+  { url: "https://modeles3.meteociel.fr/modeles/gens/gem/run/gens-0-0-348.png", label: "+348h" },
+  { url: "https://modeles3.meteociel.fr/modeles/gens/gem/run/gens-0-0-360.png", label: "+360h" },
+  { url: "https://modeles3.meteociel.fr/modeles/gens/gem/run/gens-0-0-372.png", label: "+372h" },
+  { url: "https://modeles3.meteociel.fr/modeles/gens/gem/run/gens-0-0-384.png", label: "+384h" },
+  ];
+
+  const mainImage = document.getElementById("mainImage");
+  const leftArrow = document.getElementById("leftArrow");
+  const rightArrow = document.getElementById("rightArrow");
+  const hoursContainer = document.getElementById("hoursContainer");
+
+  let currentIndex = 0;
+
+  // Φόρτωση αρχικής εικόνας
+  function showImage(index) {
+    if (index < 0) index = images.length - 1;
+    if (index >= images.length) index = 0;
+    currentIndex = index;
+    mainImage.src = images[index].url;
+    updateActiveButton();
+  }
+
+  // Δημιουργία κουμπιών ωρών
+  function createHourButtons() {
+    images.forEach((img, i) => {
+      const btn = document.createElement("button");
+      btn.textContent = img.label;
+      btn.className = "hourBtn";
+      btn.addEventListener("click", () => {
+        showImage(i);
+      });
+      hoursContainer.appendChild(btn);
+    });
+  }
+
+  // Επισημαίνει το ενεργό κουμπί
+  function updateActiveButton() {
+    const buttons = hoursContainer.querySelectorAll(".hourBtn");
+    buttons.forEach((btn, i) => {
+      btn.classList.toggle("active", i === currentIndex);
+    });
+  }
+
+  // Βελάκια
+  leftArrow.addEventListener("click", () => {
+    showImage(currentIndex - 1);
+  });
+  rightArrow.addEventListener("click", () => {
+    showImage(currentIndex + 1);
+  });
+
+  // Αρχικοποίηση
+  createHourButtons();
+
+  // Προφόρτωση όλων των εικόνων
+  images.forEach(img => {
+    const preload = new Image();
+    preload.src = img.url;
+  });
+
+  showImage(0);
+
+</script>
+
+</body>
+</html>
+

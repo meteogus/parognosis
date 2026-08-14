@@ -1,0 +1,80 @@
+<script type="text/javascript">
+// Author: ricocheting.com
+// Description: slideshow that allows visitors to flip through a series of images on your website
+
+var x=0;
+
+function rotate(num){
+fs=document.ff.slide;
+x=num%fs.length;
+if(x<0) x=fs.length-1;
+document.images.show.src=fs.options[x].value;
+fs.selectedIndex=x;}
+
+function auto() {
+if(document.ff.fa.value == "Stop"){
+rotate(++x);setTimeout("auto()", 1000);}}
+</script>
+
+<form name="ff">
+<table align="center" cellpadding="3" style="border:1px black solid;border-collapse:collapse;">
+
+<tr><td align="center">
+<img src="https://services.meteored.com/img/models/ecmwf/ECMWF_006_IT_SFC_es-ES_es.png" name="show" width="100%" height="100%/"/>
+</td></tr>
+
+<tr><td align="center" style="border:1px black solid;">
+<select name="slide" 
+onchange="rotate(this.selectedIndex);">
+<option value="https://services.meteored.com/img/models/ecmwf/ECMWF_006_IT_SFC_es-ES_es.png" />06
+<option value="https://services.meteored.com/img/models/ecmwf/ECMWF_012_IT_SFC_es-ES_es.png" />12
+<option value="https://services.meteored.com/img/models/ecmwf/ECMWF_018_IT_SFC_es-ES_es.png" />18
+<option value="https://services.meteored.com/img/models/ecmwf/ECMWF_024_IT_SFC_es-ES_es.png" />24
+<option value="https://services.meteored.com/img/models/ecmwf/ECMWF_030_IT_SFC_es-ES_es.png" />30
+<option value="https://services.meteored.com/img/models/ecmwf/ECMWF_036_IT_SFC_es-ES_es.png" />36
+<option value="https://services.meteored.com/img/models/ecmwf/ECMWF_042_IT_SFC_es-ES_es.png" />42
+<option value="https://services.meteored.com/img/models/ecmwf/ECMWF_048_IT_SFC_es-ES_es.png" />48
+<option value="https://services.meteored.com/img/models/ecmwf/ECMWF_054_IT_SFC_es-ES_es.png" />54
+<option value="https://services.meteored.com/img/models/ecmwf/ECMWF_060_IT_SFC_es-ES_es.png" />60
+<option value="https://services.meteored.com/img/models/ecmwf/ECMWF_066_IT_SFC_es-ES_es.png" />66
+<option value="https://services.meteored.com/img/models/ecmwf/ECMWF_072_IT_SFC_es-ES_es.png" />72
+<option value="https://services.meteored.com/img/models/ecmwf/ECMWF_078_IT_SFC_es-ES_es.png" />78
+<option value="https://services.meteored.com/img/models/ecmwf/ECMWF_084_IT_SFC_es-ES_es.png" />84
+<option value="https://services.meteored.com/img/models/ecmwf/ECMWF_090_IT_SFC_es-ES_es.png" />90
+<option value="https://services.meteored.com/img/models/ecmwf/ECMWF_096_IT_SFC_es-ES_es.png" />96
+<option value="https://services.meteored.com/img/models/ecmwf/ECMWF_102_IT_SFC_es-ES_es.png" />102
+<option value="https://services.meteored.com/img/models/ecmwf/ECMWF_108_IT_SFC_es-ES_es.png" />108
+<option value="https://services.meteored.com/img/models/ecmwf/ECMWF_114_IT_SFC_es-ES_es.png" />114
+<option value="https://services.meteored.com/img/models/ecmwf/ECMWF_120_IT_SFC_es-ES_es.png" />120
+<option value="https://services.meteored.com/img/models/ecmwf/ECMWF_126_IT_SFC_es-ES_es.png" />126
+<option value="https://services.meteored.com/img/models/ecmwf/ECMWF_132_IT_SFC_es-ES_es.png" />132
+<option value="https://services.meteored.com/img/models/ecmwf/ECMWF_138_IT_SFC_es-ES_es.png" />138
+<option value="https://services.meteored.com/img/models/ecmwf/ECMWF_144_IT_SFC_es-ES_es.png" />144
+<option value="https://services.meteored.com/img/models/ecmwf/ECMWF_150_IT_SFC_es-ES_es.png" />150
+<option value="https://services.meteored.com/img/models/ecmwf/ECMWF_156_IT_SFC_es-ES_es.png" />156
+<option value="https://services.meteored.com/img/models/ecmwf/ECMWF_162_IT_SFC_es-ES_es.png" />162
+<option value="https://services.meteored.com/img/models/ecmwf/ECMWF_168_IT_SFC_es-ES_es.png" />168
+<option value="https://services.meteored.com/img/models/ecmwf/ECMWF_174_IT_SFC_es-ES_es.png" />174
+<option value="https://services.meteored.com/img/models/ecmwf/ECMWF_180_IT_SFC_es-ES_es.png" />180
+<option value="https://services.meteored.com/img/models/ecmwf/ECMWF_186_IT_SFC_es-ES_es.png" />186
+<option value="https://services.meteored.com/img/models/ecmwf/ECMWF_192_IT_SFC_es-ES_es.png" />192
+<option value="https://services.meteored.com/img/models/ecmwf/ECMWF_198_IT_SFC_es-ES_es.png" />198
+<option value="https://services.meteored.com/img/models/ecmwf/ECMWF_204_IT_SFC_es-ES_es.png" />204
+<option value="https://services.meteored.com/img/models/ecmwf/ECMWF_210_IT_SFC_es-ES_es.png" />210
+<option value="https://services.meteored.com/img/models/ecmwf/ECMWF_216_IT_SFC_es-ES_es.png" />216
+<option value="https://services.meteored.com/img/models/ecmwf/ECMWF_222_IT_SFC_es-ES_es.png" />222
+<option value="https://services.meteored.com/img/models/ecmwf/ECMWF_228_IT_SFC_es-ES_es.png" />228
+<option value="https://services.meteored.com/img/models/ecmwf/ECMWF_234_IT_SFC_es-ES_es.png" />234
+<option value="https://services.meteored.com/img/models/ecmwf/ECMWF_240_IT_SFC_es-ES_es.png" />240
+</select>
+</td></tr>
+
+<tr><td align="center" style="border:1px black solid;">
+<input type="button" onClick="rotate(0);" value="ll&lt;&lt;" title="Jump to beginning" />
+<input type="button" onClick="rotate(x-1);" value="&lt;&lt;" title="Last Picture" />
+<input type="button" name="fa" onClick="this.value=((this.value=='Stop')?'Start':'Stop');auto();" value="Start" 
+
+title="Autoplay" style="width:75px;" />
+<input type="button" onClick="rotate(x+1);" value="&gt;&gt;" title="Next Picture" />
+<input type="button" onClick="rotate(this.form.slide.length-1);" value="&gt;&gt;ll" title="Jump to end" />
+</td></tr></table></form>

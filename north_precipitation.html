@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>North precipitation</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #222;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+  }
+
+  #container {
+    width: 600px;
+    max-width: 90vw;
+    user-select: none;
+  }
+
+  #mainImage {
+    width: 100%;
+    border-radius: 8px;
+    display: block;
+  }
+
+  /* ΚΕΝΤΡΙΚΑ βελάκια κάτω από την εικόνα */
+  #arrowsContainer {
+    margin-top: 12px;
+    display: flex;
+    justify-content: center;
+    gap: 50px;           /* απόσταση μεταξύ βελών */
+    width: 600px;
+    max-width: 90vw;
+  }
+
+  .arrow {
+    width: 40px;
+    height: 40px;
+    background: rgba(0,0,0,0.4);
+    color: #fff;
+    font-size: 28px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    transition: background 0.3s;
+  }
+
+  .arrow:hover {
+    background: rgba(0,0,0,0.7);
+  }
+
+  #hoursContainer {
+    margin-top: 15px;
+    width: 600px;
+    max-width: 90vw;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
+  }
+
+  .hourBtn {
+    background: rgba(0,0,0,0.6);
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    padding: 6px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .hourBtn:hover,
+  .hourBtn.active {
+    background: #1e90ff;
+  }
+</style>
+</head>
+
+<body>
+
+<div id="container">
+  <img id="mainImage" src="" alt="Forecast Image" />
+</div>
+
+<div id="arrowsContainer">
+  <div id="leftArrow" class="arrow">&#10094;</div>
+  <div id="rightArrow" class="arrow">&#10095;</div>
+</div>
+
+<div id="hoursContainer"></div>
+
+<script>
+  // URLs εικόνων με τις ώρες
+  const images = [
+    { url: "https://stratus.meteo.noa.gr/forecast/BOLAM2020/f_RR_SN_na_3.png", label: "+03h" },
+    { url: "https://stratus.meteo.noa.gr/forecast/BOLAM2020/f_RR_SN_na_6.png", label: "+06h" },
+    { url: "https://stratus.meteo.noa.gr/forecast/BOLAM2020/f_RR_SN_na_9.png", label: "+09h" },
+    { url: "https://stratus.meteo.noa.gr/forecast/BOLAM2020/f_RR_SN_na_12.png", label: "+12h" },
+    { url: "https://stratus.meteo.noa.gr/forecast/BOLAM2020/f_RR_SN_na_15.png", label: "+15h" },
+    { url: "https://stratus.meteo.noa.gr/forecast/BOLAM2020/f_RR_SN_na_18.png", label: "+18h" },
+    { url: "https://stratus.meteo.noa.gr/forecast/BOLAM2020/f_RR_SN_na_21.png", label: "+21h" },
+    { url: "https://stratus.meteo.noa.gr/forecast/BOLAM2020/f_RR_SN_na_24.png", label: "+24h" },
+    { url: "https://stratus.meteo.noa.gr/forecast/BOLAM2020/f_RR_SN_na_27.png", label: "+27h" },
+    { url: "https://stratus.meteo.noa.gr/forecast/BOLAM2020/f_RR_SN_na_30.png", label: "+30h" },
+    { url: "https://stratus.meteo.noa.gr/forecast/BOLAM2020/f_RR_SN_na_33.png", label: "+33h" },
+    { url: "https://stratus.meteo.noa.gr/forecast/BOLAM2020/f_RR_SN_na_36.png", label: "+36h" },
+    { url: "https://stratus.meteo.noa.gr/forecast/BOLAM2020/f_RR_SN_na_39.png", label: "+39h" },
+    { url: "https://stratus.meteo.noa.gr/forecast/BOLAM2020/f_RR_SN_na_42.png", label: "+42h" },
+    { url: "https://stratus.meteo.noa.gr/forecast/BOLAM2020/f_RR_SN_na_45.png", label: "+45h" },
+    { url: "https://stratus.meteo.noa.gr/forecast/BOLAM2020/f_RR_SN_na_48.png", label: "+48h" },
+    { url: "https://stratus.meteo.noa.gr/forecast/BOLAM2020/f_RR_SN_na_51.png", label: "+51h" },
+    { url: "https://stratus.meteo.noa.gr/forecast/BOLAM2020/f_RR_SN_na_54.png", label: "+54h" },
+    { url: "https://stratus.meteo.noa.gr/forecast/BOLAM2020/f_RR_SN_na_57.png", label: "+57h" },
+    { url: "https://stratus.meteo.noa.gr/forecast/BOLAM2020/f_RR_SN_na_60.png", label: "+60h" },
+    { url: "https://stratus.meteo.noa.gr/forecast/BOLAM2020/f_RR_SN_na_63.png", label: "+63h" },
+    { url: "https://stratus.meteo.noa.gr/forecast/BOLAM2020/f_RR_SN_na_66.png", label: "+66h" },
+    { url: "https://stratus.meteo.noa.gr/forecast/BOLAM2020/f_RR_SN_na_69.png", label: "+69h" },
+    { url: "https://stratus.meteo.noa.gr/forecast/BOLAM2020/f_RR_SN_na_72.png", label: "+72h" },
+    { url: "https://stratus.meteo.noa.gr/forecast/BOLAM2020/f_RR_SN_na_75.png", label: "+75h" },
+    { url: "https://stratus.meteo.noa.gr/forecast/BOLAM2020/f_RR_SN_na_78.png", label: "+78h" },
+    { url: "https://stratus.meteo.noa.gr/forecast/BOLAM2020/f_RR_SN_na_81.png", label: "+81h" },
+    { url: "https://stratus.meteo.noa.gr/forecast/BOLAM2020/f_RR_SN_na_84.png", label: "+84h" },
+    { url: "https://stratus.meteo.noa.gr/forecast/BOLAM2020/f_RR_SN_na_87.png", label: "+87h" },
+    { url: "https://stratus.meteo.noa.gr/forecast/BOLAM2020/f_RR_SN_na_90.png", label: "+90h" },
+    { url: "https://stratus.meteo.noa.gr/forecast/BOLAM2020/f_RR_SN_na_93.png", label: "+93h" },
+    { url: "https://stratus.meteo.noa.gr/forecast/BOLAM2020/f_RR_SN_na_96.png", label: "+96h" },
+    { url: "https://stratus.meteo.noa.gr/forecast/BOLAM2020/f_RR_SN_na_99.png", label: "+99h" },
+    { url: "https://stratus.meteo.noa.gr/forecast/BOLAM2020/f_RR_SN_na_102.png", label: "+102h" },
+    { url: "https://stratus.meteo.noa.gr/forecast/BOLAM2020/f_RR_SN_na_105.png", label: "+105h" },
+    { url: "https://stratus.meteo.noa.gr/forecast/BOLAM2020/f_RR_SN_na_108.png", label: "+108h" },
+    { url: "https://stratus.meteo.noa.gr/forecast/BOLAM2020/f_RR_SN_na_111.png", label: "+111h" },
+    { url: "https://stratus.meteo.noa.gr/forecast/BOLAM2020/f_RR_SN_na_114.png", label: "+114h" },
+    { url: "https://stratus.meteo.noa.gr/forecast/BOLAM2020/f_RR_SN_na_117.png", label: "+117h" },
+    { url: "https://stratus.meteo.noa.gr/forecast/BOLAM2020/f_RR_SN_na_120.png", label: "+120h" }
+  ];
+
+  const mainImage = document.getElementById("mainImage");
+  const leftArrow = document.getElementById("leftArrow");
+  const rightArrow = document.getElementById("rightArrow");
+  const hoursContainer = document.getElementById("hoursContainer");
+
+  let currentIndex = 0;
+
+  // Φόρτωση αρχικής εικόνας
+  function showImage(index) {
+    if (index < 0) index = images.length - 1;
+    if (index >= images.length) index = 0;
+    currentIndex = index;
+    mainImage.src = images[index].url;
+    updateActiveButton();
+  }
+
+  // Δημιουργία κουμπιών ωρών
+  function createHourButtons() {
+    images.forEach((img, i) => {
+      const btn = document.createElement("button");
+      btn.textContent = img.label;
+      btn.className = "hourBtn";
+      btn.addEventListener("click", () => {
+        showImage(i);
+      });
+      hoursContainer.appendChild(btn);
+    });
+  }
+
+  // Επισημαίνει το ενεργό κουμπί
+  function updateActiveButton() {
+    const buttons = hoursContainer.querySelectorAll(".hourBtn");
+    buttons.forEach((btn, i) => {
+      btn.classList.toggle("active", i === currentIndex);
+    });
+  }
+
+  // Βελάκια
+  leftArrow.addEventListener("click", () => {
+    showImage(currentIndex - 1);
+  });
+  rightArrow.addEventListener("click", () => {
+    showImage(currentIndex + 1);
+  });
+
+  // Αρχικοποίηση
+  createHourButtons();
+  showImage(0);
+
+</script>
+
+</body>
+</html>

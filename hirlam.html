@@ -1,0 +1,147 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta https-equiv="Content-Language" content="nl">
+<meta https-equiv="Content-Type" content="image/jpeg">
+<title>Weerkaarten Hirlam</title>
+</head>
+
+
+
+<body>
+
+
+<div style="text-align: center;">
+
+    <input type="button" onclick="laad0()" id="send0" name="send0" value="Kaart0"/>
+	<input type="button" onclick="laad1()" id="send1" name="send1" value="Kaart1"/>
+	<input type="button" onclick="laad2()" id="send2" name="send2" value="Kaart2"/>
+	<input type="button" onclick="laad3()" id="send3" name="send3" value="Kaart3"/>
+	<input type="button" onclick="laad4()" id="send4" name="send4" value="Kaart4"/>
+</div>
+<img id="myImg" alt="Weerkaarten Hirlam"  width="933" height="600">
+
+
+
+<script>
+
+document.getElementById('send0').value='20e 18u';
+document.getElementById('send1').value='21e 00u';
+document.getElementById('send2').value='21e 12u';
+document.getElementById('send3').value='22e 00u';
+document.getElementById('send4').value='22e 12u';
+document.getElementById('send0').style.color='#FF0000';
+
+
+</script>	
+	
+
+
+<script type="text/javascript" >
+
+
+
+var ImgUrl = 'https://cdn.knmi.nl/knmi/map/page/weer/waarschuwingen_verwachtingen/weerkaarten/AL2018_large.gif';
+document.getElementById("myImg").src = ImgUrl;
+
+
+
+function laad0()
+{
+ 	var imgUrl2 = "https://cdn.knmi.nl/knmi/map/page/weer/waarschuwingen_verwachtingen/weerkaarten/";
+	imgUrl2 = imgUrl2+'AL2018_large.gif';
+			// create a new timestamp     
+    var timestamp = new Date().getTime();    
+    var el = document.getElementById("myImg");     
+    el.src = imgUrl2+"?t=" + timestamp; 
+    //    document.getElementById("myImg").src = imgUrl2;
+	document.getElementById('send0').style.color='#FF0000';
+	document.getElementById('send1').style.color='#000000';
+	document.getElementById('send2').style.color='#000000';
+	document.getElementById('send3').style.color='#000000';
+	document.getElementById('send4').style.color='#000000';
+};
+
+
+
+function laad1()
+{
+ 	var imgUrl2 = "https://cdn.knmi.nl/knmi/map/page/weer/waarschuwingen_verwachtingen/weerkaarten/";
+	imgUrl2 = imgUrl2+'PL2100_large.gif';
+			// create a new timestamp     
+    var timestamp = new Date().getTime();    
+    var el = document.getElementById("myImg");     
+    el.src = imgUrl2+"?t=" + timestamp; 
+    //    document.getElementById("myImg").src = imgUrl2;
+	document.getElementById('send1').style.color='#FF0000';
+	document.getElementById('send0').style.color='#000000';
+	document.getElementById('send2').style.color='#000000';
+	document.getElementById('send3').style.color='#000000';
+	document.getElementById('send4').style.color='#000000';
+};
+
+function laad2()
+{
+	var imgUrl2 = "https://cdn.knmi.nl/knmi/map/page/weer/waarschuwingen_verwachtingen/weerkaarten/";
+	imgUrl2 = imgUrl2+'PL2112_large.gif';
+			// create a new timestamp     
+    var timestamp = new Date().getTime();    
+    var el = document.getElementById("myImg");     
+    el.src = imgUrl2+"?t=" + timestamp; 
+    //    document.getElementById("myImg").src = imgUrl2;
+	document.getElementById('send2').style.color='#FF0000';
+	document.getElementById('send0').style.color='#000000';
+	document.getElementById('send1').style.color='#000000';
+	document.getElementById('send3').style.color='#000000';
+	document.getElementById('send4').style.color='#000000';
+};
+
+function laad3()
+{
+ 	var imgUrl2 = "https://cdn.knmi.nl/knmi/map/page/weer/waarschuwingen_verwachtingen/weerkaarten/";
+	imgUrl2 = imgUrl2+'PL2200_large.gif';
+			// create a new timestamp     
+    var timestamp = new Date().getTime();    
+    var el = document.getElementById("myImg");     
+    el.src = imgUrl2+"?t=" + timestamp; 
+    //    document.getElementById("myImg").src = imgUrl2;
+	document.getElementById('send3').style.color='#FF0000';
+	document.getElementById('send0').style.color='#000000';
+	document.getElementById('send1').style.color='#000000';
+	document.getElementById('send2').style.color='#000000';
+	document.getElementById('send4').style.color='#000000';
+};
+
+
+
+function laad4()
+{
+ 	var imgUrl2 = "https://cdn.knmi.nl/knmi/map/page/weer/waarschuwingen_verwachtingen/weerkaarten/";
+	imgUrl2 = imgUrl2+'PL2212_large.gif';
+			// create a new timestamp     
+    var timestamp = new Date().getTime();    
+    var el = document.getElementById("myImg");     
+    el.src = imgUrl2+"?t=" + timestamp; 
+    //    document.getElementById("myImg").src = imgUrl2;
+	document.getElementById('send4').style.color='#FF0000';
+	document.getElementById('send0').style.color='#000000';
+	document.getElementById('send1').style.color='#000000';
+	document.getElementById('send2').style.color='#000000';
+	document.getElementById('send3').style.color='#000000';
+
+};
+
+
+</script>
+
+
+
+
+
+</body>
+
+</html>
+
+ 

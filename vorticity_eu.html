@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Vorticity_Europe</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #222;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+  }
+
+  #container {
+    width: 600px;
+    max-width: 90vw;
+    user-select: none;
+  }
+
+  #mainImage {
+    width: 100%;
+    border-radius: 8px;
+    display: block;
+  }
+
+  /* ΚΕΝΤΡΙΚΑ βελάκια κάτω από την εικόνα */
+  #arrowsContainer {
+    margin-top: 12px;
+    display: flex;
+    justify-content: center;
+    gap: 50px;           /* απόσταση μεταξύ βελών */
+    width: 600px;
+    max-width: 90vw;
+  }
+
+  .arrow {
+    width: 40px;
+    height: 40px;
+    background: rgba(0,0,0,0.4);
+    color: #fff;
+    font-size: 28px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    transition: background 0.3s;
+  }
+
+  .arrow:hover {
+    background: rgba(0,0,0,0.7);
+  }
+
+  #hoursContainer {
+    margin-top: 15px;
+    width: 600px;
+    max-width: 90vw;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
+  }
+
+  .hourBtn {
+    background: rgba(0,0,0,0.6);
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    padding: 6px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .hourBtn:hover,
+  .hourBtn.active {
+    background: #1e90ff;
+  }
+</style>
+</head>
+
+<body>
+
+<div id="container">
+  <img id="mainImage" src="" alt="Forecast Image" />
+</div>
+
+<div id="arrowsContainer">
+  <div id="leftArrow" class="arrow">&#10094;</div>
+  <div id="rightArrow" class="arrow">&#10095;</div>
+</div>
+
+<div id="hoursContainer"></div>
+
+<script>
+  // Images with URLs and labels
+  const images = [
+    { url: "https://www.ready.noaa.gov/data/forecast/grads/gfs/europe/panel1/plt1.gif", label: "+00h" },
+    { url: "https://www.ready.noaa.gov/data/forecast/grads/gfs/europe/panel1/plt2.gif", label: "+06h" },
+    { url: "https://www.ready.noaa.gov/data/forecast/grads/gfs/europe/panel1/plt3.gif", label: "+12h" },
+    { url: "https://www.ready.noaa.gov/data/forecast/grads/gfs/europe/panel1/plt4.gif", label: "+18h" },
+    { url: "https://www.ready.noaa.gov/data/forecast/grads/gfs/europe/panel1/plt5.gif", label: "+24h" },
+    { url: "https://www.ready.noaa.gov/data/forecast/grads/gfs/europe/panel1/plt6.gif", label: "+30h" },
+    { url: "https://www.ready.noaa.gov/data/forecast/grads/gfs/europe/panel1/plt7.gif", label: "+36h" },
+    { url: "https://www.ready.noaa.gov/data/forecast/grads/gfs/europe/panel1/plt8.gif", label: "+42h" },
+    { url: "https://www.ready.noaa.gov/data/forecast/grads/gfs/europe/panel1/plt9.gif", label: "+48h" },
+    { url: "https://www.ready.noaa.gov/data/forecast/grads/gfs/europe/panel1/plt10.gif", label: "+54h" },
+    { url: "https://www.ready.noaa.gov/data/forecast/grads/gfs/europe/panel1/plt11.gif", label: "+60h" },
+    { url: "https://www.ready.noaa.gov/data/forecast/grads/gfs/europe/panel1/plt12.gif", label: "+66h" },
+    { url: "https://www.ready.noaa.gov/data/forecast/grads/gfs/europe/panel1/plt13.gif", label: "+72h" },
+    { url: "https://www.ready.noaa.gov/data/forecast/grads/gfs/europe/panel1/plt14.gif", label: "+78h" },
+    { url: "https://www.ready.noaa.gov/data/forecast/grads/gfs/europe/panel1/plt15.gif", label: "+84h" },
+    { url: "https://www.ready.noaa.gov/data/forecast/grads/gfs/europe/panel1/plt16.gif", label: "+90h" },
+    { url: "https://www.ready.noaa.gov/data/forecast/grads/gfs/europe/panel1/plt17.gif", label: "+96h" },
+    { url: "https://www.ready.noaa.gov/data/forecast/grads/gfs/europe/panel1/plt18.gif", label: "+102h" },
+    { url: "https://www.ready.noaa.gov/data/forecast/grads/gfs/europe/panel1/plt19.gif", label: "+108h" },
+    { url: "https://www.ready.noaa.gov/data/forecast/grads/gfs/europe/panel1/plt20.gif", label: "+114h" },
+    { url: "https://www.ready.noaa.gov/data/forecast/grads/gfs/europe/panel1/plt21.gif", label: "+120h" },
+    { url: "https://www.ready.noaa.gov/data/forecast/grads/gfs/europe/panel1/plt22.gif", label: "+126h" },
+    { url: "https://www.ready.noaa.gov/data/forecast/grads/gfs/europe/panel1/plt23.gif", label: "+132h" },
+    { url: "https://www.ready.noaa.gov/data/forecast/grads/gfs/europe/panel1/plt24.gif", label: "+138h" },
+    { url: "https://www.ready.noaa.gov/data/forecast/grads/gfs/europe/panel1/plt25.gif", label: "+144h" },
+    { url: "https://www.ready.noaa.gov/data/forecast/grads/gfs/europe/panel1/plt26.gif", label: "+150h" },
+    { url: "https://www.ready.noaa.gov/data/forecast/grads/gfs/europe/panel1/plt27.gif", label: "+156h" },
+    { url: "https://www.ready.noaa.gov/data/forecast/grads/gfs/europe/panel1/plt28.gif", label: "+162h" },
+    { url: "https://www.ready.noaa.gov/data/forecast/grads/gfs/europe/panel1/plt29.gif", label: "+168h" },
+    { url: "https://www.ready.noaa.gov/data/forecast/grads/gfs/europe/panel1/plt30.gif", label: "+174h" },
+    { url: "https://www.ready.noaa.gov/data/forecast/grads/gfs/europe/panel1/plt31.gif", label: "+180h" },
+    { url: "https://www.ready.noaa.gov/data/forecast/grads/gfs/europe/panel1/plt32.gif", label: "+186h" },
+    { url: "https://www.ready.noaa.gov/data/forecast/grads/gfs/europe/panel1/plt33.gif", label: "+192h" },
+    { url: "https://www.ready.noaa.gov/data/forecast/grads/gfs/europe/panel1/plt34.gif", label: "+198h" },
+    { url: "https://www.ready.noaa.gov/data/forecast/grads/gfs/europe/panel1/plt35.gif", label: "+204h" },
+    { url: "https://www.ready.noaa.gov/data/forecast/grads/gfs/europe/panel1/plt36.gif", label: "+210h" },
+    { url: "https://www.ready.noaa.gov/data/forecast/grads/gfs/europe/panel1/plt37.gif", label: "+216h" },
+    { url: "https://www.ready.noaa.gov/data/forecast/grads/gfs/europe/panel1/plt38.gif", label: "+222h" },
+    { url: "https://www.ready.noaa.gov/data/forecast/grads/gfs/europe/panel1/plt39.gif", label: "+228h" },
+    { url: "https://www.ready.noaa.gov/data/forecast/grads/gfs/europe/panel1/plt40.gif", label: "+234h" },
+    { url: "https://www.ready.noaa.gov/data/forecast/grads/gfs/europe/panel1/plt41.gif", label: "+240h" }
+  ];
+
+  const mainImage = document.getElementById("mainImage");
+  const leftArrow = document.getElementById("leftArrow");
+  const rightArrow = document.getElementById("rightArrow");
+  const hoursContainer = document.getElementById("hoursContainer");
+
+  let currentIndex = 0;
+  const preloaded = [];
+
+  // Preload all images into memory
+  function preloadImages() {
+    images.forEach((img, i) => {
+      const im = new Image();
+      im.src = img.url;
+      preloaded[i] = im;
+    });
+  }
+
+  // Show image at index
+  function showImage(index) {
+    if (index < 0) index = images.length - 1;
+    if (index >= images.length) index = 0;
+    currentIndex = index;
+    mainImage.src = preloaded[index].src; // use preloaded
+    updateActiveButton();
+  }
+
+  // Create hour selection buttons
+  function createHourButtons() {
+    images.forEach((img, i) => {
+      const btn = document.createElement("button");
+      btn.textContent = img.label;
+      btn.className = "hourBtn";
+      btn.addEventListener("click", () => {
+        showImage(i);
+      });
+      hoursContainer.appendChild(btn);
+    });
+  }
+
+  // Highlight the active button
+  function updateActiveButton() {
+    const buttons = hoursContainer.querySelectorAll(".hourBtn");
+    buttons.forEach((btn, i) => {
+      btn.classList.toggle("active", i === currentIndex);
+    });
+  }
+
+  // Arrow navigation
+  leftArrow.addEventListener("click", () => {
+    showImage(currentIndex - 1);
+  });
+  rightArrow.addEventListener("click", () => {
+    showImage(currentIndex + 1);
+  });
+
+  // Init
+  preloadImages();
+  createHourButtons();
+  showImage(0);
+</script>
+
+</body>
+</html>

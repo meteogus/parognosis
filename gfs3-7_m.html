@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GFS_3-7</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #222;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+  }
+
+  #container {
+    width: 600px;
+    max-width: 90vw;
+    user-select: none;
+  }
+
+  #mainImage {
+    width: 100%;
+    border-radius: 8px;
+    display: block;
+  }
+
+  /* ΚΕΝΤΡΙΚΑ βελάκια κάτω από την εικόνα */
+  #arrowsContainer {
+    margin-top: 12px;
+    display: flex;
+    justify-content: center;
+    gap: 50px;           /* απόσταση μεταξύ βελών */
+    width: 600px;
+    max-width: 90vw;
+  }
+
+  .arrow {
+    width: 40px;
+    height: 40px;
+    background: rgba(0,0,0,0.4);
+    color: #fff;
+    font-size: 28px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    transition: background 0.3s;
+  }
+
+  .arrow:hover {
+    background: rgba(0,0,0,0.7);
+  }
+
+  #hoursContainer {
+    margin-top: 15px;
+    width: 600px;
+    max-width: 90vw;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
+  }
+
+  .hourBtn {
+    background: rgba(0,0,0,0.6);
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    padding: 6px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .hourBtn:hover,
+  .hourBtn.active {
+    background: #1e90ff;
+  }
+</style>
+</head>
+
+<body>
+
+<div id="container">
+  <img id="mainImage" src="" alt="Forecast Image" />
+</div>
+
+<div id="arrowsContainer">
+  <div id="leftArrow" class="arrow">&#10094;</div>
+  <div id="rightArrow" class="arrow">&#10095;</div>
+</div>
+
+<div id="hoursContainer"></div>
+
+<script>
+  // URLs εικόνων με τις ώρες
+  const images = [
+    { url: "https://modeles2.meteociel.fr/modeles_gfs/run/84-779GR.GIF", label: "+84h" },
+    { url: "https://modeles2.meteociel.fr/modeles_gfs/run/90-779GR.GIF", label: "+90h" },
+    { url: "https://modeles2.meteociel.fr/modeles_gfs/run/96-779GR.GIF", label: "+96h" },
+    { url: "https://modeles2.meteociel.fr/modeles_gfs/run/102-779GR.GIF", label: "+102h" },
+    { url: "https://modeles2.meteociel.fr/modeles_gfs/run/108-779GR.GIF", label: "+108h" },
+    { url: "https://modeles2.meteociel.fr/modeles_gfs/run/114-779GR.GIF", label: "+114h" },
+    { url: "https://modeles2.meteociel.fr/modeles_gfs/run/120-779GR.GIF", label: "+120h" },
+    { url: "https://modeles2.meteociel.fr/modeles_gfs/run/126-779GR.GIF", label: "+126h" },
+    { url: "https://modeles2.meteociel.fr/modeles_gfs/run/132-779GR.GIF", label: "+132h" },
+    { url: "https://modeles2.meteociel.fr/modeles_gfs/run/138-779GR.GIF", label: "+138h" },
+    { url: "https://modeles2.meteociel.fr/modeles_gfs/run/144-779GR.GIF", label: "+144h" },
+    { url: "https://modeles2.meteociel.fr/modeles_gfs/run/150-779GR.GIF", label: "+150h" },
+    { url: "https://modeles2.meteociel.fr/modeles_gfs/run/156-779GR.GIF", label: "+156h" },
+    { url: "https://modeles2.meteociel.fr/modeles_gfs/run/162-779GR.GIF", label: "+162h" },
+    { url: "https://modeles2.meteociel.fr/modeles_gfs/run/168-779GR.GIF", label: "+168h" }
+  ];
+
+  const mainImage = document.getElementById("mainImage");
+  const leftArrow = document.getElementById("leftArrow");
+  const rightArrow = document.getElementById("rightArrow");
+  const hoursContainer = document.getElementById("hoursContainer");
+
+  let currentIndex = 0;
+
+  // Φόρτωση αρχικής εικόνας
+  function showImage(index) {
+    if (index < 0) index = images.length - 1;
+    if (index >= images.length) index = 0;
+    currentIndex = index;
+    mainImage.src = images[index].url;
+    updateActiveButton();
+  }
+
+  // Δημιουργία κουμπιών ωρών
+  function createHourButtons() {
+    images.forEach((img, i) => {
+      const btn = document.createElement("button");
+      btn.textContent = img.label;
+      btn.className = "hourBtn";
+      btn.addEventListener("click", () => {
+        showImage(i);
+      });
+      hoursContainer.appendChild(btn);
+    });
+  }
+
+  // Επισημαίνει το ενεργό κουμπί
+  function updateActiveButton() {
+    const buttons = hoursContainer.querySelectorAll(".hourBtn");
+    buttons.forEach((btn, i) => {
+      btn.classList.toggle("active", i === currentIndex);
+    });
+  }
+
+  // Βελάκια
+  leftArrow.addEventListener("click", () => {
+    showImage(currentIndex - 1);
+  });
+  rightArrow.addEventListener("click", () => {
+    showImage(currentIndex + 1);
+  });
+
+  // Αρχικοποίηση
+  createHourButtons();
+  showImage(0);
+
+</script>
+
+</body>
+</html>

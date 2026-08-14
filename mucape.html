@@ -1,0 +1,255 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "https://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+
+<meta https-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta https-equiv="Content-Language" content="en-US">
+<title>MUCAPE</title>
+<meta name="Keywords" content="Weather, Greece, Europe, Model, WRF, ARW, NMM, Meteo, GFS, ECMWF, Meteograms">
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-36061488-1']);
+_gaq.push(['_setDomainName', '.inmeteo.gr']);
+    _gaq.push(['_trackPageview']);
+    (function () {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'https://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+
+<script src="/assets/scripts/jquery-1.4.3.min.js"></script>
+</script></head><body bgcolor="#ffffff"><div id="perouter" style="position: absolute; visibility: hidden; background-color: white; left: 312px; top: 375px;"><table border="0" cellpadding="0" cellspacing="1"><tbody><tr><td valign="center" width="100%" height="25"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td bgcolor="white" valign="center" width="100%" height="25"><center><font color="red" size="3" face="verdana">Loading Images...</font></center></td></tr></tbody></table><div id="perdone" style="position:absolute; top:1px; left:1px; width:100%; height:25px; background-color:red; z-index:100"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td bgcolor="red" valign="center" width="100%" height="25"><center><font color="white" size="3" face="verdana">Loading Images...</font></center></td></tr></tbody></table></div></td></tr></tbody></table></div>
+
+<p>
+  <csscriptdict import="">  </csscriptdict>
+  <csactiondict>  </csactiondict>
+  
+  <script language="JavaScript">
+<!--
+<!-- Original:  Ricocheting (ricocheting@hotmail.com) -->
+<!-- Web Site:  https://www.ricocheting.com -->
+
+<!-- This script and many more are available free online at -->
+<!-- The JavaScript Source!! https://javascript.internet.com -->
+
+<!-- Begin
+var rotate_delay = 1000; // delay in milliseconds (5000 = 5 secs)
+current = 0;
+function next() {
+if (document.slideform.slide[current+1]) {
+document.images.show.src = document.slideform.slide[current+1].value;
+document.slideform.slide.selectedIndex = ++current;
+   }
+else first();
+}
+function previous() {
+if (current-1 >= 0) {
+document.images.show.src = document.slideform.slide[current-1].value;
+document.slideform.slide.selectedIndex = --current;
+   }
+else last();
+}
+function first() {
+current = 0;
+document.images.show.src = document.slideform.slide[0].value;
+document.slideform.slide.selectedIndex = 0;
+}
+function last() {
+current = document.slideform.slide.length-1;
+document.images.show.src = document.slideform.slide[current].value;
+document.slideform.slide.selectedIndex = current;
+}
+function ap(text) {
+document.slideform.slidebutton.value = (text == "Stop") ? "Start" : "Stop";
+rotate();
+}
+function change() {
+current = document.slideform.slide.selectedIndex;
+document.images.show.src = document.slideform.slide[current].value;
+}
+function rotate() {
+if (document.slideform.slidebutton.value == "Stop") {
+current = (current == document.slideform.slide.length-1) ? 0 : current+1;
+document.images.show.src = document.slideform.slide[current].value;
+document.slideform.slide.selectedIndex = current;
+window.setTimeout("rotate()", rotate_delay);
+   }
+}
+//  End -->
+
+function MM_jumpMenu(targ,selObj,restore){ //v3.0
+  eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'");
+  if (restore) selObj.selectedIndex=0;
+}
+//-->
+
+$(document).ready(function(){
+       $.each($('option'), function(index, item){
+               $(this).val($(this).val() + '?t=' + new Date().getTime().toString());
+       });
+
+       $('img').attr('src',$($('option')[0]).val() +'?t=' + new Date().getTime().toString());
+});
+</script>
+  
+  <style type="text/css">
+<!--
+
+#highlighter {
+	position: absolute;
+	left: 0;
+	font-size: 12px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	background-color: #ffffff;
+	clip: rect(0px 0px auto 0px);
+	color: #EBEBEB;
+	font-style: normal;
+	width: auto;
+	padding: 1px 0;
+	padding-left: 8px;
+	font-weight: normal;
+}
+#highlighter a{
+	font-weight: normal;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #999900;
+	font-style: normal;	
+	text-decoration: none;	
+}
+#highlighter a:visited{
+	color: #999900;
+	
+}
+#highlighter a:active{
+	color: #FF0000;
+}
+#highlighter a:hover{
+	text-decoration: underline;	
+}
+
+
+body {
+	background-color: #ffffff;
+}
+body,td,th {
+	color: #ffffff;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	border: 0;
+}
+a:link {
+	color: #FFFFFF;
+}
+a:visited {
+	color: #666666;
+}
+a:hover {
+	color: #999999;
+}
+a:active {
+	color: #FF0000;
+}
+.Stile75 {font-size: 40px}
+.Stile80 {font-size: 40px}
+.Stile92 {
+	font-size: 25px;
+	width: 60px;
+	padding-bottom: 1px;
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 1px;
+	height: 40px;
+}
+.Stile96 {color: #FFFFFF; font-family: Arial, Helvetica, sans-serif; font-size: 24px; font-weight: bold; font-style: italic; }
+.Stile99 {font-family: Geneva, Arial, Helvetica, sans-serif; font-size: 12px; color: #CCCCCC; }
+.Stile103 {
+	font-size: 25px;
+	font-style: normal;
+	color: #000000;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	padding-bottom: 1px;
+	padding-top: 1px;
+	height: 40px;
+}
+.Stile45 {
+	font-size: 24px;
+	font-style: normal;
+	color: #CCCCCC;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: normal;
+}
+.Stile106 {font-size: 40px}
+.Stile108 {font-size: 40px; color: #FFFFFF; font-family: Arial, Helvetica, sans-serif;}
+.Stile42 {	color: #CCCCCC;
+	font-size: 14px;
+	font-style: normal;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	text-decoration: none;
+}
+-->
+</style>
+</p>
+<form name="slideform">
+  <table width="100%" height="100" align="left" cellpadding="1" cellspacing="1" bgcolor="#FFFFFF">
+  <tbody>
+  <tr>
+    <td height="890" colspan="3" valign="top" bordercolor="0" bgcolor="#FFFFFF"><div align="center"></div>
+        <div align="center">
+          <p><img src="https://stratus.meteo.noa.gr/data/gfs/GFS_mucape_mucin_GR_t6.png" name="show" id="show" width="732" height="590"></p>
+          </div>
+        
+          <div align="center">
+            <p>
+              <input name="button22" class="Stile92" title="Beginning" onClick="first();" value="|&lt;&lt;" type="button"> 
+              <input name="button222" class="Stile92" title="Previous" onClick="previous();" value=" &lt;" type="button"> 
+              <input name="button" class="Stile92" title="Next" onClick="next();" value=" &gt;" type="button">  
+              <input name="button2" class="Stile92" title="End" onClick="last();" value="&gt;&gt;|" type="button">
+              <select name="slide" size="1" onChange="change();">
+                <option value="https://stratus.meteo.noa.gr/data/gfs/GFS_mucape_mucin_GR_t6.png">+06h</option>
+                <option value="https://stratus.meteo.noa.gr/data/gfs/GFS_mucape_mucin_GR_t9.png">+09h</option>
+                <option value="https://stratus.meteo.noa.gr/data/gfs/GFS_mucape_mucin_GR_t12.png">+12h </option>
+                <option value="https://stratus.meteo.noa.gr/data/gfs/GFS_mucape_mucin_GR_t15.png">+15h </option>
+                <option value="https://stratus.meteo.noa.gr/data/gfs/GFS_mucape_mucin_GR_t18.png">+18h </option>
+                <option value="https://stratus.meteo.noa.gr/data/gfs/GFS_mucape_mucin_GR_t21.png">+21h </option>
+                <option value="https://stratus.meteo.noa.gr/data/gfs/GFS_mucape_mucin_GR_t24.png">+24h </option>
+                <option value="https://stratus.meteo.noa.gr/data/gfs/GFS_mucape_mucin_GR_t27.png">+27h </option>
+                <option value="https://stratus.meteo.noa.gr/data/gfs/GFS_mucape_mucin_GR_t30.png">+30h </option>
+                <option value="https://stratus.meteo.noa.gr/data/gfs/GFS_mucape_mucin_GR_t33.png">+33h </option>
+                <option value="https://stratus.meteo.noa.gr/data/gfs/GFS_mucape_mucin_GR_t36.png">+36h </option>
+                <option value="https://stratus.meteo.noa.gr/data/gfs/GFS_mucape_mucin_GR_t39.png">+39h </option>
+                <option value="https://stratus.meteo.noa.gr/data/gfs/GFS_mucape_mucin_GR_t42.png">+42h </option>
+                <option value="https://stratus.meteo.noa.gr/data/gfs/GFS_mucape_mucin_GR_t45.png">+45h </option>
+                <option value="https://stratus.meteo.noa.gr/data/gfs/GFS_mucape_mucin_GR_t48.png">+48h </option>
+                <option value="https://stratus.meteo.noa.gr/data/gfs/GFS_mucape_mucin_GR_t51.png">+51h </option>
+                <option value="https://stratus.meteo.noa.gr/data/gfs/GFS_mucape_mucin_GR_t54.png">+54h </option>
+                <option value="https://stratus.meteo.noa.gr/data/gfs/GFS_mucape_mucin_GR_t57.png">+57h </option>
+                <option value="https://stratus.meteo.noa.gr/data/gfs/GFS_mucape_mucin_GR_t60.png">+60h </option>
+                <option value="https://stratus.meteo.noa.gr/data/gfs/GFS_mucape_mucin_GR_t63.png">+63h </option>
+                <option value="https://stratus.meteo.noa.gr/data/gfs/GFS_mucape_mucin_GR_t66.png">+66h </option>
+                <option value="https://stratus.meteo.noa.gr/data/gfs/GFS_mucape_mucin_GR_t69.png">+69h </option>
+                <option value="https://stratus.meteo.noa.gr/data/gfs/GFS_mucape_mucin_GR_t72.png">+72h </option>
+                <option value="https://stratus.meteo.noa.gr/data/gfs/GFS_mucape_mucin_GR_t75.png">+75h </option>
+                <option value="https://stratus.meteo.noa.gr/data/gfs/GFS_mucape_mucin_GR_t78.png">+78h </option>
+                <option value="https://stratus.meteo.noa.gr/data/gfs/GFS_mucape_mucin_GR_t81.png">+81h </option>
+                <option value="https://stratus.meteo.noa.gr/data/gfs/GFS_mucape_mucin_GR_t84.png">+84h </option>
+                <option value="https://stratus.meteo.noa.gr/data/gfs/GFS_mucape_mucin_GR_t87.png">+87h </option>
+                <option value="https://stratus.meteo.noa.gr/data/gfs/GFS_mucape_mucin_GR_t90.png">+90h </option>
+                <option value="https://stratus.meteo.noa.gr/data/gfs/GFS_mucape_mucin_GR_t93.png">+93h </option>
+                <option value="https://stratus.meteo.noa.gr/data/gfs/GFS_mucape_mucin_GR_t96.png">+96h </option>
+              </select>
+            </p>
+          </div>
+          <div align="center"></div>
+      <div align="center"></div></td>
+  </tr>
+</tbody></table>
+<p>&nbsp;</p>
+</form>
+
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body></html>

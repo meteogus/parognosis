@@ -1,0 +1,83 @@
+<html>
+<html><head><title>Sat-EastMed</title>
+<script type="text/javascript" src="highslide/highslide.js"></script>
+<link rel="icon" type="image/x-icon" href="https://grhost.info/parognosis/meteo.png">
+<style>
+.button {
+  position: relative;
+  background-color: black;
+  border: none;
+  font-size: 15px;
+  color: white;
+  padding: 10px;
+  width: 80px;
+  text-align: center;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.button:after {
+  content: "";
+  background: #f1f1f1;
+  display: block;
+  position: absolute;
+  padding-top: 300%;
+  padding-left: 350%;
+  margin-left: -20px !important;
+  margin-top: -120%;
+  opacity: 0;
+  transition: all 0.8s
+}
+
+.button:active:after {
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  transition: 0s
+}
+
+.topic { font-size: 22px; color: blue; text-decoration: none; }
+a:link {
+text-decoration: underline;
+}
+
+
+table.center {
+  margin-left: auto; 
+  margin-right: auto;
+}
+
+
+</style>
+</head>
+<body>
+<script type="text/javascript" src="highslide/highslide.js"></script>
+	<link rel="stylesheet" type="text/css" href="highslide/highslide.css" />
+
+<div id='wrapper' style='text-align: center;'>
+    <div style='display: inline-block; vertical-align: top; font-colour: yellow;'>
+
+<table width="200" border="1" class="center">
+
+
+  <tr>
+    <th scope="row"><a href="https://stratus.meteo.noa.gr/forecast/safnwc/EastMed_Colorized_IR.jpg"class="highslide" onclick="return hs.expand(this)"><img src="https://stratus.meteo.noa.gr/forecast/safnwc/EastMed_Colorized_IR.jpg" width="480" height="400"/></th>
+    <td><a href="https://stratus.meteo.noa.gr/forecast/safnwc/EastMed_Colorize_IR_ZEUS.jpg"class="highslide" onclick="return hs.expand(this)"><img src="https://stratus.meteo.noa.gr/forecast/safnwc/EastMed_Colorize_IR_ZEUS.jpg" width="480" height="400"/></td>
+    <td><a href="https://stratus.meteo.noa.gr/forecast/safnwc/EastMed_Dust.jpg"class="highslide" onclick="return hs.expand(this)"><img src="https://stratus.meteo.noa.gr/forecast/safnwc/EastMed_Dust.jpg" width="480" height="400"/></td>
+  </tr>
+
+
+  <tr>
+    <th scope="row"><a href="https://stratus.meteo.noa.gr/forecast/safnwc/RDT_EM.png"class="highslide" onclick="return hs.expand(this)"><img src="https://stratus.meteo.noa.gr/forecast/safnwc/RDT_EM.png" width="480" height="400"/></th>
+    <td><a href="https://stratus.meteo.noa.gr/forecast/safnwc/CentralMed_Vis_Sharpened_IR.jpg"class="highslide" onclick="return hs.expand(this)"><img src="https://stratus.meteo.noa.gr/forecast/safnwc/CentralMed_Vis_Sharpened_IR.jpg" width="480" height="400"/></td>
+    <td><a href="https://stratus.meteo.noa.gr/forecast/safnwc/CB_Med_DayNight_VIS_IR.jpg"class="highslide" onclick="return hs.expand(this)"><img src="https://stratus.meteo.noa.gr/forecast/safnwc/CB_Med_DayNight_VIS_IR.jpg" width="480" height="400"/></td>
+  </tr>
+
+
+</table>
+<br>
+
+
