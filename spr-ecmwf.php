@@ -1,9 +1,9 @@
 <html><head><title>AVG ECMWF</title>
-<script src="https://grhost.info/parognosis/Javascripts/jquery-2.1.1.min.js"></script>
-<script src="https://grhost.info/parognosis/Javascripts/jquery.detect_swipe.js"></script>
-<script src="https://grhost.info/parognosis/Javascripts/JsImageLoop.js"></script>
-<link rel="stylesheet" type="text/css" href="https://grhost.info/parognosis/Javascripts/JsImageLoop.css">
-<link rel="icon" type="image/x-icon" href="https://grhost.info/parognosis/meteo.png">
+<script src="https://github.com/meteogus/parognosis/Javascripts/jquery-2.1.1.min.js"></script>
+<script src="https://github.com/meteogus/parognosis/Javascripts/jquery.detect_swipe.js"></script>
+<script src="https://github.com/meteogus/parognosis/Javascripts/JsImageLoop.js"></script>
+<link rel="stylesheet" type="text/css" href="https://github.com/meteogus/parognosis/Javascripts/JsImageLoop.css">
+<link rel="icon" type="image/x-icon" href="https://github.com/meteogus/parognosis/meteo.png">
 <style type="text/css">
 *,body {
 font-weight: none;
@@ -100,17 +100,17 @@ useroptions.content = [];
 <body>
 <div id='wrapper' style='text-align: center;'>
     <div style='display: inline-block; vertical-align: top;'>
-<a href="https://grhost.info/parognosis/z500.php">z500</a>&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://grhost.info/parognosis/t850.php">t850</a>&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://grhost.info/parognosis/gfs0-4.php">GFS 0-4</a>&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://grhost.info/parognosis/gfs4-10.php">GFS 4-10</a>&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://grhost.info/parognosis/gfs10-16.php">GFS 10-16</a>&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://grhost.info/parognosis/ecmwf0-6.php">ECMWF 0-6</a>&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://grhost.info/parognosis/ecmwf6-10.php">ECMWF 6-10</a>&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://grhost.info/parognosis/gem.php">GEM</a>&nbsp;&nbsp;&nbsp;
-<a href="https://grhost.info/parognosis/icon.php">ICON</a>&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://grhost.info/parognosis/spr-gfs.php">SPR GFS</a>&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://grhost.info/parognosis/spr-ecmwf.php">SPR ECMWF</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://github.com/meteogus/parognosis/z500.php">z500</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://github.com/meteogus/parognosis/t850.php">t850</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://github.com/meteogus/parognosis/gfs0-4.php">GFS 0-4</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://github.com/meteogus/parognosis/gfs4-10.php">GFS 4-10</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://github.com/meteogus/parognosis/gfs10-16.php">GFS 10-16</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://github.com/meteogus/parognosis/ecmwf0-6.php">ECMWF 0-6</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://github.com/meteogus/parognosis/ecmwf6-10.php">ECMWF 6-10</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://github.com/meteogus/parognosis/gem.php">GEM</a>&nbsp;&nbsp;&nbsp;
+<a href="https://github.com/meteogus/parognosis/icon.php">ICON</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://github.com/meteogus/parognosis/spr-gfs.php">SPR GFS</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://github.com/meteogus/parognosis/spr-ecmwf.php">SPR ECMWF</a>&nbsp;&nbsp;&nbsp;&nbsp;
  </p>
 
 <script src="//static.getclicky.com/js" type="text/javascript"></script>

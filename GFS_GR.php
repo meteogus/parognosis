@@ -54,7 +54,7 @@
 <button class="button" onclick="ShiftPlot(+6)">t+12</button>
 <button class="button" onclick="ShiftPlot(+24)">t+24</button>
 
-<a href="https://grhost.info/parognosis/BOLAM_GR.php"style="font-size: 20px">GFS_GR</a>&nbsp;
+<a href="https://github.com/meteogus/parognosis/BOLAM_GR.php"style="font-size: 20px">GFS_GR</a>&nbsp;
 <a href="https://meteovolos.gr/GFS_GR.php"style="font-size: 20px" target=_blank>Meteovolos</a>
 
 

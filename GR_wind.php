@@ -1,7 +1,7 @@
 <html>
 <html><head><title>GR wind</title>
 <script type="text/javascript" src="highslide/highslide.js"></script>
-<link rel="icon" type="image/x-icon" href="https://grhost.info/parognosis/meteo.png">
+<link rel="icon" type="image/x-icon" href="https://github.com/meteogus/parognosis/meteo.png">
 <style>
 .button {
   position: relative;

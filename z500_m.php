@@ -83,9 +83,9 @@
 <body>
 
 <div class="sticky-top-0">
-<button class="button"  onclick="location.href='https://grhost.info/parognosis/GFS_EM_panel_m.php'" type="button">Maps</button>
-<button class="button"  onclick="location.href='https://grhost.info/parognosis/z500_m.php'" type="button">500</button>
-<button class="button"  onclick="location.href='https://grhost.info/parognosis/t850_m.php'" type="button">850</button>
+<button class="button"  onclick="location.href='https://github.com/meteogus/parognosis/GFS_EM_panel_m.php'" type="button">Maps</button>
+<button class="button"  onclick="location.href='https://github.com/meteogus/parognosis/z500_m.php'" type="button">500</button>
+<button class="button"  onclick="location.href='https://github.com/meteogus/parognosis/t850_m.php'" type="button">850</button>
 <button class="button"  onclick="ShiftPlot(-24)">t-24</button>
 <button class="button"  onclick="ShiftPlot(+24)">t+24</button>
 </div>

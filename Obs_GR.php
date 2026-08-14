@@ -1,7 +1,7 @@
 
 <html>
 <html><head><title>GR Observations</title>
-<link rel="icon" type="image/x-icon" href="https://grhost.info/parognosis/meteo.png">
+<link rel="icon" type="image/x-icon" href="https://github.com/meteogus/parognosis/meteo.png">
 <style>
 .button {
   position: relative;
@@ -48,16 +48,16 @@
 <div id='wrapper' style='text-align: left;'>
     <div style='display: inline-block; vertical-align: top; font-size: 15px;'>
     <p>Domains - Observatories:
-<a href="https://grhost.info/parognosis/Obs_GR.php">Greece</a> 
+<a href="https://github.com/meteogus/parognosis/Obs_GR.php">Greece</a> 
 <a href="https://www.meteo.gr/attica/"target="_blank">Attica</a>
 <a href="https://www.meteo.gr/crete/"target="_blank">Crete</a>
 <a href="https://www.meteo.gr/thessaloniki/"target="_blank">Thessaloniki</a>
 <a href="https://www.meteo.gr/observations_Europe.cfm"target="_blank">Europe</a>
-<a href="https://grhost.info/parognosis/sst.php">SST</a>
-<a href="https://grhost.info/parognosis/strikes.php">Strikes</a>
-<a href="https://grhost.info/parognosis/snowcover.php">Snow cover</a>
+<a href="https://github.com/meteogus/parognosis/sst.php">SST</a>
+<a href="https://github.com/meteogus/parognosis/strikes.php">Strikes</a>
+<a href="https://github.com/meteogus/parognosis/snowcover.php">Snow cover</a>
 <a href="http://map.disarmfire.eu/Greece"target="_blank">Fire</a>
-<a href="https://grhost.info/parognosis/BOLAM_GR.php">Forecast maps</a>
+<a href="https://github.com/meteogus/parognosis/BOLAM_GR.php">Forecast maps</a>
 
 
     </div>

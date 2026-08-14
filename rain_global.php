@@ -1,9 +1,9 @@
 <html><head><title>ICON</title>
-<script src="https://grhost.info/parognosis/Javascripts/jquery-2.1.1.min.js"></script>
-<script src="https://grhost.info/parognosis/Javascripts/jquery.detect_swipe.js"></script>
-<script src="https://grhost.info/parognosis/Javascripts/JsImageLoop.js"></script>
-<link rel="stylesheet" type="text/css" href="https://grhost.info/parognosis/Javascripts/JsImageLoop.css">
-<link rel="icon" type="image/x-icon" href="https://grhost.info/parognosis/meteo.png">
+<script src="https://github.com/meteogus/parognosis/Javascripts/jquery-2.1.1.min.js"></script>
+<script src="https://github.com/meteogus/parognosis/Javascripts/jquery.detect_swipe.js"></script>
+<script src="https://github.com/meteogus/parognosis/Javascripts/JsImageLoop.js"></script>
+<link rel="stylesheet" type="text/css" href="https://github.com/meteogus/parognosis/Javascripts/JsImageLoop.css">
+<link rel="icon" type="image/x-icon" href="https://github.com/meteogus/parognosis/meteo.png">
 <style type="text/css">
 *,body {
 font-weight: none;

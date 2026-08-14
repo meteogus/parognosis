@@ -9,23 +9,23 @@
     <select onchange="document.getElementById('contentFrame').src=this.value" 
             style="font-size: 22px; padding: 5px;">
         <option value="">Select...</option>
-        <option value="https://grhost.info/parognosis/GR_precipitation.php">Precipitation</option>
-        <option value="https://grhost.info/parognosis/GR_wind.php">Wind</option>
-        <option value="https://grhost.info/parognosis/GR_temp.php">Temperature</option>
-        <option value="https://grhost.info/parognosis/strikes.php">Strikes</option>
-        <option value="https://grhost.info/parognosis/sst.php">SST</option>
-        <option value="https://grhost.info/parognosis/snowcover.php">Snow cover</option>
-        <option value="https://grhost.info/parognosis/msg.php">MSG</option>
-        <option value="https://grhost.info/parognosis/sat_gr.php">Sat-GR</option>
-        <option value="https://grhost.info/parognosis/SAF_anim.php">SAF-Anim</option>
-        <option value="https://grhost.info/parognosis/dust_obs.php">Dust</option>
+        <option value="https://github.com/meteogus/parognosis/GR_precipitation.php">Precipitation</option>
+        <option value="https://github.com/meteogus/parognosis/GR_wind.php">Wind</option>
+        <option value="https://github.com/meteogus/parognosis/GR_temp.php">Temperature</option>
+        <option value="https://github.com/meteogus/parognosis/strikes.php">Strikes</option>
+        <option value="https://github.com/meteogus/parognosis/sst.php">SST</option>
+        <option value="https://github.com/meteogus/parognosis/snowcover.php">Snow cover</option>
+        <option value="https://github.com/meteogus/parognosis/msg.php">MSG</option>
+        <option value="https://github.com/meteogus/parognosis/sat_gr.php">Sat-GR</option>
+        <option value="https://github.com/meteogus/parognosis/SAF_anim.php">SAF-Anim</option>
+        <option value="https://github.com/meteogus/parognosis/dust_obs.php">Dust</option>
         <option value="https://www.meteo.gr/attica/">Attica</option>
         <option value="https://www.meteo.gr/crete/">Crete</option>
         <option value="https://www.meteo.gr/thessaloniki/">Salonica</option>
     </select>
 </div>
 
-<iframe id="contentFrame" src="https://grhost.info/parognosis/sat_gr.php" 
+<iframe id="contentFrame" src="https://github.com/meteogus/parognosis/sat_gr.php" 
         name="kostas" style="position:absolute; top:50px; left:0; width:100%; height:95%; border:0;">
 </iframe>
 </body>

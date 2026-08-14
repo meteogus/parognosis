@@ -1,6 +1,6 @@
 <html>
 <html><head><title>NWCSAF</title>
-<link rel="icon" type="image/x-icon" href="https://grhost.info/parognosis/meteo.png">
+<link rel="icon" type="image/x-icon" href="https://github.com/meteogus/parognosis/meteo.png">
 <style>
 .button {
   position: relative;
