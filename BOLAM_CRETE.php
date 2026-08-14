@@ -1,10 +1,10 @@
 
 <html><head><title>BOLAM Crete</title>
-<script src="https://github.com/meteogus/parognosis/Javascripts/jquery-2.1.1.min.js"></script>
-<script src="https://github.com/meteogus/parognosis/Javascripts/jquery.detect_swipe.js"></script>
-<script src="https://github.com/meteogus/parognosis/Javascripts/JsImageLoop.js"></script>
-<link rel="stylesheet" type="text/css" href="https://github.com/meteogus/parognosis/Javascripts/JsImageLoop.css">
-<link rel="icon" type="image/x-icon" href="https://github.com/meteogus/parognosis/meteo.png">
+<script src="https://meteogus.github.io/parognosis//Javascripts/jquery-2.1.1.min.js"></script>
+<script src="https://meteogus.github.io/parognosis//Javascripts/jquery.detect_swipe.js"></script>
+<script src="https://meteogus.github.io/parognosis//Javascripts/JsImageLoop.js"></script>
+<link rel="stylesheet" type="text/css" href="https://meteogus.github.io/parognosis//Javascripts/JsImageLoop.css">
+<link rel="icon" type="image/x-icon" href="https://meteogus.github.io/parognosis//meteo.png">
 <style type="text/css">
 *,body {
 font-weight: none;
@@ -61,29 +61,29 @@ useroptions.content = [];
 <div id='wrapper' style='text-align: center;'>
     <div style='display: inline-block; vertical-align: top;'>
    LAM:&nbsp;
-<a href="https://github.com/meteogus/parognosis/BOLAM_GR.php">GREECE</a> &nbsp;
-<a href="https://github.com/meteogus/parognosis/BOLAM_ATTICA.php">ATTICA</a>&nbsp;
-<a href="https://github.com/meteogus/parognosis/BOLAM_Thessaloniki.php">SKG</a>&nbsp;
-<a href="https://github.com/meteogus/parognosis/BOLAM_NORTH.php">NORTH</a>&nbsp;
-<a href="https://github.com/meteogus/parognosis/BOLAM_SOUTH.php">SOUTH</a>&nbsp;
-<a href="https://github.com/meteogus/parognosis/BOLAM_WEST.php">WEST</a>&nbsp;
-<a href="https://github.com/meteogus/parognosis/BOLAM_Thessaly.php">THESSALY</a>&nbsp;
-<a href="https://github.com/meteogus/parognosis/BOLAM_CRETE.php">CRETE</a>&nbsp;
-<a href="https://github.com/meteogus/parognosis/noa.php">NOA</a>&nbsp;
-<a href="https://github.com/meteogus/parognosis/dust.php">Dust</a>&nbsp;
+<a href="https://meteogus.github.io/parognosis//BOLAM_GR.php">GREECE</a> &nbsp;
+<a href="https://meteogus.github.io/parognosis//BOLAM_ATTICA.php">ATTICA</a>&nbsp;
+<a href="https://meteogus.github.io/parognosis//BOLAM_Thessaloniki.php">SKG</a>&nbsp;
+<a href="https://meteogus.github.io/parognosis//BOLAM_NORTH.php">NORTH</a>&nbsp;
+<a href="https://meteogus.github.io/parognosis//BOLAM_SOUTH.php">SOUTH</a>&nbsp;
+<a href="https://meteogus.github.io/parognosis//BOLAM_WEST.php">WEST</a>&nbsp;
+<a href="https://meteogus.github.io/parognosis//BOLAM_Thessaly.php">THESSALY</a>&nbsp;
+<a href="https://meteogus.github.io/parognosis//BOLAM_CRETE.php">CRETE</a>&nbsp;
+<a href="https://meteogus.github.io/parognosis//noa.php">NOA</a>&nbsp;
+<a href="https://meteogus.github.io/parognosis//dust.php">Dust</a>&nbsp;
 
     </div>
 </div>
 <div id='wrapper' style='text-align: center;'>
     <div style='display: inline-block; vertical-align: top;'>
     <p>GLOBAL:&nbsp;
-<a href="https://github.com/meteogus/parognosis/GFS_EM_panel.php">Synoptic</a>&nbsp;
-<a href="https://github.com/meteogus/parognosis/storms.php">Storms</a>&nbsp;
-<a href="https://github.com/meteogus/parognosis/snow.php">Snow</a>&nbsp;
+<a href="https://meteogus.github.io/parognosis//GFS_EM_panel.php">Synoptic</a>&nbsp;
+<a href="https://meteogus.github.io/parognosis//storms.php">Storms</a>&nbsp;
+<a href="https://meteogus.github.io/parognosis//snow.php">Snow</a>&nbsp;
 
 <a href="http://www.simeteo.gr/forecast2/500.htm" target="_blank">z500</a>&nbsp;
-<a href="https://github.com/meteogus/parognosis/GFS_EM.php">More...</a>&nbsp;
-<a href="https://github.com/meteogus/parognosis/z500.php" style="color:red;">COMPARISON</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://meteogus.github.io/parognosis//GFS_EM.php">More...</a>&nbsp;
+<a href="https://meteogus.github.io/parognosis//z500.php" style="color:red;">COMPARISON</a>&nbsp;&nbsp;&nbsp;&nbsp;
 
 
 <script src="//static.getclicky.com/js" type="text/javascript"></script>

@@ -1,7 +1,7 @@
 <html>
 <html><head><title>Snowcover</title>
 <script type="text/javascript" src="highslide/highslide.js"></script>
-<link rel="icon" type="image/x-icon" href="https://github.com/meteogus/parognosis/meteo.png">
+<link rel="icon" type="image/x-icon" href="https://meteogus.github.io/parognosis//meteo.png">
 <style>
 .button {
   position: relative;
