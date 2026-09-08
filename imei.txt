@@ -1,0 +1,49 @@
+01304600796503 9
+
+sn=DNVH3LATDTC0
+
+
+UDID=3E980501FA4957164DEB056425E9AC14EBAF53FC
+
+
+
+
+DATA
+====
+Device Name:			iPhone
+Device Model:			iPhone
+Product Type:			iPhone4,1
+iOS Version: 			8.1.3
+Serial Number: 				DNVH3LATDTC0
+UDID:			3e980501fa4957164deb056425e9ac14ebaf53fc
+Model:			MD235
+Product Version:			12B466
+Hardware Model:			N94AP
+Device Color:			black
+Region Info:			GB/A
+CPU Architecture:			armv7f
+Wi-Fi Address:			44:d8:84:1e:18:e0
+Bluetooth:			44:d8:84:1e:18:e1
+Firmware Version:			iBoot-2261.3.33
+Active Status:			Unactivated
+Baseband Version:			5.4.00
+Baseband Chip:			5898465
+Baseband Certificate:			2
+ICCID:				89300500203280117188
+IMEI:				013046007965039
+MLB Serial number:			DQ520311D72DR42D
+Subscribe area code:			202
+Subscribe to a web code:			05
+Password Protection:			False
+Product SOC:			True
+Protocol Version: 			2
+SIM Card Status:			kCTSIMSupportSIMStatusReady
+Device Family:			1 
+Unix Time:			1496690685
+Time Zone: 				Europe/Athens
+Time Zone Difference: 				10800
+Chip ID:			2830116127624
+24-hour System:			False
+Charging:			True
+Remaining Power:			62
+Contact:			https://www.apple.com/support/contact/phone_contacts.html

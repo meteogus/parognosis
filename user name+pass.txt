@@ -1,0 +1,129 @@
+https://www.thegreekz.com/forum/showthread.php?250886-Free-Web-Hosting (all links)
+
+
+GRHOST
+======
+FTP στο grhost.info με username parognosis και password #6934225193#
+Ότι ανεβάζεις θα πρέπει να μπαίνει μέσα στον φάκελο public_html
+Παράκληση αυτά που θα ανεβάζεις να μην ξεπερνούν τα 200-300 ΜΒ
+Λογικά πρέπει να δουλεύουν και οι 2 παρακάτω σύνδεσμοι
+https://grhost.info/~parognosis/
+https://meteogus.github.io/parognosis~/
+
+https://grhost.info/awstats/awstats.pl?config=localhost.localdomain
+
+server load=https://grhost.info/munin/localhost/localhost-load.html
+www.favicon.cc (kataskevi logo)
+
+www.ricocheting.com (kataskevi slides)
+
+
+PHP0.COM
+========
+login (https://cpanel.php0h.com/panel/)
+username=p0_12596788/pass=123456 me link=https://meteogus.github.io/parognosis~
+username=p0_15366536/pass=123456 me link=https://kairos.php0h.com
+
+gia kainourgio account==>> https://php0h.com/signup.php
+
+
+
+              Cpanel Username:        p0_12596788
+              Cpanel Password:        123456
+              Your URL:              https://meteogus.github.io/parognosis~ or https://www.parognosis.php0h.com
+              FTP Server :            ftp.php0h.com
+              FTP Login :            p0_12596788
+              FTP Password :          123456
+              MySQL Database Name:    MUST CREATE IN CPANEL
+              MySQL Username :        p0_12596788
+              MySQL Password :        123456
+              MySQL Server:          SEE THE CPANEL
+
+
+              Cpanel URL:            https://cpanel.php0h.com
+
+
+
+BYETHEHOST.COM
+===============
+login (https://cpanel.byethost.com/panel/)
+username=b6_13326379/pass=123456 me link=https://parognosis.byethost6.com
+
+gia kainourgio account==>> https://byethost.com/signup.php
+
+
+Main Hosting Details
+Control panel username
+b6_13326379
+Control panel password	**********
+Control panel URL
+https://cpanel.byethost6.com
+MySQL username
+b6_13326379
+MySQL password
+**********
+MySQL hostname
+sql110.byethost6.com
+FTP username
+b6_13326379
+FTP password
+**********
+FTP host name	ftp.byethost6.com
+
+
+Your Website URL's
+Home page
+https://parognosis.byethost6.com
+
+
+
+
+HOST.SK
+=======
+https://www.host.sk/index.php (login)
+https://parognosis.host.sk
+username=parognosis/pass=123456
+
+
+REPLACEMENTS WITH NOTEPAD++
+===========================
+Ctrl+H kai pame stin kartela "Find in Files":
+
+replace https://meteogus.github.io/parognosis~ me https://meteogus.github.io/parognosis~
+
+replace https://meteogus.github.io/parognosis~ me https://parognosis.host.sk
+
+replace https://meteogus.github.io/parognosis~ me https://parognosis.byethost7.com
+
+
+
+PDLAKI
+======
+login (https://cpanel.php0h.com/panel/)
+username=p0_14279093/pass=123456 me link=https://lamiahobs.php0h.com
+
+
+Your account is now active.
+Main Hosting Details
+Control panel username
+p0_14279093
+Control panel password	123456
+Control panel URL
+cpanel.php0h.com
+MySQL username
+p0_14279093
+MySQL password
+**********
+MySQL hostname
+sql210.php0h.com
+FTP username
+p0_14279093
+FTP password
+**********
+FTP host name	ftp.php0h.com
+
+
+Your Website URL's
+Home page
+https://lamiajobs.php0h.com
+

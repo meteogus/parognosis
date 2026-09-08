@@ -1,0 +1,25 @@
+https://stratus.meteo.noa.gr/forecast/BOLAM2020/Rain_slp_em_3.png (eos 144)
+https://stratus.meteo.noa.gr/forecast/HAIL/LIGHTNING/BOLAM_GR_PRECIP_LIG_3.png (eos 144)
+https://stratus.meteo.noa.gr/forecast/BOLAM2020/f_RR_SN_f_3.png (eos 144)
+https://stratus.meteo.noa.gr/data/icon/GR/rain/ICON_3-hrPrecip_GR_3.png (eos_GR_96.png)
+https://www.marousakis.gr/maps_new/precipitation2_0.png (0-38) wrf1
+https://www.marousakis.gr/mapsgr/precipitation2_0.png (0-38) wrf2
+
+
+document.getElementById("plot6").src = "https://stratus.meteo.noa.gr/data/gfs/GFS_totrain_GR_t"+num+".png";
+
+
+
+attica
+======
+http://www.simeteo.gr/forecast/precipitation-ath_0.png (eos 29) 
+
+
+8essalia
+========
+http://www.simeteo.gr/forecast/precipitation-thessalia_0.png (eos 29)
+
+
+peloponisos
+===========
+http://www.simeteo.gr/forecast/precipitation-peloponnisos_0.png (eos 29)
