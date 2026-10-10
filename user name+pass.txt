@@ -8,7 +8,7 @@ FTP στο grhost.info με username parognosis και password #6934225193#
 Παράκληση αυτά που θα ανεβάζεις να μην ξεπερνούν τα 200-300 ΜΒ
 Λογικά πρέπει να δουλεύουν και οι 2 παρακάτω σύνδεσμοι
 https://grhost.info/~parognosis/
-https://meteogus.github.io/parognosis~/
+https://grhost.info/parognosis~/
 
 https://grhost.info/awstats/awstats.pl?config=localhost.localdomain
 
@@ -21,7 +21,7 @@ www.ricocheting.com (kataskevi slides)
 PHP0.COM
 ========
 login (https://cpanel.php0h.com/panel/)
-username=p0_12596788/pass=123456 me link=https://meteogus.github.io/parognosis~
+username=p0_12596788/pass=123456 me link=https://grhost.info/parognosis~
 username=p0_15366536/pass=123456 me link=https://kairos.php0h.com
 
 gia kainourgio account==>> https://php0h.com/signup.php
@@ -30,7 +30,7 @@ gia kainourgio account==>> https://php0h.com/signup.php
 
               Cpanel Username:        p0_12596788
               Cpanel Password:        123456
-              Your URL:              https://meteogus.github.io/parognosis~ or https://www.parognosis.php0h.com
+              Your URL:              https://grhost.info/parognosis~ or https://www.parognosis.php0h.com
               FTP Server :            ftp.php0h.com
               FTP Login :            p0_12596788
               FTP Password :          123456
@@ -89,11 +89,11 @@ REPLACEMENTS WITH NOTEPAD++
 ===========================
 Ctrl+H kai pame stin kartela "Find in Files":
 
-replace https://meteogus.github.io/parognosis~ me https://meteogus.github.io/parognosis~
+replace https://grhost.info/parognosis~ me https://grhost.info/parognosis~
 
-replace https://meteogus.github.io/parognosis~ me https://parognosis.host.sk
+replace https://grhost.info/parognosis~ me https://parognosis.host.sk
 
-replace https://meteogus.github.io/parognosis~ me https://parognosis.byethost7.com
+replace https://grhost.info/parognosis~ me https://parognosis.byethost7.com
 
 
 
