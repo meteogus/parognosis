@@ -1,0 +1,179 @@
+<html>
+<head>
+<script type="text/javascript">
+function HSVobject (hue, saturation, value) { this.h = hue; this.s = saturation; this.v = value; this.validate = function () { if (this.h <= 0) {this.h = 0;} if (this.s <= 0) {this.s = 0;} if (this.v <= 0) {this.v = 0;} if (this.h > 360) {this.h = 360;} if (this.s > 100) {this.s = 100;} if (this.v > 100) {this.v = 100;} }; };function RGBobject (red, green, blue) { this.r = red; this.g = green; this.b = blue; this.validate = function () { if (this.r <= 0) {this.r = 0;} if (this.g <= 0) {this.g = 0;} if (this.b <= 0) {this.b = 0;} if (this.r > 255) {this.r = 255;} if (this.g > 255) {this.g = 255;} if (this.b > 255) {this.b = 255;} }; };function hexify(number) { var digits = '0123456789ABCDEF'; var lsd = number % 16; var msd = (number - lsd) / 16; var hexified = digits.charAt(msd) + digits.charAt(lsd); return hexified; };function decimalize(hexNumber) {    var digits = '0123456789ABCDEF';  return ((digits.indexOf(hexNumber.charAt(0).toUpperCase()) * 16) + digits.indexOf(hexNumber.charAt(1).toUpperCase())); }function hex2RGB (colorString, RGB) {    RGB.r = decimalize(colorString.substring(1,3));    RGB.g = decimalize(colorString.substring(3,5));    RGB.b = decimalize(colorString.substring(5,7));}function RGB2hex (RGB) { return "#" + hexify(RGB.r) + hexify(RGB.g) + hexify(RGB.b); };function rgbChange () { var RGB = new RGBobject(document.getElementById("rChannel").value, document.getElementById("gChannel").value, document.getElementById("bChannel").value); var HSV = new HSVobject(document.getElementById("hChannel").value, document.getElementById("sChannel").value, document.getElementById("vChannel").value); RGB.validate(); RGB2HSV (RGB, HSV); document.getElementById("hexColor").value = RGB2hex(RGB); updateSwatch(); document.getElementById("rChannel").value = Math.round(RGB.r); document.getElementById("gChannel").value = Math.round(RGB.g); document.getElementById("bChannel").value = Math.round(RGB.b); document.getElementById("hChannel").value = Math.round(HSV.h); document.getElementById("sChannel").value = Math.round(HSV.s); document.getElementById("vChannel").value = Math.round(HSV.v); };function hsvChange () { var RGB = new RGBobject(document.getElementById("rChannel").value, document.getElementById("gChannel").value, document.getElementById("bChannel").value); var HSV = new HSVobject(document.getElementById("hChannel").value, document.getElementById("sChannel").value, document.getElementById("vChannel").value); HSV.validate(); HSV2RGB (HSV, RGB); document.getElementById("hexColor").value = RGB2hex(RGB); updateSwatch(); document.getElementById("rChannel").value = Math.round(RGB.r); document.getElementById("gChannel").value = Math.round(RGB.g); document.getElementById("bChannel").value = Math.round(RGB.b); document.getElementById("hChannel").value = Math.round(HSV.h); document.getElementById("sChannel").value = Math.round(HSV.s); document.getElementById("vChannel").value = Math.round(HSV.v); };function hexChange () { var colorString = document.getElementById("hexColor").value; var RGB = new RGBobject(0,0,0); var HSV = new HSVobject(0,0,0); hex2RGB(colorString, RGB); RGB2HSV (RGB, HSV); document.getElementById("rChannel").value = Math.round(RGB.r); document.getElementById("gChannel").value = Math.round(RGB.g); document.getElementById("bChannel").value = Math.round(RGB.b); document.getElementById("hChannel").value = Math.round(HSV.h); document.getElementById("sChannel").value = Math.round(HSV.s); document.getElementById("vChannel").value = Math.round(HSV.v); };function updateSwatch () { document.getElementById("swatch").style.backgroundColor = document.getElementById("hexColor").value; };function RGB2HSV (RGB, HSV) { r = RGB.r / 255; g = RGB.g / 255; b = RGB.b / 255;var minVal = Math.min(r, g, b); var maxVal = Math.max(r, g, b); var delta = maxVal - minVal;HSV.v = maxVal;if (delta == 0) { HSV.h = 0; HSV.s = 0; } else { HSV.s = delta / maxVal; var del_R = (((maxVal - r) / 6) + (delta / 2)) / delta; var del_G = (((maxVal - g) / 6) + (delta / 2)) / delta; var del_B = (((maxVal - b) / 6) + (delta / 2)) / delta;if (r == maxVal) {HSV.h = del_B - del_G;} else if (g == maxVal) {HSV.h = (1 / 3) + del_R - del_B;} else if (b == maxVal) {HSV.h = (2 / 3) + del_G - del_R;};if (HSV.h < 0) {HSV.h += 1;} if (HSV.h > 1) {HSV.h -= 1;} } HSV.h *= 360; HSV.s *= 100; HSV.v *= 100; };function HSV2RGB (HSV, RGB) { var h = HSV.h / 360; var s = HSV.s / 100; var v = HSV.v / 100; if (s == 0) { RGB.r = v * 255; RGB.g = v * 255; RGB.b = v * 255; } else { var_h = h * 6; var_i = Math.floor(var_h); var_1 = v * (1 - s); var_2 = v * (1 - s * (var_h - var_i)); var_3 = v * (1 - s * (1 - (var_h - var_i)));if (var_i == 0) {var_r = v; var_g = var_3; var_b = var_1} else if (var_i == 1) {var_r = var_2; var_g = v; var_b = var_1} else if (var_i == 2) {var_r = var_1; var_g = v; var_b = var_3} else if (var_i == 3) {var_r = var_1; var_g = var_2; var_b = v} else if (var_i == 4) {var_r = var_3; var_g = var_1; var_b = v} else {var_r = v; var_g = var_1; var_b = var_2};RGB.r = var_r * 255; RGB.g = var_g * 255; RGB.b = var_b * 255; } };var tbl_head = "<table border='0' cellspacing='0' cellpadding='3' width='100%'>"; var tbl1_str = "<tr><td style='background-color:"; var tbl2_str = "; width:300px;'></td></tr>";function validateForm(){var hsv_str = "";var rgb_str = "";var tbl_str = "";tbl_str = tbl_str+tbl_head;var hex_str = ""; strings = document.tryitform.pre_code.value; RGBs = strings.split("\n");var i=0; while(i<RGBs.length){ RGBs[i] = RGBs[i].replace(',','  ');RGBs[i] = RGBs[i].replace(/^\s+|\s+$/g, '').replace(/\s+/g,' '); rgbs = RGBs[i].split(" ",3) ;document.getElementById("rChannel").value = Math.round(rgbs[0]); document.getElementById("gChannel").value = Math.round(rgbs[1]); document.getElementById("bChannel").value = Math.round(rgbs[2]); rgbChange();rgb_str = rgb_str + document.getElementById("rChannel").value+" "+document.getElementById("gChannel").value+" "+document.getElementById("bChannel").value+"<br> "; hsv_str = hsv_str + document.getElementById("hChannel").value+" "+document.getElementById("sChannel").value+" "+document.getElementById("vChannel").value+"<br> "; hex_str = hex_str +document.getElementById("hexColor").value+"<br> "; tbl_str = tbl_str+tbl1_str+document.getElementById("hexColor").value+tbl2_str; i++; };document.getElementById("updateArea.rgb").innerHTML = rgb_str; document.getElementById("updateArea.hsv").innerHTML = hsv_str; document.getElementById("updateArea.hex").innerHTML = hex_str; document.getElementById("updateArea.tbl").innerHTML = tbl_str; document.getElementById("pre_code").style.height = RGBs.length*18;};
+</script>
+<title> An RGB Triplet color table displayer </title>
+<link rel="stylesheet" href="/student/abrammer/research/basics.css" type="text/css">
+</head>
+
+
+<style>
+
+table{
+ 	font-family: Arial, sans-serif;
+    font-size: 16px;
+	min-width:300px;
+	border-collapse:separate;
+	border-spacing:0px 0px;
+	align:center;
+	}
+tr{
+	height:18px;
+	border:0px;
+	}
+td{
+	text-align:center;
+	}
+
+font{
+	background-color:white;
+	text-align:center;
+
+	}
+
+textarea {
+	width:80%;
+    min-height: 150px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: #444;
+    padding: 5px;
+}
+
+
+
+</style>
+<body >
+
+<div id='central' >
+
+
+<h2> An RGB file color table Displayer </h2>
+
+
+<!--   A Nasty Hidden Table That Should be deleted but the values are currently used :/   -->
+<div id="main" style="display:none">
+	<div id="content-column-wide">
+	  <div id="content">
+			<p></p>
+			<p></p>
+			<table border="0" cellspacing="0" cellpadding="3">
+
+		<tr><td>R</td><td>G</td><td>B</td><td></td><td>H</td><td>S</td><td>V</td></tr>
+	<tr>
+			<td valign="middle"><input tabindex="1" name="rChannel" type="text" id="rChannel" value="0" size="5" onkeyup="javascript:rgbChange();"></td>
+	        <td valign="middle"><input tabindex="2" name="gChannel" type="text" id="gChannel" value="0" size="5" onkeyup="javascript:rgbChange();"></td>
+            <td valign="middle"><input tabindex="3" name="bChannel" type="text" id="bChannel" value="0" size="5" onkeyup="javascript:rgbChange();"></td>
+	<td></td>
+	            <td valign="middle"><input tabindex="4" name="hChannel" type="text" id="hChannel" value="0" size="5" onkeyup="javascript:hsvChange();"></td>
+                <td valign="middle"><input tabindex="5" name="sChannel" type="text" id="sChannel" value="0" size="5" onkeyup="javascript:hsvChange();"></td>
+                <td valign="middle"><input tabindex="6" name="vChannel" type="text" id="vChannel" value="0" size="5" onkeyup="javascript:hsvChange();"></td>
+ 	<td></td>
+ <td>   <input tabindex="7" name="hexColor" type="text" id="hexColor" value="#000000" size="8" onkeyup="javascript:updateSwatch();hexChange();" readonly=""></td>
+ <td id="swatch" style="background-color:#000000; width:300px;"><span style="width;300px"></span></td>
+
+	</tr></table>
+	  </div>
+	</div>
+	</div>
+<!--   A Nasty Hidden Table That Should be deleted but the values are currently used :/   -->
+
+
+<font> Enter RGB Triplets in Left Column, space separated with a new line for each color, can include color names etc after 3rd number<br>
+Remove empty lines from bottom of text to clean it up.</font>
+<table border="5" cellpadding="3px" cellspacing="3px" wdith="100%">
+<tr>
+<td width="25%">
+
+<form style="margin:0px"  method="post" target="view" id="tryitform" name="tryitform" onsubmit="validateForm();">
+<input type="button" style="margin-bottom:5px;font-family:verdana;" value="Submit RGB Triplets" onclick="validateForm()">
+<textarea class="code_input" width="100%" height="100%" id="pre_code" wrap="hard" rows="3" cols="20">
+        255 255 255
+        241 249 253
+        230 246 251
+        196 232 250
+        134 201 240
+        94 170 224
+        91 168 221
+        87 165 219
+        85 165 217
+        83 159 215
+        81 156 213
+        78 153 211
+        77 152 211
+        76 151 210
+        74 148 209
+        72 145 207
+        70 142 205
+        68 140 203
+        66 137 201
+        61 131 197
+        59 127 195
+        55 121 191
+        50 116 187
+        48 113 185
+        39 101 178
+        32 89 168
+        27 71 139
+        28 67 133
+        27 62 125
+        26 56 117
+        27 46 120
+        28 45 125
+        29 42 130
+        30 39 135
+        33 38 140
+        36 37 145
+        39 37 155
+        43 36 160
+        52 34 161
+        58 31 163
+        67 29 163
+        71 28 164
+        79 27 164
+        87 24 163
+        96 23 162
+        104 22 161
+        117 22 167
+        121 20 155
+        129 19 152
+        140 18 147
+        150 18 143
+        158 18 139
+        163 18 136
+        177 19 126
+        189 20 116</textarea>
+</form>
+
+</td>
+<td valign="top" width="20%">
+<p class="result_header">RGB Triplets</p>
+<div id="updateArea.rgb"></div>
+</td>
+<td valign="top" width="20%">
+<p class="result_header">HSV Triplets</p>
+<div id="updateArea.hsv"></div>
+</td>
+<td valign="top" width="20%">
+<p class="result_header">Hex Values</p>
+<div id="updateArea.hex"></div>
+</td>
+<td valign="top" width="20%">
+<p class="result_header">Color Bar</p>
+<div id="updateArea.tbl"></div>
+</td>
+</tr>
+
+</tbody></table>
+
+
+
+
+<br style="clear:both" />
+
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,468 @@
+<!doctype html>
+<html>
+<head>
+   <title> A Title would go here</title>
+ <script type='text/javascript'>
+ 
+//==========================================================
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+//  * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+//				  JavaScript Image Loop  2013
+//				Written By A Brammer (SUNY Albany) 
+//
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+//==========================================================
+//
+//	Feel free to copy and use, please see below for most updated and improved script.
+//	http://www.atmos.albany.edu/student/abrammer/dev/LIVE/JsImageViewer.current.html
+//
+//		Credit to jsImagePlayer1.0(c)BASTaRT_1996 for idea
+//		Completely rewritten with improved functionality
+//			keyboard commands and multiple variables
+//
+//			  contact abrammer 'at' albany.edu  
+//==========================================================
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+//  * * * * * * * * * * * * * * * * * * * * * * * * * * * *  
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+//==========================================================
+ 
+root = "http://www.atmos.albany.edu/student/abrammer/graphics/cfsr/GFS/relvort850/"   // change this to the appropriate folder or leave 
+
+image_name = new Array();      
+image_name[1] = root+"360.";   // add a name before the image number here eg. root+"pv_vort_"
+image_type = ".jpg";    // type of image, keep the "." at the start
+first_image = 0;        // start image to end image, only this number can vary in the filenames; 
+last_image = 20;		// Don't use double digits for single numbers e.g. (0 not 00) or (1 not 01) etc. 
+                        // Last image has to be higher than first image in this section
+
+
+// If you files are consectuive change the below option to the gaps 
+	increment=1 		// For non-consecutive but linearly increasing (or decreasing) image files eg. 0,5,10,etc increment = 5
+
+
+//  Optional Extras to Play With.  
+
+	lag_mulitplier= 4     /// Will Pause on Last image of Loop, by this muliple, 1= no pause 10 = long pause etc.
+
+// If current is 57 not 1 then save us all the effort and change this to 57 will display on load. 
+	initial_image = first_image;  // image that will show on load and reset to.
+ 
+ 
+
+ //    Mutli Variable Section
+	 no_of_vars=2	
+ 
+ // Select no of variables you want available, will be stacked to allow switching between plots
+ //  Decomment or comment ( // at the start of the line) out the urls for plots desired. 
+ // More than 4 sets of images will cause problems, and be really slow to load. 
+ 	
+ 	
+  	
+ image_name[2] = root+"361.";   // add a name before the image number here eg. root+"pv_vort_"
+
+// 	image_name[3]  = root+"200_";
+  
+ 	
+ 
+// 		Scripts are contained at the bottom of the page, to make it cleaner for editing. 
+ //=====================================================================================================
+ // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ //  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ //=====================================================================================================
+ </script>
+
+ </head>
+ 
+
+
+<body onload='launch()'>  <!--load lots of stuff  on load This is required in the body tag other wise the images will not load-->
+
+
+
+<!-- make sure this entire Div is included in the body for the "controls" and javascript to work" -->
+ <div id="side-banner" class='corners'> 
+ 	<div onclick="showhide()" align=CENTER><font>Controls</font> <p></p></div>
+		<table id='tabOpts' class="show">  <!--Side bar with controls-->
+			<tr><td align=CENTER>
+			 </td></tr>
+			<tr><td align=CENTER>
+						<font size="2">Loop<input id='cbL' type="checkbox" name="loopCheck" checked=true onClick='chooseLoop()'/></font> 
+						 <font size="2">Reverse<input id='cbRev' type="checkbox" name="RevCheck" attr='unchecked' onClick='chooseRev()'/></font>					
+			</td></tr>
+			<tr><td><hr></td></tr>
+			<tr><td align=CENTER>
+					
+				<button onclick='incrementRow(-1,0)'> < </button>
+				<input type='button' id='bPlay'  onclick='play()' value="play"/>
+				<button onclick='incrementRow(1,0)' >></button>
+			</td></tr>
+			<tr><td><hr></td></tr>
+			<tr><td align=CENTER >
+						<button onclick='decreaseSpeed()' >-</button>
+						<font size="2">Speed</font>
+						<button onclick='increaseSpeed()' >+</button>
+			</td></tr>
+			<tr><td align=CENTER>
+				<form name="Speedbarform"  >
+					<input class="speedslider" type="range" name="speedbar" min="0" max="14" value="5" step="1" onchange="changeSpeed(this.value * 1)" onkeypress="return disableEnterKey(event)" />
+				</form>
+				<hr>
+			</td></tr>
+			<tr><td align=CENTER>
+				<FORM NAME="myform" ACTION="" METHOD="GET"><font align='center' size='2'>Frame:</font><INPUT TYPE="text" NAME="inputbox" VALUE="" size='4' onkeypress="return submitenter(myform.inputbox.value * 1,event)"/>
+				</FORM>
+				<button onclick="resetFrame()">reset</button>
+				<hr>
+			</td></tr>
+			<!--			<tr></tr>
+				<tr><td onclick='showhide()' align='center'> <font size="2">
+					hit '<b>H</b>' to <br />hide/unhide options</font>
+				</td></tr>
+				<tr><td><hr></td></tr>-->
+		<tr><td align=CENTER><button onclick="zoom(-0.1)">-</button><font size="2">Zoom</font><button onclick="zoom(+0.1)">+</button><hr></td></tr>
+			<tr><td  align=CENTER>
+				<font size="2"> See <button onclick='showHelp()'>?? Help ??</button> for Keyboard Shortcuts</font>
+				<hr>
+			</td></tr>
+			<tr><td align=CENTER id="tdMultiVar">
+				<font size="2">Multiple Variables</font><br />					
+				<button id='b1'  onclick='incrementRow(0,-1)'>Up Var</button><br />
+				<button id='b2'  onclick='incrementRow(0,1)'>Down Var</button>
+				<hr>
+			</td></tr>
+			</td></tr>
+			</table> <!--End of Options Table	-->
+					</td></tr></table>
+					</div>																      
+		<div id="MainImage">
+			<img src="http://www.atmos.albany.edu/student/abrammer/dev/LIVE/loading.gif" id="anim" border='0'/>
+	</div>
+		<!-- End of Div that needs to be included in body -->
+
+		
+		
+		
+		
+		
+		
+		
+	<!-- make sure to included everything below here to the end of this file important scripts and styles that are required -->	
+<style>
+	.speedslider {	margin:	0px;	width:	70px;}
+</style>
+ <!--This style section is required dont remove. -->
+<style type="text/css"> 
+<!--.hide{display:none}-->
+<!--.show{display:block}-->
+input[type=range]:first-of-type {
+  width: 70px;
+}
+#side-banner {
+     display: table;
+     position: fixed;
+     margin-top: 3.5em;
+     width: 9.5em;
+     top: 0em;
+     left: 0px;
+     height: 3em;
+     z-index: 10;
+     opacity: 0.85; /* also need the following 2 lines for the various versions of IE */
+     -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=65)";
+     filter: alpha(opacity=85);
+     /* voice-family: "\"}\"";
+     voice-family: inherit; */
+     border: 1px solid #333;
+    }
+#MainImage{
+	position: relative;
+	left: 8em;
+}   
+.corners{
+	-moz-border-radius-topright: 16px;
+	-moz-border-radius-topleft: 16px;
+	-webkit-border-top-left-radius: 16px;
+	-webkit-border-top-right-radius: 16px;
+	-moz-border-radius-bottomright: 16px;
+	-moz-border-radius-bottomleft: 16px;
+	-webkit-border-bottom-left-radius: 16px;
+	-webkit-border-bottom-right-radius: 16px;
+	-ms-border-bottom-left-radius: 16px;
+	-ms-border-bottom-right-radius: 16px;}
+	}
+	
+.cornersTop{
+	-moz-border-radius-topright: 16px;
+	-moz-border-radius-topleft: 16px;
+	-webkit-border-top-left-radius: 16px;
+	-webkit-border-top-right-radius: 16px;
+    }
+
+
+
+ </style>
+
+<script type="text/javascript">
+//==================================
+// * * * * * * * * * * * * * * * * 
+//  * * * * * * * * * * * * * * * * 
+// * * * * * * * * * * * * * * * * 
+//==================================
+//
+//			Script Section 
+//
+//
+//
+//
+//==================================
+// * * * * * * * * * * * * * * * * 
+//  * * * * * * * * * * * * * * * * 
+// * * * * * * * * * * * * * * * * 
+//==================================
+
+// define some variables  -- No Need to alter these!!!
+
+  var row = initial_image;
+  
+  	theImages = new Array();
+  			for (var i = 1 ;  i<no_of_vars+1; i++){
+  		theImages[i] = new Array();
+  	}
+  		
+	var loop = true
+	var animate = false   /// changed
+	var reverse = false
+	var delay_time=200;
+	plots = theImages[1];
+	plots.value = 1;
+ var plotsold=plots.value;   //~
+ var rowold=row;  //~
+	
+ 
+//  lots and lots of functions
+ function incrementRow(rinc,pinc){ 
+    if(reverse==true){rinc = rinc*-1.0}
+      rowold = row;
+      plotsold = plots.value;
+      if(pinc != 0){ 
+        if( ((plotsold+pinc) <= no_of_vars)&& (plotsold+pinc) >= 1){ 
+            i = plotsold+pinc;
+            plots = theImages[i];
+            plots.value = i;
+        } 
+      } 
+      row = row+(rinc*increment);
+      if(row > last_image){   row=first_image;  } 
+      else if(row < first_image){  row=last_image;   } 
+     refresh_image();   // set new numbers but that image needs to now be displayed. 
+ }
+ 
+ 
+ function refresh_image(){;
+     id1=document.getElementById('anim');
+     id1.src = plots[row].src;              // set new image. 
+     document.myform.inputbox.value = row;      // change value in box on the left. 
+} 
+
+
+
+function go2image(num){ 
+   if(num < last_image && num > first_image){ 
+     rowold = row;
+     plotsold = plots.value;
+     row = num;
+     refresh_image();
+    }
+  }
+ie=(document.all)?true:false;
+
+function resetFrame(){ 
+     rowold = row;
+     plotsold = plots.value;
+     plots = theImages[1];
+     plots.value=1;
+     row = initial_image;
+     document.myform.inputbox.value = row;
+     refresh_image();
+ } 
+	
+function keyDown(e) { 
+    var evt=(e)?e:(window.event)?window.event:null;
+    if(evt){ 
+       var key=(evt.charCode)?evt.charCode: ((evt.keyCode)?evt.keyCode:((evt.which)?evt.which:0));
+        if(key==37){       incrementRow(-1,0) ; return false; } // left key
+        else if(key==39){  incrementRow(1,0)  ; return false; } // right key
+        else if(key==40){  incrementRow(0,1)  ; return false; } // up key
+        else if(key==38){  incrementRow(0,-1) ; return false; } // down key
+        else if(key==32){  play()             ; return false; } // space bar
+        else if(event.shiftKey && event.keyCode == 82) { forceRefresh(); }  // This is to force a reload of the images but messes with other stuff. ( shift + r ) can be deleted. //
+    }
+} document.onkeydown=keyDown;
+	
+	
+
+function showhide(){
+	if(document.getElementById('tabOpts').className=='hide'){
+		document.getElementById('tabOpts').className='show'
+	}
+	else if(document.getElementById('tabOpts').className=='show'){
+		document.getElementById('tabOpts').className='hide'
+	}
+}
+
+function launch(){
+	if(no_of_vars == 1){
+	document.getElementById('tdMultiVar').className = 'hide'
+	}
+	for (var j = 1; j<=no_of_vars;j++ ){
+			
+		for (var i = first_image; i <= last_image; i++)  {
+			theImages[j][i] = new Image();
+			theImages[j][i].src = image_name[j] + i  + image_type;		
+		
+			
+				}
+	}
+
+   		document.getElementById('anim').src = plots[initial_image].src	
+     	document.myform.inputbox.value = initial_image;
+	row = initial_image;	
+     	
+}
+
+
+function play(){
+    if(animate==false){ 
+        animate=true;
+        document.getElementById('bPlay').value='stop';
+        animateFwd();
+    } 
+    else if(animate==true){ animate=false;
+        clearTimeout(timeID);
+        document.getElementById('bPlay').value='play';
+    }
+} 
+
+
+
+function showvar(){
+alert('Boo!!' )
+}
+
+function submitenter(num,e){ 
+    var keycode;
+    if (window.event) keycode = window.event.keyCode;
+    else if (e) keycode = e.which;
+    else{ return true; }
+    if (keycode == 13) { go2image(num); return false; }
+    else{ return true;}    
+} 
+	
+function chooseLoop(){
+	if(loop==true){
+		document.getElementById('cbL').checked =false;
+		loop=false;
+		}
+	else if(loop==false){
+		document.getElementById('cbL').checked =true;
+		loop=true;
+		}
+}
+
+function animateFwd(){
+    animate=true;
+    incrementRow(1,0);
+    delay = delay_time;
+    if(row==last_image){delay = delay_time*lag_mulitplier;}  // lags on last image //
+    timeID = setTimeout("animateFwd()", delay); // sleeps for a lil bit then continues to increment //
+} 
+
+
+function chooseRev(){
+	if(reverse==true){
+		document.getElementById('cbRev').checked =false;
+		reverse=false;
+		if(animate==true){play();play()}
+		}
+	else if(reverse==false){
+		document.getElementById('cbRev').checked =true;
+		reverse=true;
+		if(animate==true){play();play()}
+		}
+}
+
+function showHelp(){
+	alert("\
+Key				Command\r\
+\r\
+SpaceBar			Play/Stop\r\
+Left Arrow			Backwards\r\
+Right Arrow		Forwards\r\
+Up Arrow			Change Variable\r\
+Down Arrow		Change Variable\r\
+\r\
+")
+	}
+	
+	
+zNum = 1.0
+function zoom(num){
+	zNum = zNum+num
+	document.getElementById('MainImage').style.MozTransform = "scale("+zNum+")";
+	document.getElementById('MainImage').style.WebkitTransform = "scale("+zNum+")";
+	document.getElementById('MainImage').style.OTransform = "scale("+zNum+")";
+	document.getElementById('MainImage').style.zoom = zNum;
+	}
+
+
+function increaseSpeed(){
+	if(document.Speedbarform.speedbar.value ==14){
+		return false}
+	else	
+	delay_time=(1000/((1000/delay_time)+1));
+	document.Speedbarform.speedbar.value = 1000/delay_time;
+}
+function decreaseSpeed(){
+	if(document.Speedbarform.speedbar.value ==1){
+		return false}
+	else
+	delay_time=(1000/((1000/delay_time)-1));
+	document.Speedbarform.speedbar.value = 1000/delay_time;
+}
+
+function changeSpeed(num){
+	   delay_time=1000/((+num));
+	   document.Speedbarform.speedbar.value = 1000/delay_time;
+	   }
+
+
+function disableEnterKey(e){
+     var key
+     if(window.event){
+          key = window.event.keyCode;  }   //IE
+     else{
+          key = e.which;}     //firefox
+
+     if(key == 13){
+     		eval("document.myform.inputbox.focus()");
+     		return false;}
+          
+     else{
+          return true;}
+}
+
+
+function forceRefresh(){
+	randomx = Math.floor((Math.random()*100)+1);
+	document.getElementById('anim').src = "http://www.atmos.albany.edu/student/abrammer/dev/LIVE/loading.gif";
+	image_type = image_type+"?v="+randomx;
+	launch()
+	}
+
+
+
+</script>
+<script src="http://www.atmos.albany.edu/student/abrammer/dev/LIVE/ffSlider.Js"> </script> <!-- //required for firefox slider bar to work. Script from this guy, ~~> just removed the key elements. Thanks!!. Copyright (c) 2010-2011 Frank Yan, <http://frankyan.com>  -->
+</body>
+</html>

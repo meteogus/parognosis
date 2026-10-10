@@ -1,0 +1,262 @@
+<html>
+<head>
+<style type="text/css">
+body{
+	background-color: ivory;
+	}
+
+.map{
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 900px;
+        width: 750px;
+        background-repeat: no-repeat;
+}   
+
+.frame{
+        background: url(http://www.atmos.albany.edu/student/abrammer/.Files/graphics/realtime/africa/.blank/blank_chooses.png);
+        background-repeat: no-repeat;
+        margin: 0;
+        position: relative;
+        width: 900px;
+        height: 750px;
+}
+
+.hide{display:none}
+.show{display:block}
+input[type=range]{
+  width: 100px;
+}
+</style>
+<script src="http://www.meteovolos.gr/Javascripts/ffSlider.Js">
+</script>
+<script src="http://www.meteovolos.gr/Javascripts/ffSlider.Js">
+</script>
+<script language="javascript"> 
+
+time = 0;
+CurrMap=0;
+CurrOver=0;
+CurrOver2=0;
+	function setArray(){
+	baseMaps = new Array();
+	 baseMaps[0] = "url(http://www.atmos.albany.edu/student/abrammer/.Files/graphics/realtime/africa/.blank/blank.png)"
+	 
+	 baseMaps[1] = "url(http://stratus.meteo.noa.gr/data/bolam/GR/rain/f_totpcp_f_"+time+".png)"
+	 
+	 baseMaps[2] = "url(http://stratus.meteo.noa.gr/data/bolam/GR/slp/f_mslp_"+time+".png)"
+	 baseMaps[3] = "url(http://stratus.meteo.noa.gr/data/bolam/GR/slp/f_mslp_"+time+".png)"
+	 baseMaps[4] = "url(http://www.atmos.albany.edu/student/abrammer/.Files/graphics/realtime/africa/850rv_map_"+time+".png)"
+	 baseMaps[5] = "url(http://www.atmos.albany.edu/student/abrammer/.Files/graphics/realtime/africa/trmm_"+time+".png)"	  
+	  baseMaps[6] = "url(http://www.atmos.albany.edu/student/abrammer/.Files/graphics/realtime/africa/sst_"+time+".png)"     
+	Overlays = new Array()
+	  Overlays[0] = ""
+	  Overlays[1] = "url(http://stratus.meteo.noa.gr/data/bolam/GR/slp/f_mslp_"+time+".png)"
+	  
+	  Overlays[2] = "url(http://www.atmos.albany.edu/student/abrammer/.Files/graphics/realtime/africa/650sf_"+time+".png)"
+	  Overlays[3] = "url(http://www.atmos.albany.edu/student/abrammer/.Files/graphics/realtime/africa/700sf_"+time+".png)"
+	  Overlays[4] = "url(http://www.atmos.albany.edu/student/abrammer/.Files/graphics/realtime/africa/850sf_"+time+".png)"
+	  
+	  Overlays[5] = "url(http://www.atmos.albany.edu/student/abrammer/.Files/graphics/realtime/africa/825wind_"+time+".png)"
+	  Overlays[6] = "url(http://www.atmos.albany.edu/student/abrammer/.Files/graphics/realtime/africa/925wind_"+time+".png)"
+	  Overlays[7] = "url(http://www.atmos.albany.edu/student/abrammer/.Files/graphics/realtime/africa/10wind_"+time+".png)" 
+	    }
+
+
+
+
+	function baseToggle(num){
+	var ele = document.getElementById('base');
+		ele.style.background = baseMaps[num]
+		CurrMap = num
+		}
+
+	function overToggle(num){	
+		if(num==CurrOver){num=0}
+		var ele = document.getElementById('over');
+			ele.style.background = Overlays[num];
+			document.getElementById('base').style.background = baseMaps[CurrMap];
+			document.getElementById('cbOver1.'+CurrOver).checked = false
+			CurrOver = num
+			}
+			
+	function overToggle2(num){
+	if(num==CurrOver2){num=0}
+		var ele = document.getElementById('over2');
+			ele.style.background = Overlays[num];
+			document.getElementById('base').style.background = baseMaps[CurrMap];
+			document.getElementById('cbOver2.'+CurrOver2).checked = false
+			CurrOver2 = num
+		}
+			
+	function overRefresh(){
+		document.getElementById('over2').style.background = Overlays[CurrOver2];
+		document.getElementById('base').style.background = baseMaps[CurrMap];
+		document.getElementById('over').style.background = Overlays[CurrOver];
+	}
+
+	function time1(num){
+		if(time+parseInt(num) ==-1){
+			return false}
+		else{	
+		time = time+parseInt(num);
+		setArray();
+		overRefresh();
+		}
+	}
+	
+	function changeOpac(num,value){
+		if(num==1){document.getElementById('over').style.opacity=value}
+		if(num==2){document.getElementById('over2').style.opacity=value}		
+	}
+		
+		
+	function keyDown(e) {
+		var evt=(e)?e:(window.event)?window.event:null;
+		if(evt){
+			var key=(evt.charCode)?evt.charCode: ((evt.keyCode)?evt.keyCode:((evt.which)?evt.which:0));
+			if(key==37){
+			
+				time1(+1);
+				return false;
+			}
+			
+			else if(key==39){
+		
+				time1(-1);
+				return false;
+			}
+		}
+	}
+	document.onkeydown=keyDown;
+		
+
+function toggle(id) {
+	var ele = document.getElementById(id);
+	if(ele.style.display == "block") {
+    		ele.style.display = "none";
+		  	}
+	else {
+		ele.style.display = "block";
+			}
+}   // another Toggle function 
+var ele2 = null
+var elem2 = null
+function ddToggle(id) {
+		var ele1 = document.getElementById(id);
+		if(elem2 == ele1){
+			if(elem2 !=null){
+				ele2.style.display = "none";
+				ele2=null;
+			}
+		}
+		else{	
+			if(ele2 != null){ele2.style.display = "none"};
+			if(ele1 != null){ele1.style.display = "block"};
+			ele2 = document.getElementById(id);
+	}
+} //original Toggle function
+function ddToggle2(id) {
+	var elem1 = document.getElementById(id);
+	if(ele2 == elem1){
+		if(ele2 != null){
+			elem2.style.display = "none";
+			elem2=null;
+		}
+	}
+	else{	
+		if(elem2 != null){elem2.style.display = "none"};
+		if(elem1 != null){elem1.style.display = "block"};
+		elem2 = document.getElementById(id);
+	}
+}//original Toggle function 2
+
+</script>
+</head>
+<body onload="setArray()">
+<table>
+<tr><td>
+<div id="base" class="frame">
+		<div id="over" class="map"></div>
+		<div id="over2" class="map"></div>
+</div>
+</td><td>
+<table><tr><td>
+<button value="1" onclick="time1(this.value)">-3hrs</button><button value="-1" onclick="time1(this.value)">+3hrs</button></td></tr>
+ <tr><td>
+<form name="mapSelect1" method="POST">
+<select name="baseSelect1" onchange="baseToggle(baseSelect1.options[baseSelect1.selectedIndex].value)">
+<option value="0">Choose Base</option>
+<option value="1">Precipitation</option>
+<option>SLP</option>
+<option value="2">RV--650hPa</option>
+<option value="3">RV--700hPa</option>
+<option value="4">RV--850hPa</option>
+<option value="5">TRMM 3b42RT</option>
+<option value="6">SST (Reynolds daily)</option>
+
+</select></form>
+</td></tr>
+<tr><td>
+<table><tr><td>
+
+Clear</td><td>
+<input type='checkbox' id='cbOver1.0'value="0" onclick='overToggle(this.value)' /> </td><td><input type='checkbox' id='cbOver2.0'value="0" onclick='overToggle2(this.value)'></td></tr>
+<tr>
+<td>MSLP</td>
+<td><input type='checkbox' id='cbOver1.1'value='1' onclick='overToggle(this.value)' /></td>
+<td><input type='checkbox' id='cbOver2.1'value='1' onclick='overToggle2(this.value)' /></td>
+</tr>
+<tr>
+<th><hr>Streamfunction</th>
+</tr>
+<tr>
+<td>Sf--650hPa</td>
+<td><input type='checkbox' id='cbOver1.2'value='2'onclick='overToggle(this.value)' /></td>
+<td><input type='checkbox' id='cbOver2.2'value='2' onclick='overToggle2(this.value)'></td>
+</tr>
+<tr>
+<td>Sf--700hPa</td>
+<td><input type='checkbox' id='cbOver1.3'value='3'onclick='overToggle(this.value)' /></td>
+<td><input type='checkbox' id='cbOver2.3'value='3' onclick='overToggle2(this.value)' /></td>
+</tr>
+<tr>
+<td>Sf--850hPa</td>
+<td><input type='checkbox' id='cbOver1.4'value='4'onclick='overToggle(this.value)' /></td>
+<td><input type='checkbox' id='cbOver2.4'value='4' onclick='overToggle2(this.value)' /></td>
+</tr>
+<tr>
+<th><hr>Wind Vectors</th>
+</tr>
+<tr>
+<td>W--825hPa</td>
+<td><input type='checkbox' id='cbOver1.5'value='5'onclick='overToggle(this.value)' /></td>
+<td><input type='checkbox' id='cbOver2.5'value='5' onclick='overToggle2(this.value)' /></td>
+</tr>
+<tr>
+<td>W--925hPa</td>
+<td><input type='checkbox' id='cbOver1.6'value='6'onclick='overToggle(this.value)' /></td>
+<td><input type='checkbox' id='cbOver2.6'value='6' onclick='overToggle2(this.value)' /></td>
+</tr>
+<tr>
+<td>W--10m</td>
+<td><input type='checkbox' id='cbOver1.7'value='7'onclick='overToggle(this.value)' /></td>
+<td><input type='checkbox' id='cbOver2.7'value='7' onclick='overToggle2(this.value)' /></td>
+</tr>
+</td></tr></table><hr>
+</td></tr>
+<tr><th>Transparency</th></tr>
+<tr><td align='center'>
+<table><tr><td>
+Overlay 1</td><td>Overlay2</td></tr>
+<tr><td><input type="range" name="Over1Trans" min="0" max="1.0" value="1" step="0.05" onchange="changeOpac(1,this.value)"/></td><td><input type="range" name="Over2Trans" min="0" max="1.0" value="1.0" step="0.05" onchange="changeOpac(2,this.value)"/></td></tr>
+</table></td></tr>
+
+</table></td></tr></table>
+
+
+
+</body>
+</html>
