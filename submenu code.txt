@@ -1,8 +1,0 @@
-      <li><a href="#">World</a>
- 				<ul>
-      <li><a href="https://www.nhc.noaa.gov/"target="_blank">NHC</a></li>
-      <li><a href="https://www.spc.noaa.gov/"target="_blank">SPC</a></li>
-      <li><a href="https://www.tropicaltidbits.com/"target="_blank">Tropical Tidbits</a></li>
-      <li><a href="https://mrms.nssl.noaa.gov/qvs/product_viewer/"target="_blank">MRMS USA</a></li>
-      <li><a href="https://www.jma.go.jp/en/typh/"target="_blank">Japan</a></li>
-        </ul>
