@@ -1,0 +1,136 @@
+http://www.thegreekz.com/forum/showthread.php?250886-Free-Web-Hosting (all links)
+
+
+GRHOST
+======
+FTP στο grhost.info με username parognosis και password #6934225193#
+Ότι ανεβάζεις θα πρέπει να μπαίνει μέσα στον φάκελο public_html
+Παράκληση αυτά που θα ανεβάζεις να μην ξεπερνούν τα 200-300 ΜΒ
+Λογικά πρέπει να δουλεύουν και οι 2 παρακάτω σύνδεσμοι
+http://grhost.info/~parognosis/
+http://grhost.info/parognosis/
+
+http://grhost.info/awstats/awstats.pl?config=localhost.localdomain
+
+server load=http://grhost.info/munin/localhost/localhost-load.html
+www.favicon.cc (kataskevi logo)
+
+www.ricocheting.com (kataskevi slides)
+
+
+PHP0.COM
+========
+login (http://cpanel.php0h.com/panel/)
+username=p0_23496254/pass=parpar me link=http://parognosis.php0h.com
+
+gia kainourgio account==>> http://php0h.com/signup.php
+
+
+Main Hosting Details
+Control panel username
+p0_23496254
+Control panel password	**********
+Control panel URL
+cpanel.php0h.com
+MySQL username
+p0_23496254
+MySQL password
+**********
+MySQL hostname
+sql111.php0h.com
+FTP username
+p0_23496254
+FTP password
+**********
+FTP host name	ftp.php0h.com
+
+
+Your Website URL's
+Home page
+http://parognosis.php0h.com
+
+
+
+BYETHEHOST.COM
+===============
+login (http://cpanel.byethost.com/panel/)
+username=b6_13326379/pass=123456 me link=http://parognosis.byethost6.com
+
+gia kainourgio account==>> http://byethost.com/signup.php
+
+
+Main Hosting Details
+Control panel username
+b6_13326379
+Control panel password	**********
+Control panel URL
+http://cpanel.byethost6.com
+MySQL username
+b6_13326379
+MySQL password
+**********
+MySQL hostname
+sql110.byethost6.com
+FTP username
+b6_13326379
+FTP password
+**********
+FTP host name	ftp.byethost6.com
+
+
+Your Website URL's
+Home page
+http://parognosis.byethost6.com
+
+
+
+
+HOST.SK
+=======
+https://www.host.sk/index.php (login)
+http://parognosis.host.sk
+username=parognosis/pass=123456
+
+
+REPLACEMENTS WITH NOTEPAD++
+===========================
+Ctrl+H kai pame stin kartela "Find in Files":
+
+replace http://grhost.info/parognosis me http://grhost.info/parognosis
+
+replace http://grhost.info/parognosis me http://parognosis.host.sk
+
+replace http://grhost.info/parognosis me http://parognosis.byethost7.com
+
+
+
+PDLAKI
+======
+login (http://cpanel.php0h.com/panel/)
+username=p0_14279093/pass=123456 me link=http://lamiahobs.php0h.com
+
+
+Your account is now active.
+Main Hosting Details
+Control panel username
+p0_14279093
+Control panel password	123456
+Control panel URL
+cpanel.php0h.com
+MySQL username
+p0_14279093
+MySQL password
+**********
+MySQL hostname
+sql210.php0h.com
+FTP username
+p0_14279093
+FTP password
+**********
+FTP host name	ftp.php0h.com
+
+
+Your Website URL's
+Home page
+http://lamiajobs.php0h.com
+
