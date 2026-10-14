@@ -954,12 +954,17 @@ body {
 
 
 
+
 <tr>
   <td>
-    <img id="wetter3img1" src="" alt="Wetter3 Animation 06_27" width="700" height="510">
+    <a href="https://www.wetter3.de/animation_dt.html" target="_blank" rel="noopener noreferrer">
+      <img id="wetter3img1" src="" alt="Wetter3 Animation 06_27" width="700" height="510">
+    </a>
   </td>
   <td>
-    <img id="wetter3img2" src="" alt="Wetter3 Animation 06_4" width="700" height="510">
+    <a href="https://www.wetter3.de/animation_dt.html" target="_blank" rel="noopener noreferrer">
+      <img id="wetter3img2" src="" alt="Wetter3 Animation 06_4" width="700" height="510">
+    </a>
   </td>
 </tr>
 
@@ -967,11 +972,11 @@ body {
 function getAnimationCode() {
   const h = new Date().getUTCHours();
 
-  if (h < 4)  return "18"; // πριν βγει το 00z
-  if (h < 10) return "00"; // 00z διαθέσιμο
-  if (h < 16) return "06"; // 06z διαθέσιμο
-  if (h < 22) return "12"; // 12z διαθέσιμο
-  return "18";             // 18z διαθέσιμο
+  if (h < 4)  return "18"; // Before 00z is available
+  if (h < 10) return "00"; // 00z available
+  if (h < 16) return "06"; // 06z available
+  if (h < 22) return "12"; // 12z available
+  return "18";             // 18z available
 }
 
 const code = getAnimationCode();
